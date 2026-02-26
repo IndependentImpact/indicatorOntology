@@ -121,6 +121,8 @@ ii:hasIndicatorStage a owl:ObjectProperty ;
 
 An **indicator framework** is a curated bundle across stages.
 
+Example (using SDG indicator 1.1.1 as an illustration):
+
 ```turtle
 ii:Poverty_ToC_Framework a skos:Collection ;
   skos:prefLabel "Poverty theory-of-change indicator framework"@en ;
@@ -135,6 +137,8 @@ Use `skos:OrderedCollection` if sequence matters.
 ---
 
 ## 5. Measurement Pattern (Baseline / Endline)
+
+Example (using SDG indicator 1.1.1 for illustration):
 
 ```turtle
 ii:HouseholdGroupX a impactont:Thing ;
@@ -161,7 +165,7 @@ Time should be added using `impactont:hasTemporalLocation`.
 **Option 1 (selected):**  
 ➡ *Make each indicator definition instance also an `impactont:Indicator`.*
 
-Example:
+Example (using SDG indicator 1.1.1 for illustration):
 
 ```turtle
 sdg:1.1.1 a impactont:Indicator ;
@@ -197,6 +201,8 @@ Evidence can be attached using ClaimOnt support properties.
 
 ## 7. End-to-End Sample (Condensed)
 
+Example using SDG indicator 1.1.1 for illustration:
+
 ```turtle
 ii:ActivityA a aiao:Activity ;
   rdfs:label "Cash transfer disbursement"@en .
@@ -228,4 +234,4 @@ ii:Claim_ActivityA_reduced_poverty a aiao:ImpactClaim ;
 ---
 
 **Result:**  
-You can now express projects, measurements, pathways, and causal reasoning **without overcommitting semantics**, while remaining compatible with SDGs and client-specific frameworks.
+You can now express projects, measurements, pathways, and causal reasoning **without overcommitting semantics**, while remaining compatible with any indicator framework (such as SDGs or client-specific frameworks).
