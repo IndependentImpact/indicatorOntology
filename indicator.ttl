@@ -1,4 +1,3 @@
-@prefix sdg:       <http://independentimpact.org/sdg/> .
 @prefix skos:      <http://www.w3.org/2004/02/skos/core#> .
 @prefix dct:       <http://purl.org/dc/terms/> .
 @prefix foaf:      <http://xmlns.com/foaf/0.1/> .
@@ -16,7 +15,7 @@
 
 ind: a owl:Ontology ;
   dct:title "Indicator OWL prototype aligned with AIAO, ClaimOnt, ImpactOnt, and InfoComm"@en ;
-  dct:description "Prototype indicator semantics that complement the SDG SKOS catalogue by providing OWL descriptions aligned with aiao, claimont, impactont, and infocomm."@en ;
+  dct:description "Ontology for expressing indicator semantics, providing OWL descriptions aligned with aiao, claimont, impactont, and infocomm. While originally developed for SDG indicators, this ontology has general applicability to any indicator framework."@en ;
   dct:source <https://w3id.org/aiao> ;
   dct:source <https://w3id.org/claimont> ;
   dct:source <https://w3id.org/impactont> ;
@@ -57,7 +56,7 @@ ind:IndicatorDefinition a owl:Class ;
   rdfs:subClassOf impact:Indicator , infocomm:Information ;
   rdfs:label "Indicator definition"@en ;
   skos:definition "An indicator concept that contains descriptive metadata, expected units, and rationale."@en ;
-  rdfs:comment "Provides the operational semantics that the SDG SKOS indicator concept points to via foaf:focus."@en .
+  rdfs:comment "Provides operational semantics for indicators. Can be linked from external indicator catalogues (such as SDG SKOS indicators) via foaf:focus."@en .
 
 ind:IndicatorFormula a owl:Class ;
   rdfs:subClassOf infocomm:Information ;

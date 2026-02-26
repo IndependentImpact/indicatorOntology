@@ -29,7 +29,7 @@ These dependencies ensure semantic interoperability and consistency with establi
 ## Ontology Content
 
 The indicator.ttl file provides:
-- Semantic definitions for SDG indicators
+- Semantic definitions for indicators (including examples such as SDG indicators)
 - Alignment with established ontologies (AIAO, ClaimOnt, ImpactOnt, InfoComm)
 - Impact pathway classifications (activities → outputs → outcomes → impacts)
 - Properties for indicator formulas, units, rationales, and operational semantics
@@ -61,7 +61,7 @@ This will generate:
 
 ## Purpose
 
-The core ontology files provide the foundational semantic framework that other vocabularies build upon. They define the essential concepts, properties, and relationships needed to represent SDG indicators and their measurements in a machine-readable format, while maintaining conformance to the [Impact Ontology](http://w3id.org/impactont) and [AIAO](http://w3id.org/aiao) standards.
+The core ontology files provide the foundational semantic framework that other vocabularies build upon. They define the essential concepts, properties, and relationships needed to represent indicators and their measurements in a machine-readable format, while maintaining conformance to the [Impact Ontology](http://w3id.org/impactont) and [AIAO](http://w3id.org/aiao) standards. While originally developed for SDG indicators, this ontology has general applicability to any indicator framework.
 
 ## Usage
 
