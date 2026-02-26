@@ -1,0 +1,346 @@
+@prefix sdg:       <http://independentimpact.org/sdg/> .
+@prefix skos:      <http://www.w3.org/2004/02/skos/core#> .
+@prefix dct:       <http://purl.org/dc/terms/> .
+@prefix foaf:      <http://xmlns.com/foaf/0.1/> .
+@prefix iiind:     <http://independentimpact.org/indicator-owl/> .
+@prefix owl:       <http://www.w3.org/2002/07/owl#> .
+@prefix rdfs:      <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix aiao:      <http://w3id.org/aiao#> .
+@prefix claimont:  <http://w3id.org/claimont#> .
+@prefix impact:    <http://w3id.org/impactont#> .
+@prefix infocomm:  <http://w3id.org/infocomm#> .
+@prefix qudt:      <http://qudt.org/schema/qudt/> .
+@prefix unit:      <http://qudt.org/vocab/unit/> .
+@prefix prov:      <http://www.w3.org/ns/prov#> .
+@prefix xsd:       <http://www.w3.org/2001/XMLSchema#> .
+
+iiind: a owl:Ontology ;
+  dct:title "Indicator OWL prototype aligned with AIAO, ClaimOnt, ImpactOnt, and InfoComm"@en ;
+  dct:description "Prototype indicator semantics that complement the SDG SKOS catalogue by providing OWL descriptions aligned with aiao, claimont, impactont, and infocomm."@en ;
+  dct:source <https://w3id.org/aiao> ;
+  dct:source <https://w3id.org/claimont> ;
+  dct:source <https://w3id.org/impactont> ;
+  dct:source <http://w3id.org/infocomm> .
+
+# -- Impact pathway stages for indicators (SKOS classification) --
+iiind:IndicatorStageScheme a skos:ConceptScheme ;
+  skos:prefLabel "Indicator stages in an impact pathway"@en ;
+  skos:definition "Stages used to categorise indicators along a theory of change from activities through outputs, outcomes, and impacts."@en ;
+  skos:hasTopConcept iiind:ActivityIndicator , iiind:OutputIndicator , iiind:OutcomeIndicator , iiind:ImpactIndicator .
+
+iiind:ActivityIndicator a skos:Concept ;
+  skos:prefLabel "Activity indicator"@en ;
+  skos:definition "Indicator that measures activities performed within an intervention."@en ;
+  skos:inScheme iiind:IndicatorStageScheme ;
+  skos:topConceptOf iiind:IndicatorStageScheme .
+
+iiind:OutputIndicator a skos:Concept ;
+  skos:prefLabel "Output indicator"@en ;
+  skos:definition "Indicator that measures immediate deliverables or services produced by an intervention."@en ;
+  skos:inScheme iiind:IndicatorStageScheme ;
+  skos:topConceptOf iiind:IndicatorStageScheme .
+
+iiind:OutcomeIndicator a skos:Concept ;
+  skos:prefLabel "Outcome indicator"@en ;
+  skos:definition "Indicator that measures short- to medium-term changes experienced by people or systems."@en ;
+  skos:inScheme iiind:IndicatorStageScheme ;
+  skos:topConceptOf iiind:IndicatorStageScheme .
+
+iiind:ImpactIndicator a skos:Concept ;
+  skos:prefLabel "Impact indicator"@en ;
+  skos:definition "Indicator that measures long-term, higher-level changes attributable to an intervention or strategy."@en ;
+  skos:inScheme iiind:IndicatorStageScheme ;
+  skos:topConceptOf iiind:IndicatorStageScheme .
+
+# -- Core prototype classes (aligned to external ontologies) --
+iiind:IndicatorDefinition a owl:Class ;
+  rdfs:subClassOf impact:Indicator , infocomm:Information ;
+  rdfs:label "Indicator definition"@en ;
+  skos:definition "An indicator concept that contains descriptive metadata, expected units, and rationale."@en ;
+  rdfs:comment "Provides the operational semantics that the SDG SKOS indicator concept points to via foaf:focus."@en .
+
+iiind:IndicatorFormula a owl:Class ;
+  rdfs:subClassOf infocomm:Information ;
+  rdfs:label "Indicator formula"@en ;
+  skos:definition "A human-readable description of how to compute an indicator value."@en .
+
+iiind:Symbol a owl:Class ;
+  rdfs:subClassOf infocomm:Information ;
+  rdfs:label "Symbol"@en ;
+  skos:definition "A symbolic placeholder used within an indicator formula or expression."@en ;
+  rdfs:comment "Use for mathematical or statistical symbols that appear in indicator expressions; attach foaf:focus to the underlying quantity or concept and a unit via iiind:hasUnit."@en .
+
+iiind:MathOperator a owl:Class ;
+  rdfs:subClassOf infocomm:Information ;
+  rdfs:label "Mathematical operator"@en ;
+  skos:definition "An operator token (e.g., =, +, -, *, /, ^) used to relate symbols in an indicator expression."@en ;
+  rdfs:comment "Distinguishes symbolic operators from physical operators or agents; use skos:prefLabel for the glyph and rdfs:comment for usage examples."@en .
+
+iiind:IndicatorRationale a owl:Class ;
+  rdfs:subClassOf infocomm:Information ;
+  rdfs:label "Indicator rationale"@en ;
+  skos:definition "Narrative justification for why the indicator is relevant to the objective or state being monitored."@en .
+
+iiind:IndicatorReport a owl:Class ;
+  rdfs:subClassOf claimont:Report , infocomm:Information ;
+  rdfs:label "Indicator report"@en ;
+  skos:definition "A claim that reports a concrete indicator value in a communication context."@en .
+
+iiind:IndicatorPredicate a owl:Class ;
+  rdfs:subClassOf claimont:Predicate ;
+  rdfs:label "Indicator predicate"@en ;
+  skos:definition "Predicate that links a subject state to an indicator value in a report."@en .
+
+iiind:IndicatorObject a owl:Class ;
+  rdfs:subClassOf claimont:Object ;
+  rdfs:label "Indicator object"@en ;
+  skos:definition "The reported value for an indicator, paired with a stated unit of measure."@en .
+
+# -- Object properties --
+iiind:aboutState a owl:ObjectProperty ;
+  rdfs:domain impact:Indicator ;
+  rdfs:range impact:State ;
+  rdfs:label "about state"@en ;
+  rdfs:comment "Relates an indicator definition to the state it qualifies (reuse impact:State directly rather than minting a parallel MeasuredState class)."@en .
+
+iiind:hasFormula a owl:ObjectProperty ;
+  rdfs:domain impact:Indicator ;
+  rdfs:range iiind:IndicatorFormula ;
+  rdfs:label "has formula"@en ;
+  rdfs:comment "Connects an indicator to its computation description."@en .
+
+iiind:hasExpression a owl:ObjectProperty ;
+  rdfs:subPropertyOf iiind:hasFormula ;
+  rdfs:domain impact:Indicator ;
+  rdfs:range iiind:IndicatorFormula ;
+  rdfs:label "has expression"@en ;
+  rdfs:comment "Alias for iiind:hasFormula to preserve existing data that refers to an expression node; prefer iiind:hasFormula going forward while keeping expressionText and symbol/operator listings inside the formula resource."@en .
+
+iiind:usesSymbol a owl:ObjectProperty ;
+  rdfs:domain iiind:IndicatorFormula ;
+  rdfs:range iiind:Symbol ;
+  rdfs:label "uses symbol"@en ;
+  rdfs:comment "Enumerates the symbols that participate in an indicator expression; attach units to symbols via iiind:hasUnit and use foaf:focus to point to the underlying quantity or constant."@en .
+
+iiind:usesOperator a owl:ObjectProperty ;
+  rdfs:domain iiind:IndicatorFormula ;
+  rdfs:range iiind:MathOperator ;
+  rdfs:label "uses operator"@en ;
+  rdfs:comment "Enumerates mathematical operators present in an indicator expression (e.g., equality, multiplication, division, exponentiation)."@en .
+
+iiind:hasIndicatorStage a owl:ObjectProperty ;
+  rdfs:domain [ a owl:Class ; owl:unionOf ( impact:Indicator skos:Concept ) ] ;
+  rdfs:range skos:Concept ;
+  rdfs:label "has indicator stage"@en ;
+  rdfs:comment "Categorises an indicator according to the stage it occupies within an impact pathway (activity, output, outcome, or impact); usable on indicator definitions and the SKOS indicator catalogue entries that reference them."@en .
+
+iiind:hasUnit a owl:ObjectProperty ;
+  rdfs:domain [ a owl:Class ; owl:unionOf ( impact:Indicator iiind:Symbol ) ] ;
+  rdfs:range qudt:Unit ;
+  rdfs:label "has unit of measure"@en ;
+  rdfs:comment "Connects an indicator (or its symbols) to the QUDT unit that governs the reported value; keep the UCUM code on the unit individual for machine-to-machine exchange."@en .
+
+iiind:hasRationale a owl:ObjectProperty ;
+  rdfs:domain impact:Indicator ;
+  rdfs:range iiind:IndicatorRationale ;
+  rdfs:label "has rationale"@en ;
+  rdfs:comment "Connects an indicator to an explanation of its purpose."@en .
+
+iiind:hasDefaultDSD a owl:ObjectProperty ;
+  rdfs:domain iiind:IndicatorDefinition ;
+  rdfs:range iiind:DataStructureDefinition ;
+  rdfs:label "has default DSD"@en ;
+  rdfs:comment "Links an indicator definition to its recommended data structure definition. Organizations may define additional DSDs for context-specific reporting."@en .
+
+iiind:reportsIndicator a owl:ObjectProperty ;
+  rdfs:domain iiind:IndicatorReport ;
+  rdfs:range impact:Indicator ;
+  rdfs:label "reports indicator"@en ;
+  rdfs:comment "Links an IndicatorReport claim to the indicator definition it reports on."@en .
+
+iiind:communicatedBy a owl:ObjectProperty ;
+  rdfs:domain iiind:IndicatorReport ;
+  rdfs:range infocomm:CommunicationEvent ;
+  rdfs:label "communicated by"@en ;
+  rdfs:comment "Associates an indicator report with the communication event that transmits it."@en .
+
+# -- Datatype properties and supporting datatypes --
+iiind:expressionText a owl:DatatypeProperty ;
+  rdfs:domain iiind:IndicatorFormula ;
+  rdfs:range xsd:string ;
+  rdfs:label "expression text"@en ;
+  rdfs:comment "Canonical string for the expression; pair with iiind:mathTextRepresentationType to declare whether the syntax is LaTeX, AsciiMath, or Content MathML."@en .
+
+iiind:MathTextNotation a rdfs:Datatype ;
+  owl:oneOf ( "LaTeX"^^xsd:string "AsciiMath"^^xsd:string "ContentMathML"^^xsd:string ) ;
+  rdfs:label "math text notation"@en ;
+  rdfs:comment "Controlled enumeration of math text serialization types allowed for iiind:mathTextRepresentationType."@en .
+
+iiind:mathTextRepresentationType a owl:DatatypeProperty ;
+  rdfs:domain iiind:IndicatorFormula ;
+  rdfs:range iiind:MathTextNotation ;
+  rdfs:label "math text representation type"@en ;
+  rdfs:comment "Identifies the notation used in iiind:expressionText (restricted to 'LaTeX', 'AsciiMath', or 'ContentMathML'); useful for rendering and parsing."@en .
+
+#################################################################
+#  A) Data Structure Definition (DSD) as a "Control / Schema"
+#################################################################
+
+iiind:DataStructureDefinition a owl:Class ;
+  rdfs:subClassOf aiao:Control , infocomm:Information ;
+  rdfs:label "Data Structure Definition"@en ;
+  skos:definition "A specification of the axes (dimensions), measures and attributes used to report observations for an indicator/series family."@en ;
+  rdfs:comment "SDMX-inspired: this describes structure; it does not contain values."@en .
+
+iiind:Axis a owl:Class ;
+  rdfs:subClassOf aiao:Control , infocomm:Information ;
+  rdfs:label "Axis"@en ;
+  skos:definition "A typed classification axis used to disaggregate or qualify observations (e.g., sex, legal age category, land use type)."@en .
+
+iiind:AxisRole a owl:Class ;
+  rdfs:label "Axis role"@en ;
+  skos:definition "Role played by an axis in a structure: dimension, measure, or attribute."@en .
+
+iiind:DimensionRole a iiind:AxisRole ; rdfs:label "Dimension"@en .
+iiind:MeasureRole   a iiind:AxisRole ; rdfs:label "Measure"@en .
+iiind:AttributeRole a iiind:AxisRole ; rdfs:label "Attribute"@en .
+
+iiind:AxisSpecification a owl:Class ;
+  rdfs:subClassOf infocomm:Information ;
+  rdfs:label "Axis specification"@en ;
+  skos:definition "Connects a DSD to an Axis and declares its role, expected value scheme, and cardinality."@en .
+
+iiind:hasAxisSpec a owl:ObjectProperty ;
+  rdfs:domain iiind:DataStructureDefinition ;
+  rdfs:range  iiind:AxisSpecification ;
+  rdfs:label "has axis specification"@en .
+
+iiind:axis a owl:ObjectProperty ;
+  rdfs:domain iiind:AxisSpecification ;
+  rdfs:range  iiind:Axis ;
+  rdfs:label "axis"@en .
+
+iiind:axisRole a owl:ObjectProperty ;
+  rdfs:domain iiind:AxisSpecification ;
+  rdfs:range  iiind:AxisRole ;
+  rdfs:label "axis role"@en .
+
+iiind:valueScheme a owl:ObjectProperty ;
+  rdfs:domain iiind:AxisSpecification ;
+  rdfs:range  skos:ConceptScheme ;
+  rdfs:label "value scheme"@en ;
+  rdfs:comment "The SKOS ConceptScheme enumerating allowable values for this axis."@en .
+
+iiind:minCardinality a owl:DatatypeProperty ;
+  rdfs:domain iiind:AxisSpecification ;
+  rdfs:range  xsd:integer ;
+  rdfs:label "min cardinality"@en .
+
+iiind:maxCardinality a owl:DatatypeProperty ;
+  rdfs:domain iiind:AxisSpecification ;
+  rdfs:range  xsd:integer ;
+  rdfs:label "max cardinality"@en ;
+  rdfs:comment "Use -1 to mean unbounded / repeatable."@en .
+
+iiind:definitionVersion a owl:DatatypeProperty ;
+  rdfs:domain skos:ConceptScheme ;
+  rdfs:range  xsd:string ;
+  rdfs:label "definition version"@en ;
+  rdfs:comment "Version tag for a scheme so compatibility/comparability can be assessed over time."@en .
+
+#################################################################
+#  B) Observation layer for reporting indicator values
+#################################################################
+
+iiind:IndicatorObservation a owl:Class ;
+  rdfs:subClassOf infocomm:Information ;
+  rdfs:label "Indicator observation"@en ;
+  skos:definition "A data point reporting a value for an indicator (or series) at a time and place, optionally disaggregated by one or more subgroup slices."@en .
+
+# Connect observations to indicator definitions and DSDs
+iiind:observesIndicator a owl:ObjectProperty ;
+  rdfs:domain iiind:IndicatorObservation ;
+  rdfs:range  impact:Indicator ;
+  rdfs:label "observes indicator"@en ;
+  rdfs:comment "Links an observation to the indicator definition being measured (iiind:IndicatorDefinition is a subclass of impact:Indicator)."@en .
+
+iiind:usesDSD a owl:ObjectProperty ;
+  rdfs:domain iiind:IndicatorObservation ;
+  rdfs:range  iiind:DataStructureDefinition ;
+  rdfs:label "uses DSD"@en .
+
+# Minimal place/time/value semantics
+iiind:refArea a owl:ObjectProperty ;
+  rdfs:domain iiind:IndicatorObservation ;
+  rdfs:range  prov:Location ;
+  rdfs:label "reference area"@en ;
+  rdfs:comment "Town, group of towns, biome, catchment, admin unit, etc."@en .
+
+iiind:timePeriod a owl:DatatypeProperty ;
+  rdfs:domain iiind:IndicatorObservation ;
+  rdfs:range  xsd:gYear ;
+  rdfs:label "time period"@en ;
+  rdfs:comment "Use xsd:dateTime or TIME ontology if you need finer granularity."@en .
+
+iiind:obsValue a owl:DatatypeProperty ;
+  rdfs:domain iiind:IndicatorObservation ;
+  rdfs:range  xsd:decimal ;
+  rdfs:label "observation value"@en .
+
+# Reuse your existing unit predicate where possible:
+# iiind:hasUnit already exists for indicators & symbols; we extend it to observations.
+iiind:hasUnit rdfs:domain [ a owl:Class ; owl:unionOf ( impact:Indicator iiind:Symbol iiind:IndicatorObservation ) ] .
+
+# Optional: provenance / status hooks (kept lightweight)
+iiind:obsStatus a owl:DatatypeProperty ;
+  rdfs:domain iiind:IndicatorObservation ;
+  rdfs:range  xsd:string ;
+  rdfs:label "observation status"@en ;
+  rdfs:comment "e.g., REPORTED, ESTIMATED, IMPUTED, PROVISIONAL."@en .
+
+iiind:methodReference a owl:DatatypeProperty ;
+  rdfs:domain iiind:IndicatorObservation ;
+  rdfs:range  xsd:anyURI ;
+  rdfs:label "method reference"@en .
+
+#################################################################
+#  C) Repeatable subgroup disaggregation (Axis–Scheme architecture)
+#################################################################
+
+iiind:SubgroupSlice a owl:Class ;
+  rdfs:subClassOf infocomm:Information ;
+  rdfs:label "Subgroup slice"@en ;
+  skos:definition "A repeatable (axis, value) pair that attaches one disaggregation category (e.g., sex=female) to an observation."@en .
+
+iiind:hasSubgroupSlice a owl:ObjectProperty ;
+  rdfs:domain iiind:IndicatorObservation ;
+  rdfs:range  iiind:SubgroupSlice ;
+  rdfs:label "has subgroup slice"@en .
+
+iiind:subgroupAxis a owl:ObjectProperty ;
+  rdfs:domain iiind:SubgroupSlice ;
+  rdfs:range  iiind:Axis ;
+  rdfs:label "subgroup axis"@en .
+
+iiind:subgroupValue a owl:ObjectProperty ;
+  rdfs:domain iiind:SubgroupSlice ;
+  rdfs:range  skos:Concept ;
+  rdfs:label "subgroup value"@en ;
+  rdfs:comment "Must be a concept in the axis' declared skos:ConceptScheme (via iiind:valueScheme on the AxisSpecification)."@en .
+
+#################################################################
+#  D) Link observations and reports/claims (ClaimOnt alignment)
+#################################################################
+
+iiind:reportsObservation a owl:ObjectProperty ;
+  rdfs:domain iiind:IndicatorReport ;
+  rdfs:range  iiind:IndicatorObservation ;
+  rdfs:label "reports observation"@en ;
+  rdfs:comment "Connects a claim/reporting event to the specific observation(s) being asserted."@en .
+
+iiind:supportingClaim a owl:ObjectProperty ;
+  rdfs:domain iiind:IndicatorObservation ;
+  rdfs:range  claimont:Claim ;
+  rdfs:label "supporting claim"@en ;
+  rdfs:comment "Optional: link an observation to a ClaimOnt claim with its evidence chain."@en .
+
