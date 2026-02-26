@@ -23,7 +23,6 @@ RewriteCond %{ENV:VERSION} !^$
 RewriteRule ^([^/]+)/?(index\.html)?$ https://cdn.jsdelivr.net/gh/IndependentImpact/indicatorOntology@%{ENV:VERSION}/indicator.ttl [R=303,L]
 
 # RDF/XML (versioned)
-RewriteCond %{HTTP_ACCEPT} \*/\* [OR]
 RewriteCond %{HTTP_ACCEPT} application/rdf\+xml
 RewriteCond %{ENV:VERSION} !^$
 RewriteRule ^([^/]+)/?(index\.html)?$ https://cdn.jsdelivr.net/gh/IndependentImpact/indicatorOntology@%{ENV:VERSION}/indicator.owl [R=303,L]
@@ -45,7 +44,6 @@ RewriteCond %{HTTP_ACCEPT} text/turtle
 RewriteRule ^(index\.html)?$ https://cdn.jsdelivr.net/gh/IndependentImpact/indicatorOntology@main/indicator.ttl [R=303,L]
 
 # RDF/XML
-RewriteCond %{HTTP_ACCEPT} \*/\* [OR]
 RewriteCond %{HTTP_ACCEPT} application/rdf\+xml
 RewriteRule ^(index\.html)?$ https://cdn.jsdelivr.net/gh/IndependentImpact/indicatorOntology@main/indicator.owl [R=303,L]
 
