@@ -1,0 +1,433 @@
+<?xml version="1.0" encoding="utf-8"?>
+<rdf:RDF
+   xmlns:dct="http://purl.org/dc/terms/"
+   xmlns:owl="http://www.w3.org/2002/07/owl#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+   xmlns:skos="http://www.w3.org/2004/02/skos/core#"
+>
+  <rdf:Description rdf:about="http://independentimpact.org/indicator-owl/OutputIndicator">
+    <rdf:type rdf:resource="http://www.w3.org/2004/02/skos/core#Concept"/>
+    <skos:prefLabel xml:lang="en">Output indicator</skos:prefLabel>
+    <skos:definition xml:lang="en">Indicator that measures immediate deliverables or services produced by an intervention.</skos:definition>
+    <skos:inScheme rdf:resource="http://independentimpact.org/indicator-owl/IndicatorStageScheme"/>
+    <skos:topConceptOf rdf:resource="http://independentimpact.org/indicator-owl/IndicatorStageScheme"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://independentimpact.org/indicator-owl/hasUnit">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
+    <rdfs:domain rdf:nodeID="n1f1ac5fc9826444daa63d4db31b09328b4"/>
+    <rdfs:domain rdf:nodeID="n1f1ac5fc9826444daa63d4db31b09328b10"/>
+    <rdfs:range rdf:resource="http://qudt.org/schema/qudt/Unit"/>
+    <rdfs:label xml:lang="en">has unit of measure</rdfs:label>
+    <rdfs:comment xml:lang="en">Connects an indicator (or its symbols) to the QUDT unit that governs the reported value; keep the UCUM code on the unit individual for machine-to-machine exchange.</rdfs:comment>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://independentimpact.org/indicator-owl/IndicatorFormula">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:subClassOf rdf:resource="http://w3id.org/infocomm#Information"/>
+    <rdfs:label xml:lang="en">Indicator formula</rdfs:label>
+    <skos:definition xml:lang="en">A human-readable description of how to compute an indicator value.</skos:definition>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://independentimpact.org/indicator-owl/supportingClaim">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
+    <rdfs:domain rdf:resource="http://independentimpact.org/indicator-owl/IndicatorObservation"/>
+    <rdfs:range rdf:resource="http://w3id.org/claimont#Claim"/>
+    <rdfs:label xml:lang="en">supporting claim</rdfs:label>
+    <rdfs:comment xml:lang="en">Optional: link an observation to a ClaimOnt claim with its evidence chain.</rdfs:comment>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://independentimpact.org/indicator-owl/IndicatorDefinition">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:subClassOf rdf:resource="http://w3id.org/impactont#Indicator"/>
+    <rdfs:subClassOf rdf:resource="http://w3id.org/infocomm#Information"/>
+    <rdfs:label xml:lang="en">Indicator definition</rdfs:label>
+    <skos:definition xml:lang="en">An indicator concept that contains descriptive metadata, expected units, and rationale.</skos:definition>
+    <rdfs:comment xml:lang="en">Provides the operational semantics that the SDG SKOS indicator concept points to via foaf:focus.</rdfs:comment>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://independentimpact.org/indicator-owl/IndicatorObject">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:subClassOf rdf:resource="http://w3id.org/claimont#Object"/>
+    <rdfs:label xml:lang="en">Indicator object</rdfs:label>
+    <skos:definition xml:lang="en">The reported value for an indicator, paired with a stated unit of measure.</skos:definition>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://independentimpact.org/indicator-owl/IndicatorPredicate">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:subClassOf rdf:resource="http://w3id.org/claimont#Predicate"/>
+    <rdfs:label xml:lang="en">Indicator predicate</rdfs:label>
+    <skos:definition xml:lang="en">Predicate that links a subject state to an indicator value in a report.</skos:definition>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://independentimpact.org/indicator-owl/MathOperator">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:subClassOf rdf:resource="http://w3id.org/infocomm#Information"/>
+    <rdfs:label xml:lang="en">Mathematical operator</rdfs:label>
+    <skos:definition xml:lang="en">An operator token (e.g., =, +, -, *, /, ^) used to relate symbols in an indicator expression.</skos:definition>
+    <rdfs:comment xml:lang="en">Distinguishes symbolic operators from physical operators or agents; use skos:prefLabel for the glyph and rdfs:comment for usage examples.</rdfs:comment>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://independentimpact.org/indicator-owl/timePeriod">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#DatatypeProperty"/>
+    <rdfs:domain rdf:resource="http://independentimpact.org/indicator-owl/IndicatorObservation"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#gYear"/>
+    <rdfs:label xml:lang="en">time period</rdfs:label>
+    <rdfs:comment xml:lang="en">Use xsd:dateTime or TIME ontology if you need finer granularity.</rdfs:comment>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://independentimpact.org/indicator-owl/aboutState">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
+    <rdfs:domain rdf:resource="http://w3id.org/impactont#Indicator"/>
+    <rdfs:range rdf:resource="http://w3id.org/impactont#State"/>
+    <rdfs:label xml:lang="en">about state</rdfs:label>
+    <rdfs:comment xml:lang="en">Relates an indicator definition to the state it qualifies (reuse impact:State directly rather than minting a parallel MeasuredState class).</rdfs:comment>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://independentimpact.org/indicator-owl/OutcomeIndicator">
+    <rdf:type rdf:resource="http://www.w3.org/2004/02/skos/core#Concept"/>
+    <skos:prefLabel xml:lang="en">Outcome indicator</skos:prefLabel>
+    <skos:definition xml:lang="en">Indicator that measures short- to medium-term changes experienced by people or systems.</skos:definition>
+    <skos:inScheme rdf:resource="http://independentimpact.org/indicator-owl/IndicatorStageScheme"/>
+    <skos:topConceptOf rdf:resource="http://independentimpact.org/indicator-owl/IndicatorStageScheme"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://independentimpact.org/indicator-owl/expressionText">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#DatatypeProperty"/>
+    <rdfs:domain rdf:resource="http://independentimpact.org/indicator-owl/IndicatorFormula"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+    <rdfs:label xml:lang="en">expression text</rdfs:label>
+    <rdfs:comment xml:lang="en">Canonical string for the expression; pair with ind:mathTextRepresentationType to declare whether the syntax is LaTeX, AsciiMath, or Content MathML.</rdfs:comment>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://independentimpact.org/indicator-owl/reportsIndicator">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
+    <rdfs:domain rdf:resource="http://independentimpact.org/indicator-owl/IndicatorReport"/>
+    <rdfs:range rdf:resource="http://w3id.org/impactont#Indicator"/>
+    <rdfs:label xml:lang="en">reports indicator</rdfs:label>
+    <rdfs:comment xml:lang="en">Links an IndicatorReport claim to the indicator definition it reports on.</rdfs:comment>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://independentimpact.org/indicator-owl/ActivityIndicator">
+    <rdf:type rdf:resource="http://www.w3.org/2004/02/skos/core#Concept"/>
+    <skos:prefLabel xml:lang="en">Activity indicator</skos:prefLabel>
+    <skos:definition xml:lang="en">Indicator that measures activities performed within an intervention.</skos:definition>
+    <skos:inScheme rdf:resource="http://independentimpact.org/indicator-owl/IndicatorStageScheme"/>
+    <skos:topConceptOf rdf:resource="http://independentimpact.org/indicator-owl/IndicatorStageScheme"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://independentimpact.org/indicator-owl/hasSubgroupSlice">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
+    <rdfs:domain rdf:resource="http://independentimpact.org/indicator-owl/IndicatorObservation"/>
+    <rdfs:range rdf:resource="http://independentimpact.org/indicator-owl/SubgroupSlice"/>
+    <rdfs:label xml:lang="en">has subgroup slice</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://independentimpact.org/indicator-owl/ImpactIndicator">
+    <rdf:type rdf:resource="http://www.w3.org/2004/02/skos/core#Concept"/>
+    <skos:prefLabel xml:lang="en">Impact indicator</skos:prefLabel>
+    <skos:definition xml:lang="en">Indicator that measures long-term, higher-level changes attributable to an intervention or strategy.</skos:definition>
+    <skos:inScheme rdf:resource="http://independentimpact.org/indicator-owl/IndicatorStageScheme"/>
+    <skos:topConceptOf rdf:resource="http://independentimpact.org/indicator-owl/IndicatorStageScheme"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://independentimpact.org/indicator-owl/DataStructureDefinition">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:subClassOf rdf:resource="http://w3id.org/aiao#Control"/>
+    <rdfs:subClassOf rdf:resource="http://w3id.org/infocomm#Information"/>
+    <rdfs:label xml:lang="en">Data Structure Definition</rdfs:label>
+    <skos:definition xml:lang="en">A specification of the axes (dimensions), measures and attributes used to report observations for an indicator/series family.</skos:definition>
+    <rdfs:comment xml:lang="en">SDMX-inspired: this describes structure; it does not contain values.</rdfs:comment>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://independentimpact.org/indicator-owl/refArea">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
+    <rdfs:domain rdf:resource="http://independentimpact.org/indicator-owl/IndicatorObservation"/>
+    <rdfs:range rdf:resource="http://www.w3.org/ns/prov#Location"/>
+    <rdfs:label xml:lang="en">reference area</rdfs:label>
+    <rdfs:comment xml:lang="en">Town, group of towns, biome, catchment, admin unit, etc.</rdfs:comment>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://independentimpact.org/indicator-owl/maxCardinality">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#DatatypeProperty"/>
+    <rdfs:domain rdf:resource="http://independentimpact.org/indicator-owl/AxisSpecification"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#integer"/>
+    <rdfs:label xml:lang="en">max cardinality</rdfs:label>
+    <rdfs:comment xml:lang="en">Use -1 to mean unbounded / repeatable.</rdfs:comment>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="n1f1ac5fc9826444daa63d4db31b09328b8">
+    <rdf:first rdf:datatype="http://www.w3.org/2001/XMLSchema#string">AsciiMath</rdf:first>
+    <rdf:rest rdf:nodeID="n1f1ac5fc9826444daa63d4db31b09328b9"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://independentimpact.org/indicator-owl/definitionVersion">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#DatatypeProperty"/>
+    <rdfs:domain rdf:resource="http://www.w3.org/2004/02/skos/core#ConceptScheme"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+    <rdfs:label xml:lang="en">definition version</rdfs:label>
+    <rdfs:comment xml:lang="en">Version tag for a scheme so compatibility/comparability can be assessed over time.</rdfs:comment>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://independentimpact.org/indicator-owl/">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Ontology"/>
+    <dct:title xml:lang="en">Indicator OWL prototype aligned with AIAO, ClaimOnt, ImpactOnt, and InfoComm</dct:title>
+    <dct:description xml:lang="en">Prototype indicator semantics that complement the SDG SKOS catalogue by providing OWL descriptions aligned with aiao, claimont, impactont, and infocomm.</dct:description>
+    <dct:source rdf:resource="https://w3id.org/aiao"/>
+    <dct:source rdf:resource="https://w3id.org/claimont"/>
+    <dct:source rdf:resource="https://w3id.org/impactont"/>
+    <dct:source rdf:resource="http://w3id.org/infocomm"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://independentimpact.org/indicator-owl/MathTextNotation">
+    <rdf:type rdf:resource="http://www.w3.org/2000/01/rdf-schema#Datatype"/>
+    <owl:oneOf rdf:nodeID="n1f1ac5fc9826444daa63d4db31b09328b7"/>
+    <rdfs:label xml:lang="en">math text notation</rdfs:label>
+    <rdfs:comment xml:lang="en">Controlled enumeration of math text serialization types allowed for ind:mathTextRepresentationType.</rdfs:comment>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://independentimpact.org/indicator-owl/subgroupAxis">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
+    <rdfs:domain rdf:resource="http://independentimpact.org/indicator-owl/SubgroupSlice"/>
+    <rdfs:range rdf:resource="http://independentimpact.org/indicator-owl/Axis"/>
+    <rdfs:label xml:lang="en">subgroup axis</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://independentimpact.org/indicator-owl/reportsObservation">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
+    <rdfs:domain rdf:resource="http://independentimpact.org/indicator-owl/IndicatorReport"/>
+    <rdfs:range rdf:resource="http://independentimpact.org/indicator-owl/IndicatorObservation"/>
+    <rdfs:label xml:lang="en">reports observation</rdfs:label>
+    <rdfs:comment xml:lang="en">Connects a claim/reporting event to the specific observation(s) being asserted.</rdfs:comment>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://independentimpact.org/indicator-owl/methodReference">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#DatatypeProperty"/>
+    <rdfs:domain rdf:resource="http://independentimpact.org/indicator-owl/IndicatorObservation"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#anyURI"/>
+    <rdfs:label xml:lang="en">method reference</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://independentimpact.org/indicator-owl/mathTextRepresentationType">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#DatatypeProperty"/>
+    <rdfs:domain rdf:resource="http://independentimpact.org/indicator-owl/IndicatorFormula"/>
+    <rdfs:range rdf:resource="http://independentimpact.org/indicator-owl/MathTextNotation"/>
+    <rdfs:label xml:lang="en">math text representation type</rdfs:label>
+    <rdfs:comment xml:lang="en">Identifies the notation used in ind:expressionText (restricted to 'LaTeX', 'AsciiMath', or 'ContentMathML'); useful for rendering and parsing.</rdfs:comment>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://independentimpact.org/indicator-owl/IndicatorReport">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:subClassOf rdf:resource="http://w3id.org/claimont#Report"/>
+    <rdfs:subClassOf rdf:resource="http://w3id.org/infocomm#Information"/>
+    <rdfs:label xml:lang="en">Indicator report</rdfs:label>
+    <skos:definition xml:lang="en">A claim that reports a concrete indicator value in a communication context.</skos:definition>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://independentimpact.org/indicator-owl/hasRationale">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
+    <rdfs:domain rdf:resource="http://w3id.org/impactont#Indicator"/>
+    <rdfs:range rdf:resource="http://independentimpact.org/indicator-owl/IndicatorRationale"/>
+    <rdfs:label xml:lang="en">has rationale</rdfs:label>
+    <rdfs:comment xml:lang="en">Connects an indicator to an explanation of its purpose.</rdfs:comment>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://independentimpact.org/indicator-owl/communicatedBy">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
+    <rdfs:domain rdf:resource="http://independentimpact.org/indicator-owl/IndicatorReport"/>
+    <rdfs:range rdf:resource="http://w3id.org/infocomm#CommunicationEvent"/>
+    <rdfs:label xml:lang="en">communicated by</rdfs:label>
+    <rdfs:comment xml:lang="en">Associates an indicator report with the communication event that transmits it.</rdfs:comment>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="n1f1ac5fc9826444daa63d4db31b09328b5">
+    <rdf:first rdf:resource="http://w3id.org/impactont#Indicator"/>
+    <rdf:rest rdf:nodeID="n1f1ac5fc9826444daa63d4db31b09328b6"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://independentimpact.org/indicator-owl/IndicatorStageScheme">
+    <rdf:type rdf:resource="http://www.w3.org/2004/02/skos/core#ConceptScheme"/>
+    <skos:prefLabel xml:lang="en">Indicator stages in an impact pathway</skos:prefLabel>
+    <skos:definition xml:lang="en">Stages used to categorise indicators along a theory of change from activities through outputs, outcomes, and impacts.</skos:definition>
+    <skos:hasTopConcept rdf:resource="http://independentimpact.org/indicator-owl/ActivityIndicator"/>
+    <skos:hasTopConcept rdf:resource="http://independentimpact.org/indicator-owl/OutputIndicator"/>
+    <skos:hasTopConcept rdf:resource="http://independentimpact.org/indicator-owl/OutcomeIndicator"/>
+    <skos:hasTopConcept rdf:resource="http://independentimpact.org/indicator-owl/ImpactIndicator"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://independentimpact.org/indicator-owl/DimensionRole">
+    <rdf:type rdf:resource="http://independentimpact.org/indicator-owl/AxisRole"/>
+    <rdfs:label xml:lang="en">Dimension</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://independentimpact.org/indicator-owl/Symbol">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:subClassOf rdf:resource="http://w3id.org/infocomm#Information"/>
+    <rdfs:label xml:lang="en">Symbol</rdfs:label>
+    <skos:definition xml:lang="en">A symbolic placeholder used within an indicator formula or expression.</skos:definition>
+    <rdfs:comment xml:lang="en">Use for mathematical or statistical symbols that appear in indicator expressions; attach foaf:focus to the underlying quantity or concept and a unit via ind:hasUnit.</rdfs:comment>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://independentimpact.org/indicator-owl/observesIndicator">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
+    <rdfs:domain rdf:resource="http://independentimpact.org/indicator-owl/IndicatorObservation"/>
+    <rdfs:range rdf:resource="http://w3id.org/impactont#Indicator"/>
+    <rdfs:label xml:lang="en">observes indicator</rdfs:label>
+    <rdfs:comment xml:lang="en">Links an observation to the indicator definition being measured (ind:IndicatorDefinition is a subclass of impact:Indicator).</rdfs:comment>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://independentimpact.org/indicator-owl/axisRole">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
+    <rdfs:domain rdf:resource="http://independentimpact.org/indicator-owl/AxisSpecification"/>
+    <rdfs:range rdf:resource="http://independentimpact.org/indicator-owl/AxisRole"/>
+    <rdfs:label xml:lang="en">axis role</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://independentimpact.org/indicator-owl/IndicatorObservation">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:subClassOf rdf:resource="http://w3id.org/infocomm#Information"/>
+    <rdfs:label xml:lang="en">Indicator observation</rdfs:label>
+    <skos:definition xml:lang="en">A data point reporting a value for an indicator (or series) at a time and place, optionally disaggregated by one or more subgroup slices.</skos:definition>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="n1f1ac5fc9826444daa63d4db31b09328b10">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <owl:unionOf rdf:nodeID="n1f1ac5fc9826444daa63d4db31b09328b11"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://independentimpact.org/indicator-owl/IndicatorRationale">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:subClassOf rdf:resource="http://w3id.org/infocomm#Information"/>
+    <rdfs:label xml:lang="en">Indicator rationale</rdfs:label>
+    <skos:definition xml:lang="en">Narrative justification for why the indicator is relevant to the objective or state being monitored.</skos:definition>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://independentimpact.org/indicator-owl/usesDSD">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
+    <rdfs:domain rdf:resource="http://independentimpact.org/indicator-owl/IndicatorObservation"/>
+    <rdfs:range rdf:resource="http://independentimpact.org/indicator-owl/DataStructureDefinition"/>
+    <rdfs:label xml:lang="en">uses DSD</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://independentimpact.org/indicator-owl/MeasureRole">
+    <rdf:type rdf:resource="http://independentimpact.org/indicator-owl/AxisRole"/>
+    <rdfs:label xml:lang="en">Measure</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://independentimpact.org/indicator-owl/subgroupValue">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
+    <rdfs:domain rdf:resource="http://independentimpact.org/indicator-owl/SubgroupSlice"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2004/02/skos/core#Concept"/>
+    <rdfs:label xml:lang="en">subgroup value</rdfs:label>
+    <rdfs:comment xml:lang="en">Must be a concept in the axis' declared skos:ConceptScheme (via ind:valueScheme on the AxisSpecification).</rdfs:comment>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://independentimpact.org/indicator-owl/usesOperator">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
+    <rdfs:domain rdf:resource="http://independentimpact.org/indicator-owl/IndicatorFormula"/>
+    <rdfs:range rdf:resource="http://independentimpact.org/indicator-owl/MathOperator"/>
+    <rdfs:label xml:lang="en">uses operator</rdfs:label>
+    <rdfs:comment xml:lang="en">Enumerates mathematical operators present in an indicator expression (e.g., equality, multiplication, division, exponentiation).</rdfs:comment>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://independentimpact.org/indicator-owl/hasDefaultDSD">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
+    <rdfs:domain rdf:resource="http://independentimpact.org/indicator-owl/IndicatorDefinition"/>
+    <rdfs:range rdf:resource="http://independentimpact.org/indicator-owl/DataStructureDefinition"/>
+    <rdfs:label xml:lang="en">has default DSD</rdfs:label>
+    <rdfs:comment xml:lang="en">Links an indicator definition to its recommended data structure definition. Organizations may define additional DSDs for context-specific reporting.</rdfs:comment>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://independentimpact.org/indicator-owl/hasExpression">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
+    <rdfs:subPropertyOf rdf:resource="http://independentimpact.org/indicator-owl/hasFormula"/>
+    <rdfs:domain rdf:resource="http://w3id.org/impactont#Indicator"/>
+    <rdfs:range rdf:resource="http://independentimpact.org/indicator-owl/IndicatorFormula"/>
+    <rdfs:label xml:lang="en">has expression</rdfs:label>
+    <rdfs:comment xml:lang="en">Alias for ind:hasFormula to preserve existing data that refers to an expression node; prefer ind:hasFormula going forward while keeping expressionText and symbol/operator listings inside the formula resource.</rdfs:comment>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://independentimpact.org/indicator-owl/AxisRole">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:label xml:lang="en">Axis role</rdfs:label>
+    <skos:definition xml:lang="en">Role played by an axis in a structure: dimension, measure, or attribute.</skos:definition>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://independentimpact.org/indicator-owl/hasAxisSpec">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
+    <rdfs:domain rdf:resource="http://independentimpact.org/indicator-owl/DataStructureDefinition"/>
+    <rdfs:range rdf:resource="http://independentimpact.org/indicator-owl/AxisSpecification"/>
+    <rdfs:label xml:lang="en">has axis specification</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="n1f1ac5fc9826444daa63d4db31b09328b9">
+    <rdf:first rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ContentMathML</rdf:first>
+    <rdf:rest rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#nil"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="n1f1ac5fc9826444daa63d4db31b09328b3">
+    <rdf:first rdf:resource="http://www.w3.org/2004/02/skos/core#Concept"/>
+    <rdf:rest rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#nil"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://independentimpact.org/indicator-owl/Axis">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:subClassOf rdf:resource="http://w3id.org/aiao#Control"/>
+    <rdfs:subClassOf rdf:resource="http://w3id.org/infocomm#Information"/>
+    <rdfs:label xml:lang="en">Axis</rdfs:label>
+    <skos:definition xml:lang="en">A typed classification axis used to disaggregate or qualify observations (e.g., sex, legal age category, land use type).</skos:definition>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://independentimpact.org/indicator-owl/axis">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
+    <rdfs:domain rdf:resource="http://independentimpact.org/indicator-owl/AxisSpecification"/>
+    <rdfs:range rdf:resource="http://independentimpact.org/indicator-owl/Axis"/>
+    <rdfs:label xml:lang="en">axis</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="n1f1ac5fc9826444daa63d4db31b09328b4">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <owl:unionOf rdf:nodeID="n1f1ac5fc9826444daa63d4db31b09328b5"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://independentimpact.org/indicator-owl/valueScheme">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
+    <rdfs:domain rdf:resource="http://independentimpact.org/indicator-owl/AxisSpecification"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2004/02/skos/core#ConceptScheme"/>
+    <rdfs:label xml:lang="en">value scheme</rdfs:label>
+    <rdfs:comment xml:lang="en">The SKOS ConceptScheme enumerating allowable values for this axis.</rdfs:comment>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://independentimpact.org/indicator-owl/obsStatus">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#DatatypeProperty"/>
+    <rdfs:domain rdf:resource="http://independentimpact.org/indicator-owl/IndicatorObservation"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+    <rdfs:label xml:lang="en">observation status</rdfs:label>
+    <rdfs:comment xml:lang="en">e.g., REPORTED, ESTIMATED, IMPUTED, PROVISIONAL.</rdfs:comment>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="n1f1ac5fc9826444daa63d4db31b09328b1">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <owl:unionOf rdf:nodeID="n1f1ac5fc9826444daa63d4db31b09328b2"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://independentimpact.org/indicator-owl/hasFormula">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
+    <rdfs:domain rdf:resource="http://w3id.org/impactont#Indicator"/>
+    <rdfs:range rdf:resource="http://independentimpact.org/indicator-owl/IndicatorFormula"/>
+    <rdfs:label xml:lang="en">has formula</rdfs:label>
+    <rdfs:comment xml:lang="en">Connects an indicator to its computation description.</rdfs:comment>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://independentimpact.org/indicator-owl/AxisSpecification">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:subClassOf rdf:resource="http://w3id.org/infocomm#Information"/>
+    <rdfs:label xml:lang="en">Axis specification</rdfs:label>
+    <skos:definition xml:lang="en">Connects a DSD to an Axis and declares its role, expected value scheme, and cardinality.</skos:definition>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://independentimpact.org/indicator-owl/obsValue">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#DatatypeProperty"/>
+    <rdfs:domain rdf:resource="http://independentimpact.org/indicator-owl/IndicatorObservation"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#decimal"/>
+    <rdfs:label xml:lang="en">observation value</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://independentimpact.org/indicator-owl/usesSymbol">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
+    <rdfs:domain rdf:resource="http://independentimpact.org/indicator-owl/IndicatorFormula"/>
+    <rdfs:range rdf:resource="http://independentimpact.org/indicator-owl/Symbol"/>
+    <rdfs:label xml:lang="en">uses symbol</rdfs:label>
+    <rdfs:comment xml:lang="en">Enumerates the symbols that participate in an indicator expression; attach units to symbols via ind:hasUnit and use foaf:focus to point to the underlying quantity or constant.</rdfs:comment>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://independentimpact.org/indicator-owl/hasIndicatorStage">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
+    <rdfs:domain rdf:nodeID="n1f1ac5fc9826444daa63d4db31b09328b1"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2004/02/skos/core#Concept"/>
+    <rdfs:label xml:lang="en">has indicator stage</rdfs:label>
+    <rdfs:comment xml:lang="en">Categorises an indicator according to the stage it occupies within an impact pathway (activity, output, outcome, or impact); usable on indicator definitions and the SKOS indicator catalogue entries that reference them.</rdfs:comment>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://independentimpact.org/indicator-owl/minCardinality">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#DatatypeProperty"/>
+    <rdfs:domain rdf:resource="http://independentimpact.org/indicator-owl/AxisSpecification"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#integer"/>
+    <rdfs:label xml:lang="en">min cardinality</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="n1f1ac5fc9826444daa63d4db31b09328b6">
+    <rdf:first rdf:resource="http://independentimpact.org/indicator-owl/Symbol"/>
+    <rdf:rest rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#nil"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://independentimpact.org/indicator-owl/SubgroupSlice">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:subClassOf rdf:resource="http://w3id.org/infocomm#Information"/>
+    <rdfs:label xml:lang="en">Subgroup slice</rdfs:label>
+    <skos:definition xml:lang="en">A repeatable (axis, value) pair that attaches one disaggregation category (e.g., sex=female) to an observation.</skos:definition>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="n1f1ac5fc9826444daa63d4db31b09328b2">
+    <rdf:first rdf:resource="http://w3id.org/impactont#Indicator"/>
+    <rdf:rest rdf:nodeID="n1f1ac5fc9826444daa63d4db31b09328b3"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="n1f1ac5fc9826444daa63d4db31b09328b7">
+    <rdf:first rdf:datatype="http://www.w3.org/2001/XMLSchema#string">LaTeX</rdf:first>
+    <rdf:rest rdf:nodeID="n1f1ac5fc9826444daa63d4db31b09328b8"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="n1f1ac5fc9826444daa63d4db31b09328b12">
+    <rdf:first rdf:resource="http://independentimpact.org/indicator-owl/Symbol"/>
+    <rdf:rest rdf:nodeID="n1f1ac5fc9826444daa63d4db31b09328b13"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://independentimpact.org/indicator-owl/AttributeRole">
+    <rdf:type rdf:resource="http://independentimpact.org/indicator-owl/AxisRole"/>
+    <rdfs:label xml:lang="en">Attribute</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="n1f1ac5fc9826444daa63d4db31b09328b11">
+    <rdf:first rdf:resource="http://w3id.org/impactont#Indicator"/>
+    <rdf:rest rdf:nodeID="n1f1ac5fc9826444daa63d4db31b09328b12"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="n1f1ac5fc9826444daa63d4db31b09328b13">
+    <rdf:first rdf:resource="http://independentimpact.org/indicator-owl/IndicatorObservation"/>
+    <rdf:rest rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#nil"/>
+  </rdf:Description>
+</rdf:RDF>

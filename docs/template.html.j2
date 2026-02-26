@@ -1,0 +1,363 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ ontology.title or "Indicator Ontology" }}</title>
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+            line-height: 1.6;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+            color: #333;
+        }
+        header {
+            border-bottom: 2px solid #0066cc;
+            padding-bottom: 20px;
+            margin-bottom: 30px;
+        }
+        h1 {
+            color: #0066cc;
+            margin-bottom: 10px;
+        }
+        h2 {
+            color: #0066cc;
+            border-bottom: 1px solid #ddd;
+            padding-bottom: 10px;
+            margin-top: 40px;
+        }
+        h3 {
+            color: #333;
+            margin-top: 30px;
+        }
+        h4 {
+            color: #666;
+            margin-top: 20px;
+            font-size: 1em;
+            font-weight: 600;
+        }
+        .ontology-info {
+            background: #f5f5f5;
+            padding: 15px;
+            border-radius: 5px;
+            margin-bottom: 20px;
+        }
+        .ontology-info p {
+            margin: 5px 0;
+        }
+        .section {
+            margin-bottom: 40px;
+        }
+        .entity {
+            background: #fafafa;
+            border-left: 3px solid #0066cc;
+            padding: 15px;
+            margin-bottom: 25px;
+            border-radius: 3px;
+        }
+        .entity h3 {
+            margin-top: 0;
+        }
+        .iri {
+            font-family: 'Courier New', monospace;
+            background: #e9ecef;
+            padding: 2px 6px;
+            border-radius: 3px;
+            font-size: 0.9em;
+            word-break: break-all;
+        }
+        .metadata {
+            margin: 10px 0;
+        }
+        .metadata dt {
+            font-weight: 600;
+            color: #555;
+            margin-top: 10px;
+        }
+        .metadata dd {
+            margin-left: 20px;
+            margin-bottom: 5px;
+        }
+        .definition {
+            background: #e8f4f8;
+            padding: 10px;
+            border-left: 3px solid #0077cc;
+            margin: 10px 0;
+        }
+        .example {
+            background: #f0f9ff;
+            padding: 10px;
+            border-left: 3px solid #4a9eff;
+            margin: 10px 0;
+        }
+        .comment {
+            background: #fffbf0;
+            padding: 10px;
+            border-left: 3px solid #ffb347;
+            margin: 10px 0;
+        }
+        a {
+            color: #0066cc;
+            text-decoration: none;
+        }
+        a:hover {
+            text-decoration: underline;
+        }
+        .prefix-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+        }
+        .prefix-table th,
+        .prefix-table td {
+            border: 1px solid #ddd;
+            padding: 8px;
+            text-align: left;
+        }
+        .prefix-table th {
+            background-color: #f0f0f0;
+            font-weight: 600;
+        }
+        .prefix-table code {
+            font-family: 'Courier New', monospace;
+            font-size: 0.9em;
+        }
+        .dependency-notice {
+            background: #fff3cd;
+            border: 1px solid #ffc107;
+            border-radius: 5px;
+            padding: 15px;
+            margin: 20px 0;
+        }
+        .dependency-notice h4 {
+            margin-top: 0;
+            color: #856404;
+        }
+        .dependency-notice ul {
+            margin: 10px 0;
+        }
+        .dependency-notice a {
+            color: #856404;
+            font-weight: 600;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>{{ ontology.title or "Indicator Ontology" }}</h1>
+        {% if ontology.iri %}
+        <p><strong>IRI:</strong> <span class="iri">{{ ontology.iri }}</span></p>
+        {% endif %}
+        {% if ontology.description %}
+        <p>{{ ontology.description }}</p>
+        {% endif %}
+    </header>
+
+    <div class="dependency-notice">
+        <h4>Ontology Dependencies</h4>
+        <p>This ontology builds upon and conforms to the following foundational ontologies:</p>
+        <ul>
+            <li><a href="http://w3id.org/impactont" target="_blank">Impact Ontology (ImpactOnt)</a> - Provides foundational semantic framework for impact modeling</li>
+            <li><a href="http://w3id.org/aiao" target="_blank">Anthropogenic Impact Accounting Ontology (AIAO)</a> - Provides semantic framework for accounting for human impact</li>
+        </ul>
+        <p>These dependencies ensure semantic interoperability and consistency with established impact assessment frameworks.</p>
+    </div>
+
+    {% if prefixes %}
+    <section class="section">
+        <h2>Prefixes</h2>
+        <table class="prefix-table">
+            <thead>
+                <tr>
+                    <th>Prefix</th>
+                    <th>Namespace</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for p in prefixes %}
+                <tr>
+                    <td><code>{{ p.prefix }}</code></td>
+                    <td><code>{{ p.ns }}</code></td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </section>
+    {% endif %}
+
+    <section class="section">
+        <h2>Classes</h2>
+        {% if not classes %}
+        <p>No classes found.</p>
+        {% endif %}
+        {% for c in classes %}
+        <div class="entity" id="{{ c.anchor }}">
+            <h3>{{ c.label }}</h3>
+            <p><strong>IRI:</strong> <span class="iri">{{ c.iri }}</span></p>
+            
+            {% if c.definitions %}
+            <div class="metadata">
+                <dt>SKOS Definition</dt>
+                {% for d in c.definitions %}
+                <dd class="definition">{{ d }}</dd>
+                {% endfor %}
+            </div>
+            {% endif %}
+            
+            {% if c.comments %}
+            <div class="metadata">
+                <dt>Comments</dt>
+                {% for cm in c.comments %}
+                <dd class="comment">{{ cm }}</dd>
+                {% endfor %}
+            </div>
+            {% endif %}
+            
+            {% if c.examples %}
+            <div class="metadata">
+                <dt>SKOS Example</dt>
+                {% for ex in c.examples %}
+                <dd class="example">{{ ex }}</dd>
+                {% endfor %}
+            </div>
+            {% endif %}
+            
+            {% if c.subClassOf %}
+            <div class="metadata">
+                <dt>SubClass Of</dt>
+                <dd>
+                {% for sc in c.subClassOf %}
+                    <a href="{{ sc.href }}">{{ sc.text }}</a>{% if not loop.last %}, {% endif %}
+                {% endfor %}
+                </dd>
+            </div>
+            {% endif %}
+            
+            {% if c.superClassOf %}
+            <div class="metadata">
+                <dt>Superclass Of</dt>
+                <dd>
+                {% for sc in c.superClassOf %}
+                    <a href="{{ sc.href }}">{{ sc.text }}</a>{% if not loop.last %}, {% endif %}
+                {% endfor %}
+                </dd>
+            </div>
+            {% endif %}
+            
+            {% if c.inDomainOf %}
+            <div class="metadata">
+                <dt>In Domain Of</dt>
+                <dd>
+                {% for d in c.inDomainOf %}
+                    <a href="{{ d.href }}">{{ d.text }}</a>{% if not loop.last %}, {% endif %}
+                {% endfor %}
+                </dd>
+            </div>
+            {% endif %}
+            
+            {% if c.inRangeOf %}
+            <div class="metadata">
+                <dt>In Range Of</dt>
+                <dd>
+                {% for r in c.inRangeOf %}
+                    <a href="{{ r.href }}">{{ r.text }}</a>{% if not loop.last %}, {% endif %}
+                {% endfor %}
+                </dd>
+            </div>
+            {% endif %}
+        </div>
+        {% endfor %}
+    </section>
+
+    <section class="section">
+        <h2>Properties</h2>
+        {% if not properties %}
+        <p>No properties found.</p>
+        {% endif %}
+        {% for p in properties %}
+        <div class="entity" id="{{ p.anchor }}">
+            <h3>{{ p.label }}</h3>
+            <p><strong>IRI:</strong> <span class="iri">{{ p.iri }}</span></p>
+            
+            {% if p.definitions %}
+            <div class="metadata">
+                <dt>SKOS Definition</dt>
+                {% for d in p.definitions %}
+                <dd class="definition">{{ d }}</dd>
+                {% endfor %}
+            </div>
+            {% endif %}
+            
+            {% if p.comments %}
+            <div class="metadata">
+                <dt>Comments</dt>
+                {% for cm in p.comments %}
+                <dd class="comment">{{ cm }}</dd>
+                {% endfor %}
+            </div>
+            {% endif %}
+            
+            {% if p.examples %}
+            <div class="metadata">
+                <dt>SKOS Example</dt>
+                {% for ex in p.examples %}
+                <dd class="example">{{ ex }}</dd>
+                {% endfor %}
+            </div>
+            {% endif %}
+            
+            {% if p.domain %}
+            <div class="metadata">
+                <dt>Domain</dt>
+                <dd>
+                {% for d in p.domain %}
+                    <a href="{{ d.href }}">{{ d.text }}</a>{% if not loop.last %}, {% endif %}
+                {% endfor %}
+                </dd>
+            </div>
+            {% endif %}
+            
+            {% if p.range %}
+            <div class="metadata">
+                <dt>Range</dt>
+                <dd>
+                {% for r in p.range %}
+                    <a href="{{ r.href }}">{{ r.text }}</a>{% if not loop.last %}, {% endif %}
+                {% endfor %}
+                </dd>
+            </div>
+            {% endif %}
+            
+            {% if p.subPropertyOf %}
+            <div class="metadata">
+                <dt>SubProperty Of</dt>
+                <dd>
+                {% for sp in p.subPropertyOf %}
+                    <a href="{{ sp.href }}">{{ sp.text }}</a>{% if not loop.last %}, {% endif %}
+                {% endfor %}
+                </dd>
+            </div>
+            {% endif %}
+            
+            {% if p.inverses %}
+            <div class="metadata">
+                <dt>Inverse Of</dt>
+                <dd>
+                {% for inv in p.inverses %}
+                    <a href="{{ inv.href }}">{{ inv.text }}</a>{% if not loop.last %}, {% endif %}
+                {% endfor %}
+                </dd>
+            </div>
+            {% endif %}
+        </div>
+        {% endfor %}
+    </section>
+
+    <footer style="margin-top: 50px; padding-top: 20px; border-top: 1px solid #ddd; color: #666;">
+        <p>Generated from <code>{{ base_name }}.ttl</code></p>
+        <p>This ontology depends on and conforms to <a href="http://w3id.org/impactont">w3id.org/impactont</a> and <a href="http://w3id.org/aiao">w3id.org/aiao</a></p>
+    </footer>
+</body>
+</html>

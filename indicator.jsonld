@@ -1,0 +1,1510 @@
+[
+  {
+    "@id": "http://independentimpact.org/indicator-owl/usesSymbol",
+    "@type": [
+      "http://www.w3.org/2002/07/owl#ObjectProperty"
+    ],
+    "http://www.w3.org/2000/01/rdf-schema#comment": [
+      {
+        "@language": "en",
+        "@value": "Enumerates the symbols that participate in an indicator expression; attach units to symbols via ind:hasUnit and use foaf:focus to point to the underlying quantity or constant."
+      }
+    ],
+    "http://www.w3.org/2000/01/rdf-schema#domain": [
+      {
+        "@id": "http://independentimpact.org/indicator-owl/IndicatorFormula"
+      }
+    ],
+    "http://www.w3.org/2000/01/rdf-schema#label": [
+      {
+        "@language": "en",
+        "@value": "uses symbol"
+      }
+    ],
+    "http://www.w3.org/2000/01/rdf-schema#range": [
+      {
+        "@id": "http://independentimpact.org/indicator-owl/Symbol"
+      }
+    ]
+  },
+  {
+    "@id": "http://independentimpact.org/indicator-owl/hasRationale",
+    "@type": [
+      "http://www.w3.org/2002/07/owl#ObjectProperty"
+    ],
+    "http://www.w3.org/2000/01/rdf-schema#comment": [
+      {
+        "@language": "en",
+        "@value": "Connects an indicator to an explanation of its purpose."
+      }
+    ],
+    "http://www.w3.org/2000/01/rdf-schema#domain": [
+      {
+        "@id": "http://w3id.org/impactont#Indicator"
+      }
+    ],
+    "http://www.w3.org/2000/01/rdf-schema#label": [
+      {
+        "@language": "en",
+        "@value": "has rationale"
+      }
+    ],
+    "http://www.w3.org/2000/01/rdf-schema#range": [
+      {
+        "@id": "http://independentimpact.org/indicator-owl/IndicatorRationale"
+      }
+    ]
+  },
+  {
+    "@id": "http://independentimpact.org/indicator-owl/hasIndicatorStage",
+    "@type": [
+      "http://www.w3.org/2002/07/owl#ObjectProperty"
+    ],
+    "http://www.w3.org/2000/01/rdf-schema#comment": [
+      {
+        "@language": "en",
+        "@value": "Categorises an indicator according to the stage it occupies within an impact pathway (activity, output, outcome, or impact); usable on indicator definitions and the SKOS indicator catalogue entries that reference them."
+      }
+    ],
+    "http://www.w3.org/2000/01/rdf-schema#domain": [
+      {
+        "@id": "_:n1f1ac5fc9826444daa63d4db31b09328b1"
+      }
+    ],
+    "http://www.w3.org/2000/01/rdf-schema#label": [
+      {
+        "@language": "en",
+        "@value": "has indicator stage"
+      }
+    ],
+    "http://www.w3.org/2000/01/rdf-schema#range": [
+      {
+        "@id": "http://www.w3.org/2004/02/skos/core#Concept"
+      }
+    ]
+  },
+  {
+    "@id": "_:n1f1ac5fc9826444daa63d4db31b09328b1",
+    "@type": [
+      "http://www.w3.org/2002/07/owl#Class"
+    ],
+    "http://www.w3.org/2002/07/owl#unionOf": [
+      {
+        "@list": [
+          {
+            "@id": "http://w3id.org/impactont#Indicator"
+          },
+          {
+            "@id": "http://www.w3.org/2004/02/skos/core#Concept"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "@id": "http://independentimpact.org/indicator-owl/reportsIndicator",
+    "@type": [
+      "http://www.w3.org/2002/07/owl#ObjectProperty"
+    ],
+    "http://www.w3.org/2000/01/rdf-schema#comment": [
+      {
+        "@language": "en",
+        "@value": "Links an IndicatorReport claim to the indicator definition it reports on."
+      }
+    ],
+    "http://www.w3.org/2000/01/rdf-schema#domain": [
+      {
+        "@id": "http://independentimpact.org/indicator-owl/IndicatorReport"
+      }
+    ],
+    "http://www.w3.org/2000/01/rdf-schema#label": [
+      {
+        "@language": "en",
+        "@value": "reports indicator"
+      }
+    ],
+    "http://www.w3.org/2000/01/rdf-schema#range": [
+      {
+        "@id": "http://w3id.org/impactont#Indicator"
+      }
+    ]
+  },
+  {
+    "@id": "http://independentimpact.org/indicator-owl/IndicatorObject",
+    "@type": [
+      "http://www.w3.org/2002/07/owl#Class"
+    ],
+    "http://www.w3.org/2000/01/rdf-schema#label": [
+      {
+        "@language": "en",
+        "@value": "Indicator object"
+      }
+    ],
+    "http://www.w3.org/2000/01/rdf-schema#subClassOf": [
+      {
+        "@id": "http://w3id.org/claimont#Object"
+      }
+    ],
+    "http://www.w3.org/2004/02/skos/core#definition": [
+      {
+        "@language": "en",
+        "@value": "The reported value for an indicator, paired with a stated unit of measure."
+      }
+    ]
+  },
+  {
+    "@id": "http://independentimpact.org/indicator-owl/hasDefaultDSD",
+    "@type": [
+      "http://www.w3.org/2002/07/owl#ObjectProperty"
+    ],
+    "http://www.w3.org/2000/01/rdf-schema#comment": [
+      {
+        "@language": "en",
+        "@value": "Links an indicator definition to its recommended data structure definition. Organizations may define additional DSDs for context-specific reporting."
+      }
+    ],
+    "http://www.w3.org/2000/01/rdf-schema#domain": [
+      {
+        "@id": "http://independentimpact.org/indicator-owl/IndicatorDefinition"
+      }
+    ],
+    "http://www.w3.org/2000/01/rdf-schema#label": [
+      {
+        "@language": "en",
+        "@value": "has default DSD"
+      }
+    ],
+    "http://www.w3.org/2000/01/rdf-schema#range": [
+      {
+        "@id": "http://independentimpact.org/indicator-owl/DataStructureDefinition"
+      }
+    ]
+  },
+  {
+    "@id": "http://independentimpact.org/indicator-owl/refArea",
+    "@type": [
+      "http://www.w3.org/2002/07/owl#ObjectProperty"
+    ],
+    "http://www.w3.org/2000/01/rdf-schema#comment": [
+      {
+        "@language": "en",
+        "@value": "Town, group of towns, biome, catchment, admin unit, etc."
+      }
+    ],
+    "http://www.w3.org/2000/01/rdf-schema#domain": [
+      {
+        "@id": "http://independentimpact.org/indicator-owl/IndicatorObservation"
+      }
+    ],
+    "http://www.w3.org/2000/01/rdf-schema#label": [
+      {
+        "@language": "en",
+        "@value": "reference area"
+      }
+    ],
+    "http://www.w3.org/2000/01/rdf-schema#range": [
+      {
+        "@id": "http://www.w3.org/ns/prov#Location"
+      }
+    ]
+  },
+  {
+    "@id": "http://independentimpact.org/indicator-owl/SubgroupSlice",
+    "@type": [
+      "http://www.w3.org/2002/07/owl#Class"
+    ],
+    "http://www.w3.org/2000/01/rdf-schema#label": [
+      {
+        "@language": "en",
+        "@value": "Subgroup slice"
+      }
+    ],
+    "http://www.w3.org/2000/01/rdf-schema#subClassOf": [
+      {
+        "@id": "http://w3id.org/infocomm#Information"
+      }
+    ],
+    "http://www.w3.org/2004/02/skos/core#definition": [
+      {
+        "@language": "en",
+        "@value": "A repeatable (axis, value) pair that attaches one disaggregation category (e.g., sex=female) to an observation."
+      }
+    ]
+  },
+  {
+    "@id": "http://independentimpact.org/indicator-owl/MeasureRole",
+    "@type": [
+      "http://independentimpact.org/indicator-owl/AxisRole"
+    ],
+    "http://www.w3.org/2000/01/rdf-schema#label": [
+      {
+        "@language": "en",
+        "@value": "Measure"
+      }
+    ]
+  },
+  {
+    "@id": "http://independentimpact.org/indicator-owl/IndicatorFormula",
+    "@type": [
+      "http://www.w3.org/2002/07/owl#Class"
+    ],
+    "http://www.w3.org/2000/01/rdf-schema#label": [
+      {
+        "@language": "en",
+        "@value": "Indicator formula"
+      }
+    ],
+    "http://www.w3.org/2000/01/rdf-schema#subClassOf": [
+      {
+        "@id": "http://w3id.org/infocomm#Information"
+      }
+    ],
+    "http://www.w3.org/2004/02/skos/core#definition": [
+      {
+        "@language": "en",
+        "@value": "A human-readable description of how to compute an indicator value."
+      }
+    ]
+  },
+  {
+    "@id": "http://independentimpact.org/indicator-owl/hasUnit",
+    "@type": [
+      "http://www.w3.org/2002/07/owl#ObjectProperty"
+    ],
+    "http://www.w3.org/2000/01/rdf-schema#comment": [
+      {
+        "@language": "en",
+        "@value": "Connects an indicator (or its symbols) to the QUDT unit that governs the reported value; keep the UCUM code on the unit individual for machine-to-machine exchange."
+      }
+    ],
+    "http://www.w3.org/2000/01/rdf-schema#domain": [
+      {
+        "@id": "_:n1f1ac5fc9826444daa63d4db31b09328b4"
+      },
+      {
+        "@id": "_:n1f1ac5fc9826444daa63d4db31b09328b10"
+      }
+    ],
+    "http://www.w3.org/2000/01/rdf-schema#label": [
+      {
+        "@language": "en",
+        "@value": "has unit of measure"
+      }
+    ],
+    "http://www.w3.org/2000/01/rdf-schema#range": [
+      {
+        "@id": "http://qudt.org/schema/qudt/Unit"
+      }
+    ]
+  },
+  {
+    "@id": "_:n1f1ac5fc9826444daa63d4db31b09328b4",
+    "@type": [
+      "http://www.w3.org/2002/07/owl#Class"
+    ],
+    "http://www.w3.org/2002/07/owl#unionOf": [
+      {
+        "@list": [
+          {
+            "@id": "http://w3id.org/impactont#Indicator"
+          },
+          {
+            "@id": "http://independentimpact.org/indicator-owl/Symbol"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "@id": "_:n1f1ac5fc9826444daa63d4db31b09328b10",
+    "@type": [
+      "http://www.w3.org/2002/07/owl#Class"
+    ],
+    "http://www.w3.org/2002/07/owl#unionOf": [
+      {
+        "@list": [
+          {
+            "@id": "http://w3id.org/impactont#Indicator"
+          },
+          {
+            "@id": "http://independentimpact.org/indicator-owl/Symbol"
+          },
+          {
+            "@id": "http://independentimpact.org/indicator-owl/IndicatorObservation"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "@id": "http://independentimpact.org/indicator-owl/IndicatorObservation",
+    "@type": [
+      "http://www.w3.org/2002/07/owl#Class"
+    ],
+    "http://www.w3.org/2000/01/rdf-schema#label": [
+      {
+        "@language": "en",
+        "@value": "Indicator observation"
+      }
+    ],
+    "http://www.w3.org/2000/01/rdf-schema#subClassOf": [
+      {
+        "@id": "http://w3id.org/infocomm#Information"
+      }
+    ],
+    "http://www.w3.org/2004/02/skos/core#definition": [
+      {
+        "@language": "en",
+        "@value": "A data point reporting a value for an indicator (or series) at a time and place, optionally disaggregated by one or more subgroup slices."
+      }
+    ]
+  },
+  {
+    "@id": "http://independentimpact.org/indicator-owl/MathTextNotation",
+    "@type": [
+      "http://www.w3.org/2000/01/rdf-schema#Datatype"
+    ],
+    "http://www.w3.org/2000/01/rdf-schema#comment": [
+      {
+        "@language": "en",
+        "@value": "Controlled enumeration of math text serialization types allowed for ind:mathTextRepresentationType."
+      }
+    ],
+    "http://www.w3.org/2000/01/rdf-schema#label": [
+      {
+        "@language": "en",
+        "@value": "math text notation"
+      }
+    ],
+    "http://www.w3.org/2002/07/owl#oneOf": [
+      {
+        "@list": [
+          {
+            "@type": "http://www.w3.org/2001/XMLSchema#string",
+            "@value": "LaTeX"
+          },
+          {
+            "@type": "http://www.w3.org/2001/XMLSchema#string",
+            "@value": "AsciiMath"
+          },
+          {
+            "@type": "http://www.w3.org/2001/XMLSchema#string",
+            "@value": "ContentMathML"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "@id": "http://independentimpact.org/indicator-owl/OutcomeIndicator",
+    "@type": [
+      "http://www.w3.org/2004/02/skos/core#Concept"
+    ],
+    "http://www.w3.org/2004/02/skos/core#definition": [
+      {
+        "@language": "en",
+        "@value": "Indicator that measures short- to medium-term changes experienced by people or systems."
+      }
+    ],
+    "http://www.w3.org/2004/02/skos/core#inScheme": [
+      {
+        "@id": "http://independentimpact.org/indicator-owl/IndicatorStageScheme"
+      }
+    ],
+    "http://www.w3.org/2004/02/skos/core#prefLabel": [
+      {
+        "@language": "en",
+        "@value": "Outcome indicator"
+      }
+    ],
+    "http://www.w3.org/2004/02/skos/core#topConceptOf": [
+      {
+        "@id": "http://independentimpact.org/indicator-owl/IndicatorStageScheme"
+      }
+    ]
+  },
+  {
+    "@id": "http://independentimpact.org/indicator-owl/AttributeRole",
+    "@type": [
+      "http://independentimpact.org/indicator-owl/AxisRole"
+    ],
+    "http://www.w3.org/2000/01/rdf-schema#label": [
+      {
+        "@language": "en",
+        "@value": "Attribute"
+      }
+    ]
+  },
+  {
+    "@id": "http://independentimpact.org/indicator-owl/usesDSD",
+    "@type": [
+      "http://www.w3.org/2002/07/owl#ObjectProperty"
+    ],
+    "http://www.w3.org/2000/01/rdf-schema#domain": [
+      {
+        "@id": "http://independentimpact.org/indicator-owl/IndicatorObservation"
+      }
+    ],
+    "http://www.w3.org/2000/01/rdf-schema#label": [
+      {
+        "@language": "en",
+        "@value": "uses DSD"
+      }
+    ],
+    "http://www.w3.org/2000/01/rdf-schema#range": [
+      {
+        "@id": "http://independentimpact.org/indicator-owl/DataStructureDefinition"
+      }
+    ]
+  },
+  {
+    "@id": "http://independentimpact.org/indicator-owl/methodReference",
+    "@type": [
+      "http://www.w3.org/2002/07/owl#DatatypeProperty"
+    ],
+    "http://www.w3.org/2000/01/rdf-schema#domain": [
+      {
+        "@id": "http://independentimpact.org/indicator-owl/IndicatorObservation"
+      }
+    ],
+    "http://www.w3.org/2000/01/rdf-schema#label": [
+      {
+        "@language": "en",
+        "@value": "method reference"
+      }
+    ],
+    "http://www.w3.org/2000/01/rdf-schema#range": [
+      {
+        "@id": "http://www.w3.org/2001/XMLSchema#anyURI"
+      }
+    ]
+  },
+  {
+    "@id": "http://independentimpact.org/indicator-owl/hasAxisSpec",
+    "@type": [
+      "http://www.w3.org/2002/07/owl#ObjectProperty"
+    ],
+    "http://www.w3.org/2000/01/rdf-schema#domain": [
+      {
+        "@id": "http://independentimpact.org/indicator-owl/DataStructureDefinition"
+      }
+    ],
+    "http://www.w3.org/2000/01/rdf-schema#label": [
+      {
+        "@language": "en",
+        "@value": "has axis specification"
+      }
+    ],
+    "http://www.w3.org/2000/01/rdf-schema#range": [
+      {
+        "@id": "http://independentimpact.org/indicator-owl/AxisSpecification"
+      }
+    ]
+  },
+  {
+    "@id": "http://independentimpact.org/indicator-owl/subgroupAxis",
+    "@type": [
+      "http://www.w3.org/2002/07/owl#ObjectProperty"
+    ],
+    "http://www.w3.org/2000/01/rdf-schema#domain": [
+      {
+        "@id": "http://independentimpact.org/indicator-owl/SubgroupSlice"
+      }
+    ],
+    "http://www.w3.org/2000/01/rdf-schema#label": [
+      {
+        "@language": "en",
+        "@value": "subgroup axis"
+      }
+    ],
+    "http://www.w3.org/2000/01/rdf-schema#range": [
+      {
+        "@id": "http://independentimpact.org/indicator-owl/Axis"
+      }
+    ]
+  },
+  {
+    "@id": "http://independentimpact.org/indicator-owl/hasFormula",
+    "@type": [
+      "http://www.w3.org/2002/07/owl#ObjectProperty"
+    ],
+    "http://www.w3.org/2000/01/rdf-schema#comment": [
+      {
+        "@language": "en",
+        "@value": "Connects an indicator to its computation description."
+      }
+    ],
+    "http://www.w3.org/2000/01/rdf-schema#domain": [
+      {
+        "@id": "http://w3id.org/impactont#Indicator"
+      }
+    ],
+    "http://www.w3.org/2000/01/rdf-schema#label": [
+      {
+        "@language": "en",
+        "@value": "has formula"
+      }
+    ],
+    "http://www.w3.org/2000/01/rdf-schema#range": [
+      {
+        "@id": "http://independentimpact.org/indicator-owl/IndicatorFormula"
+      }
+    ]
+  },
+  {
+    "@id": "http://independentimpact.org/indicator-owl/MathOperator",
+    "@type": [
+      "http://www.w3.org/2002/07/owl#Class"
+    ],
+    "http://www.w3.org/2000/01/rdf-schema#comment": [
+      {
+        "@language": "en",
+        "@value": "Distinguishes symbolic operators from physical operators or agents; use skos:prefLabel for the glyph and rdfs:comment for usage examples."
+      }
+    ],
+    "http://www.w3.org/2000/01/rdf-schema#label": [
+      {
+        "@language": "en",
+        "@value": "Mathematical operator"
+      }
+    ],
+    "http://www.w3.org/2000/01/rdf-schema#subClassOf": [
+      {
+        "@id": "http://w3id.org/infocomm#Information"
+      }
+    ],
+    "http://www.w3.org/2004/02/skos/core#definition": [
+      {
+        "@language": "en",
+        "@value": "An operator token (e.g., =, +, -, *, /, ^) used to relate symbols in an indicator expression."
+      }
+    ]
+  },
+  {
+    "@id": "http://independentimpact.org/indicator-owl/expressionText",
+    "@type": [
+      "http://www.w3.org/2002/07/owl#DatatypeProperty"
+    ],
+    "http://www.w3.org/2000/01/rdf-schema#comment": [
+      {
+        "@language": "en",
+        "@value": "Canonical string for the expression; pair with ind:mathTextRepresentationType to declare whether the syntax is LaTeX, AsciiMath, or Content MathML."
+      }
+    ],
+    "http://www.w3.org/2000/01/rdf-schema#domain": [
+      {
+        "@id": "http://independentimpact.org/indicator-owl/IndicatorFormula"
+      }
+    ],
+    "http://www.w3.org/2000/01/rdf-schema#label": [
+      {
+        "@language": "en",
+        "@value": "expression text"
+      }
+    ],
+    "http://www.w3.org/2000/01/rdf-schema#range": [
+      {
+        "@id": "http://www.w3.org/2001/XMLSchema#string"
+      }
+    ]
+  },
+  {
+    "@id": "http://independentimpact.org/indicator-owl/Symbol",
+    "@type": [
+      "http://www.w3.org/2002/07/owl#Class"
+    ],
+    "http://www.w3.org/2000/01/rdf-schema#comment": [
+      {
+        "@language": "en",
+        "@value": "Use for mathematical or statistical symbols that appear in indicator expressions; attach foaf:focus to the underlying quantity or concept and a unit via ind:hasUnit."
+      }
+    ],
+    "http://www.w3.org/2000/01/rdf-schema#label": [
+      {
+        "@language": "en",
+        "@value": "Symbol"
+      }
+    ],
+    "http://www.w3.org/2000/01/rdf-schema#subClassOf": [
+      {
+        "@id": "http://w3id.org/infocomm#Information"
+      }
+    ],
+    "http://www.w3.org/2004/02/skos/core#definition": [
+      {
+        "@language": "en",
+        "@value": "A symbolic placeholder used within an indicator formula or expression."
+      }
+    ]
+  },
+  {
+    "@id": "http://independentimpact.org/indicator-owl/IndicatorPredicate",
+    "@type": [
+      "http://www.w3.org/2002/07/owl#Class"
+    ],
+    "http://www.w3.org/2000/01/rdf-schema#label": [
+      {
+        "@language": "en",
+        "@value": "Indicator predicate"
+      }
+    ],
+    "http://www.w3.org/2000/01/rdf-schema#subClassOf": [
+      {
+        "@id": "http://w3id.org/claimont#Predicate"
+      }
+    ],
+    "http://www.w3.org/2004/02/skos/core#definition": [
+      {
+        "@language": "en",
+        "@value": "Predicate that links a subject state to an indicator value in a report."
+      }
+    ]
+  },
+  {
+    "@id": "http://independentimpact.org/indicator-owl/mathTextRepresentationType",
+    "@type": [
+      "http://www.w3.org/2002/07/owl#DatatypeProperty"
+    ],
+    "http://www.w3.org/2000/01/rdf-schema#comment": [
+      {
+        "@language": "en",
+        "@value": "Identifies the notation used in ind:expressionText (restricted to 'LaTeX', 'AsciiMath', or 'ContentMathML'); useful for rendering and parsing."
+      }
+    ],
+    "http://www.w3.org/2000/01/rdf-schema#domain": [
+      {
+        "@id": "http://independentimpact.org/indicator-owl/IndicatorFormula"
+      }
+    ],
+    "http://www.w3.org/2000/01/rdf-schema#label": [
+      {
+        "@language": "en",
+        "@value": "math text representation type"
+      }
+    ],
+    "http://www.w3.org/2000/01/rdf-schema#range": [
+      {
+        "@id": "http://independentimpact.org/indicator-owl/MathTextNotation"
+      }
+    ]
+  },
+  {
+    "@id": "http://independentimpact.org/indicator-owl/IndicatorReport",
+    "@type": [
+      "http://www.w3.org/2002/07/owl#Class"
+    ],
+    "http://www.w3.org/2000/01/rdf-schema#label": [
+      {
+        "@language": "en",
+        "@value": "Indicator report"
+      }
+    ],
+    "http://www.w3.org/2000/01/rdf-schema#subClassOf": [
+      {
+        "@id": "http://w3id.org/claimont#Report"
+      },
+      {
+        "@id": "http://w3id.org/infocomm#Information"
+      }
+    ],
+    "http://www.w3.org/2004/02/skos/core#definition": [
+      {
+        "@language": "en",
+        "@value": "A claim that reports a concrete indicator value in a communication context."
+      }
+    ]
+  },
+  {
+    "@id": "http://independentimpact.org/indicator-owl/DataStructureDefinition",
+    "@type": [
+      "http://www.w3.org/2002/07/owl#Class"
+    ],
+    "http://www.w3.org/2000/01/rdf-schema#comment": [
+      {
+        "@language": "en",
+        "@value": "SDMX-inspired: this describes structure; it does not contain values."
+      }
+    ],
+    "http://www.w3.org/2000/01/rdf-schema#label": [
+      {
+        "@language": "en",
+        "@value": "Data Structure Definition"
+      }
+    ],
+    "http://www.w3.org/2000/01/rdf-schema#subClassOf": [
+      {
+        "@id": "http://w3id.org/aiao#Control"
+      },
+      {
+        "@id": "http://w3id.org/infocomm#Information"
+      }
+    ],
+    "http://www.w3.org/2004/02/skos/core#definition": [
+      {
+        "@language": "en",
+        "@value": "A specification of the axes (dimensions), measures and attributes used to report observations for an indicator/series family."
+      }
+    ]
+  },
+  {
+    "@id": "http://independentimpact.org/indicator-owl/",
+    "@type": [
+      "http://www.w3.org/2002/07/owl#Ontology"
+    ],
+    "http://purl.org/dc/terms/description": [
+      {
+        "@language": "en",
+        "@value": "Prototype indicator semantics that complement the SDG SKOS catalogue by providing OWL descriptions aligned with aiao, claimont, impactont, and infocomm."
+      }
+    ],
+    "http://purl.org/dc/terms/source": [
+      {
+        "@id": "https://w3id.org/aiao"
+      },
+      {
+        "@id": "https://w3id.org/claimont"
+      },
+      {
+        "@id": "https://w3id.org/impactont"
+      },
+      {
+        "@id": "http://w3id.org/infocomm"
+      }
+    ],
+    "http://purl.org/dc/terms/title": [
+      {
+        "@language": "en",
+        "@value": "Indicator OWL prototype aligned with AIAO, ClaimOnt, ImpactOnt, and InfoComm"
+      }
+    ]
+  },
+  {
+    "@id": "http://independentimpact.org/indicator-owl/OutputIndicator",
+    "@type": [
+      "http://www.w3.org/2004/02/skos/core#Concept"
+    ],
+    "http://www.w3.org/2004/02/skos/core#definition": [
+      {
+        "@language": "en",
+        "@value": "Indicator that measures immediate deliverables or services produced by an intervention."
+      }
+    ],
+    "http://www.w3.org/2004/02/skos/core#inScheme": [
+      {
+        "@id": "http://independentimpact.org/indicator-owl/IndicatorStageScheme"
+      }
+    ],
+    "http://www.w3.org/2004/02/skos/core#prefLabel": [
+      {
+        "@language": "en",
+        "@value": "Output indicator"
+      }
+    ],
+    "http://www.w3.org/2004/02/skos/core#topConceptOf": [
+      {
+        "@id": "http://independentimpact.org/indicator-owl/IndicatorStageScheme"
+      }
+    ]
+  },
+  {
+    "@id": "http://independentimpact.org/indicator-owl/communicatedBy",
+    "@type": [
+      "http://www.w3.org/2002/07/owl#ObjectProperty"
+    ],
+    "http://www.w3.org/2000/01/rdf-schema#comment": [
+      {
+        "@language": "en",
+        "@value": "Associates an indicator report with the communication event that transmits it."
+      }
+    ],
+    "http://www.w3.org/2000/01/rdf-schema#domain": [
+      {
+        "@id": "http://independentimpact.org/indicator-owl/IndicatorReport"
+      }
+    ],
+    "http://www.w3.org/2000/01/rdf-schema#label": [
+      {
+        "@language": "en",
+        "@value": "communicated by"
+      }
+    ],
+    "http://www.w3.org/2000/01/rdf-schema#range": [
+      {
+        "@id": "http://w3id.org/infocomm#CommunicationEvent"
+      }
+    ]
+  },
+  {
+    "@id": "http://independentimpact.org/indicator-owl/axisRole",
+    "@type": [
+      "http://www.w3.org/2002/07/owl#ObjectProperty"
+    ],
+    "http://www.w3.org/2000/01/rdf-schema#domain": [
+      {
+        "@id": "http://independentimpact.org/indicator-owl/AxisSpecification"
+      }
+    ],
+    "http://www.w3.org/2000/01/rdf-schema#label": [
+      {
+        "@language": "en",
+        "@value": "axis role"
+      }
+    ],
+    "http://www.w3.org/2000/01/rdf-schema#range": [
+      {
+        "@id": "http://independentimpact.org/indicator-owl/AxisRole"
+      }
+    ]
+  },
+  {
+    "@id": "http://independentimpact.org/indicator-owl/DimensionRole",
+    "@type": [
+      "http://independentimpact.org/indicator-owl/AxisRole"
+    ],
+    "http://www.w3.org/2000/01/rdf-schema#label": [
+      {
+        "@language": "en",
+        "@value": "Dimension"
+      }
+    ]
+  },
+  {
+    "@id": "http://independentimpact.org/indicator-owl/IndicatorRationale",
+    "@type": [
+      "http://www.w3.org/2002/07/owl#Class"
+    ],
+    "http://www.w3.org/2000/01/rdf-schema#label": [
+      {
+        "@language": "en",
+        "@value": "Indicator rationale"
+      }
+    ],
+    "http://www.w3.org/2000/01/rdf-schema#subClassOf": [
+      {
+        "@id": "http://w3id.org/infocomm#Information"
+      }
+    ],
+    "http://www.w3.org/2004/02/skos/core#definition": [
+      {
+        "@language": "en",
+        "@value": "Narrative justification for why the indicator is relevant to the objective or state being monitored."
+      }
+    ]
+  },
+  {
+    "@id": "http://independentimpact.org/indicator-owl/obsStatus",
+    "@type": [
+      "http://www.w3.org/2002/07/owl#DatatypeProperty"
+    ],
+    "http://www.w3.org/2000/01/rdf-schema#comment": [
+      {
+        "@language": "en",
+        "@value": "e.g., REPORTED, ESTIMATED, IMPUTED, PROVISIONAL."
+      }
+    ],
+    "http://www.w3.org/2000/01/rdf-schema#domain": [
+      {
+        "@id": "http://independentimpact.org/indicator-owl/IndicatorObservation"
+      }
+    ],
+    "http://www.w3.org/2000/01/rdf-schema#label": [
+      {
+        "@language": "en",
+        "@value": "observation status"
+      }
+    ],
+    "http://www.w3.org/2000/01/rdf-schema#range": [
+      {
+        "@id": "http://www.w3.org/2001/XMLSchema#string"
+      }
+    ]
+  },
+  {
+    "@id": "http://independentimpact.org/indicator-owl/ImpactIndicator",
+    "@type": [
+      "http://www.w3.org/2004/02/skos/core#Concept"
+    ],
+    "http://www.w3.org/2004/02/skos/core#definition": [
+      {
+        "@language": "en",
+        "@value": "Indicator that measures long-term, higher-level changes attributable to an intervention or strategy."
+      }
+    ],
+    "http://www.w3.org/2004/02/skos/core#inScheme": [
+      {
+        "@id": "http://independentimpact.org/indicator-owl/IndicatorStageScheme"
+      }
+    ],
+    "http://www.w3.org/2004/02/skos/core#prefLabel": [
+      {
+        "@language": "en",
+        "@value": "Impact indicator"
+      }
+    ],
+    "http://www.w3.org/2004/02/skos/core#topConceptOf": [
+      {
+        "@id": "http://independentimpact.org/indicator-owl/IndicatorStageScheme"
+      }
+    ]
+  },
+  {
+    "@id": "http://independentimpact.org/indicator-owl/IndicatorDefinition",
+    "@type": [
+      "http://www.w3.org/2002/07/owl#Class"
+    ],
+    "http://www.w3.org/2000/01/rdf-schema#comment": [
+      {
+        "@language": "en",
+        "@value": "Provides the operational semantics that the SDG SKOS indicator concept points to via foaf:focus."
+      }
+    ],
+    "http://www.w3.org/2000/01/rdf-schema#label": [
+      {
+        "@language": "en",
+        "@value": "Indicator definition"
+      }
+    ],
+    "http://www.w3.org/2000/01/rdf-schema#subClassOf": [
+      {
+        "@id": "http://w3id.org/impactont#Indicator"
+      },
+      {
+        "@id": "http://w3id.org/infocomm#Information"
+      }
+    ],
+    "http://www.w3.org/2004/02/skos/core#definition": [
+      {
+        "@language": "en",
+        "@value": "An indicator concept that contains descriptive metadata, expected units, and rationale."
+      }
+    ]
+  },
+  {
+    "@id": "http://independentimpact.org/indicator-owl/minCardinality",
+    "@type": [
+      "http://www.w3.org/2002/07/owl#DatatypeProperty"
+    ],
+    "http://www.w3.org/2000/01/rdf-schema#domain": [
+      {
+        "@id": "http://independentimpact.org/indicator-owl/AxisSpecification"
+      }
+    ],
+    "http://www.w3.org/2000/01/rdf-schema#label": [
+      {
+        "@language": "en",
+        "@value": "min cardinality"
+      }
+    ],
+    "http://www.w3.org/2000/01/rdf-schema#range": [
+      {
+        "@id": "http://www.w3.org/2001/XMLSchema#integer"
+      }
+    ]
+  },
+  {
+    "@id": "http://independentimpact.org/indicator-owl/subgroupValue",
+    "@type": [
+      "http://www.w3.org/2002/07/owl#ObjectProperty"
+    ],
+    "http://www.w3.org/2000/01/rdf-schema#comment": [
+      {
+        "@language": "en",
+        "@value": "Must be a concept in the axis' declared skos:ConceptScheme (via ind:valueScheme on the AxisSpecification)."
+      }
+    ],
+    "http://www.w3.org/2000/01/rdf-schema#domain": [
+      {
+        "@id": "http://independentimpact.org/indicator-owl/SubgroupSlice"
+      }
+    ],
+    "http://www.w3.org/2000/01/rdf-schema#label": [
+      {
+        "@language": "en",
+        "@value": "subgroup value"
+      }
+    ],
+    "http://www.w3.org/2000/01/rdf-schema#range": [
+      {
+        "@id": "http://www.w3.org/2004/02/skos/core#Concept"
+      }
+    ]
+  },
+  {
+    "@id": "http://independentimpact.org/indicator-owl/AxisRole",
+    "@type": [
+      "http://www.w3.org/2002/07/owl#Class"
+    ],
+    "http://www.w3.org/2000/01/rdf-schema#label": [
+      {
+        "@language": "en",
+        "@value": "Axis role"
+      }
+    ],
+    "http://www.w3.org/2004/02/skos/core#definition": [
+      {
+        "@language": "en",
+        "@value": "Role played by an axis in a structure: dimension, measure, or attribute."
+      }
+    ]
+  },
+  {
+    "@id": "http://independentimpact.org/indicator-owl/valueScheme",
+    "@type": [
+      "http://www.w3.org/2002/07/owl#ObjectProperty"
+    ],
+    "http://www.w3.org/2000/01/rdf-schema#comment": [
+      {
+        "@language": "en",
+        "@value": "The SKOS ConceptScheme enumerating allowable values for this axis."
+      }
+    ],
+    "http://www.w3.org/2000/01/rdf-schema#domain": [
+      {
+        "@id": "http://independentimpact.org/indicator-owl/AxisSpecification"
+      }
+    ],
+    "http://www.w3.org/2000/01/rdf-schema#label": [
+      {
+        "@language": "en",
+        "@value": "value scheme"
+      }
+    ],
+    "http://www.w3.org/2000/01/rdf-schema#range": [
+      {
+        "@id": "http://www.w3.org/2004/02/skos/core#ConceptScheme"
+      }
+    ]
+  },
+  {
+    "@id": "http://independentimpact.org/indicator-owl/obsValue",
+    "@type": [
+      "http://www.w3.org/2002/07/owl#DatatypeProperty"
+    ],
+    "http://www.w3.org/2000/01/rdf-schema#domain": [
+      {
+        "@id": "http://independentimpact.org/indicator-owl/IndicatorObservation"
+      }
+    ],
+    "http://www.w3.org/2000/01/rdf-schema#label": [
+      {
+        "@language": "en",
+        "@value": "observation value"
+      }
+    ],
+    "http://www.w3.org/2000/01/rdf-schema#range": [
+      {
+        "@id": "http://www.w3.org/2001/XMLSchema#decimal"
+      }
+    ]
+  },
+  {
+    "@id": "http://independentimpact.org/indicator-owl/observesIndicator",
+    "@type": [
+      "http://www.w3.org/2002/07/owl#ObjectProperty"
+    ],
+    "http://www.w3.org/2000/01/rdf-schema#comment": [
+      {
+        "@language": "en",
+        "@value": "Links an observation to the indicator definition being measured (ind:IndicatorDefinition is a subclass of impact:Indicator)."
+      }
+    ],
+    "http://www.w3.org/2000/01/rdf-schema#domain": [
+      {
+        "@id": "http://independentimpact.org/indicator-owl/IndicatorObservation"
+      }
+    ],
+    "http://www.w3.org/2000/01/rdf-schema#label": [
+      {
+        "@language": "en",
+        "@value": "observes indicator"
+      }
+    ],
+    "http://www.w3.org/2000/01/rdf-schema#range": [
+      {
+        "@id": "http://w3id.org/impactont#Indicator"
+      }
+    ]
+  },
+  {
+    "@id": "http://independentimpact.org/indicator-owl/timePeriod",
+    "@type": [
+      "http://www.w3.org/2002/07/owl#DatatypeProperty"
+    ],
+    "http://www.w3.org/2000/01/rdf-schema#comment": [
+      {
+        "@language": "en",
+        "@value": "Use xsd:dateTime or TIME ontology if you need finer granularity."
+      }
+    ],
+    "http://www.w3.org/2000/01/rdf-schema#domain": [
+      {
+        "@id": "http://independentimpact.org/indicator-owl/IndicatorObservation"
+      }
+    ],
+    "http://www.w3.org/2000/01/rdf-schema#label": [
+      {
+        "@language": "en",
+        "@value": "time period"
+      }
+    ],
+    "http://www.w3.org/2000/01/rdf-schema#range": [
+      {
+        "@id": "http://www.w3.org/2001/XMLSchema#gYear"
+      }
+    ]
+  },
+  {
+    "@id": "http://independentimpact.org/indicator-owl/definitionVersion",
+    "@type": [
+      "http://www.w3.org/2002/07/owl#DatatypeProperty"
+    ],
+    "http://www.w3.org/2000/01/rdf-schema#comment": [
+      {
+        "@language": "en",
+        "@value": "Version tag for a scheme so compatibility/comparability can be assessed over time."
+      }
+    ],
+    "http://www.w3.org/2000/01/rdf-schema#domain": [
+      {
+        "@id": "http://www.w3.org/2004/02/skos/core#ConceptScheme"
+      }
+    ],
+    "http://www.w3.org/2000/01/rdf-schema#label": [
+      {
+        "@language": "en",
+        "@value": "definition version"
+      }
+    ],
+    "http://www.w3.org/2000/01/rdf-schema#range": [
+      {
+        "@id": "http://www.w3.org/2001/XMLSchema#string"
+      }
+    ]
+  },
+  {
+    "@id": "http://independentimpact.org/indicator-owl/Axis",
+    "@type": [
+      "http://www.w3.org/2002/07/owl#Class"
+    ],
+    "http://www.w3.org/2000/01/rdf-schema#label": [
+      {
+        "@language": "en",
+        "@value": "Axis"
+      }
+    ],
+    "http://www.w3.org/2000/01/rdf-schema#subClassOf": [
+      {
+        "@id": "http://w3id.org/aiao#Control"
+      },
+      {
+        "@id": "http://w3id.org/infocomm#Information"
+      }
+    ],
+    "http://www.w3.org/2004/02/skos/core#definition": [
+      {
+        "@language": "en",
+        "@value": "A typed classification axis used to disaggregate or qualify observations (e.g., sex, legal age category, land use type)."
+      }
+    ]
+  },
+  {
+    "@id": "http://independentimpact.org/indicator-owl/AxisSpecification",
+    "@type": [
+      "http://www.w3.org/2002/07/owl#Class"
+    ],
+    "http://www.w3.org/2000/01/rdf-schema#label": [
+      {
+        "@language": "en",
+        "@value": "Axis specification"
+      }
+    ],
+    "http://www.w3.org/2000/01/rdf-schema#subClassOf": [
+      {
+        "@id": "http://w3id.org/infocomm#Information"
+      }
+    ],
+    "http://www.w3.org/2004/02/skos/core#definition": [
+      {
+        "@language": "en",
+        "@value": "Connects a DSD to an Axis and declares its role, expected value scheme, and cardinality."
+      }
+    ]
+  },
+  {
+    "@id": "http://independentimpact.org/indicator-owl/hasExpression",
+    "@type": [
+      "http://www.w3.org/2002/07/owl#ObjectProperty"
+    ],
+    "http://www.w3.org/2000/01/rdf-schema#comment": [
+      {
+        "@language": "en",
+        "@value": "Alias for ind:hasFormula to preserve existing data that refers to an expression node; prefer ind:hasFormula going forward while keeping expressionText and symbol/operator listings inside the formula resource."
+      }
+    ],
+    "http://www.w3.org/2000/01/rdf-schema#domain": [
+      {
+        "@id": "http://w3id.org/impactont#Indicator"
+      }
+    ],
+    "http://www.w3.org/2000/01/rdf-schema#label": [
+      {
+        "@language": "en",
+        "@value": "has expression"
+      }
+    ],
+    "http://www.w3.org/2000/01/rdf-schema#range": [
+      {
+        "@id": "http://independentimpact.org/indicator-owl/IndicatorFormula"
+      }
+    ],
+    "http://www.w3.org/2000/01/rdf-schema#subPropertyOf": [
+      {
+        "@id": "http://independentimpact.org/indicator-owl/hasFormula"
+      }
+    ]
+  },
+  {
+    "@id": "http://independentimpact.org/indicator-owl/ActivityIndicator",
+    "@type": [
+      "http://www.w3.org/2004/02/skos/core#Concept"
+    ],
+    "http://www.w3.org/2004/02/skos/core#definition": [
+      {
+        "@language": "en",
+        "@value": "Indicator that measures activities performed within an intervention."
+      }
+    ],
+    "http://www.w3.org/2004/02/skos/core#inScheme": [
+      {
+        "@id": "http://independentimpact.org/indicator-owl/IndicatorStageScheme"
+      }
+    ],
+    "http://www.w3.org/2004/02/skos/core#prefLabel": [
+      {
+        "@language": "en",
+        "@value": "Activity indicator"
+      }
+    ],
+    "http://www.w3.org/2004/02/skos/core#topConceptOf": [
+      {
+        "@id": "http://independentimpact.org/indicator-owl/IndicatorStageScheme"
+      }
+    ]
+  },
+  {
+    "@id": "http://independentimpact.org/indicator-owl/aboutState",
+    "@type": [
+      "http://www.w3.org/2002/07/owl#ObjectProperty"
+    ],
+    "http://www.w3.org/2000/01/rdf-schema#comment": [
+      {
+        "@language": "en",
+        "@value": "Relates an indicator definition to the state it qualifies (reuse impact:State directly rather than minting a parallel MeasuredState class)."
+      }
+    ],
+    "http://www.w3.org/2000/01/rdf-schema#domain": [
+      {
+        "@id": "http://w3id.org/impactont#Indicator"
+      }
+    ],
+    "http://www.w3.org/2000/01/rdf-schema#label": [
+      {
+        "@language": "en",
+        "@value": "about state"
+      }
+    ],
+    "http://www.w3.org/2000/01/rdf-schema#range": [
+      {
+        "@id": "http://w3id.org/impactont#State"
+      }
+    ]
+  },
+  {
+    "@id": "http://independentimpact.org/indicator-owl/supportingClaim",
+    "@type": [
+      "http://www.w3.org/2002/07/owl#ObjectProperty"
+    ],
+    "http://www.w3.org/2000/01/rdf-schema#comment": [
+      {
+        "@language": "en",
+        "@value": "Optional: link an observation to a ClaimOnt claim with its evidence chain."
+      }
+    ],
+    "http://www.w3.org/2000/01/rdf-schema#domain": [
+      {
+        "@id": "http://independentimpact.org/indicator-owl/IndicatorObservation"
+      }
+    ],
+    "http://www.w3.org/2000/01/rdf-schema#label": [
+      {
+        "@language": "en",
+        "@value": "supporting claim"
+      }
+    ],
+    "http://www.w3.org/2000/01/rdf-schema#range": [
+      {
+        "@id": "http://w3id.org/claimont#Claim"
+      }
+    ]
+  },
+  {
+    "@id": "http://independentimpact.org/indicator-owl/hasSubgroupSlice",
+    "@type": [
+      "http://www.w3.org/2002/07/owl#ObjectProperty"
+    ],
+    "http://www.w3.org/2000/01/rdf-schema#domain": [
+      {
+        "@id": "http://independentimpact.org/indicator-owl/IndicatorObservation"
+      }
+    ],
+    "http://www.w3.org/2000/01/rdf-schema#label": [
+      {
+        "@language": "en",
+        "@value": "has subgroup slice"
+      }
+    ],
+    "http://www.w3.org/2000/01/rdf-schema#range": [
+      {
+        "@id": "http://independentimpact.org/indicator-owl/SubgroupSlice"
+      }
+    ]
+  },
+  {
+    "@id": "http://independentimpact.org/indicator-owl/maxCardinality",
+    "@type": [
+      "http://www.w3.org/2002/07/owl#DatatypeProperty"
+    ],
+    "http://www.w3.org/2000/01/rdf-schema#comment": [
+      {
+        "@language": "en",
+        "@value": "Use -1 to mean unbounded / repeatable."
+      }
+    ],
+    "http://www.w3.org/2000/01/rdf-schema#domain": [
+      {
+        "@id": "http://independentimpact.org/indicator-owl/AxisSpecification"
+      }
+    ],
+    "http://www.w3.org/2000/01/rdf-schema#label": [
+      {
+        "@language": "en",
+        "@value": "max cardinality"
+      }
+    ],
+    "http://www.w3.org/2000/01/rdf-schema#range": [
+      {
+        "@id": "http://www.w3.org/2001/XMLSchema#integer"
+      }
+    ]
+  },
+  {
+    "@id": "http://independentimpact.org/indicator-owl/axis",
+    "@type": [
+      "http://www.w3.org/2002/07/owl#ObjectProperty"
+    ],
+    "http://www.w3.org/2000/01/rdf-schema#domain": [
+      {
+        "@id": "http://independentimpact.org/indicator-owl/AxisSpecification"
+      }
+    ],
+    "http://www.w3.org/2000/01/rdf-schema#label": [
+      {
+        "@language": "en",
+        "@value": "axis"
+      }
+    ],
+    "http://www.w3.org/2000/01/rdf-schema#range": [
+      {
+        "@id": "http://independentimpact.org/indicator-owl/Axis"
+      }
+    ]
+  },
+  {
+    "@id": "http://independentimpact.org/indicator-owl/IndicatorStageScheme",
+    "@type": [
+      "http://www.w3.org/2004/02/skos/core#ConceptScheme"
+    ],
+    "http://www.w3.org/2004/02/skos/core#definition": [
+      {
+        "@language": "en",
+        "@value": "Stages used to categorise indicators along a theory of change from activities through outputs, outcomes, and impacts."
+      }
+    ],
+    "http://www.w3.org/2004/02/skos/core#hasTopConcept": [
+      {
+        "@id": "http://independentimpact.org/indicator-owl/ActivityIndicator"
+      },
+      {
+        "@id": "http://independentimpact.org/indicator-owl/OutputIndicator"
+      },
+      {
+        "@id": "http://independentimpact.org/indicator-owl/OutcomeIndicator"
+      },
+      {
+        "@id": "http://independentimpact.org/indicator-owl/ImpactIndicator"
+      }
+    ],
+    "http://www.w3.org/2004/02/skos/core#prefLabel": [
+      {
+        "@language": "en",
+        "@value": "Indicator stages in an impact pathway"
+      }
+    ]
+  },
+  {
+    "@id": "http://independentimpact.org/indicator-owl/usesOperator",
+    "@type": [
+      "http://www.w3.org/2002/07/owl#ObjectProperty"
+    ],
+    "http://www.w3.org/2000/01/rdf-schema#comment": [
+      {
+        "@language": "en",
+        "@value": "Enumerates mathematical operators present in an indicator expression (e.g., equality, multiplication, division, exponentiation)."
+      }
+    ],
+    "http://www.w3.org/2000/01/rdf-schema#domain": [
+      {
+        "@id": "http://independentimpact.org/indicator-owl/IndicatorFormula"
+      }
+    ],
+    "http://www.w3.org/2000/01/rdf-schema#label": [
+      {
+        "@language": "en",
+        "@value": "uses operator"
+      }
+    ],
+    "http://www.w3.org/2000/01/rdf-schema#range": [
+      {
+        "@id": "http://independentimpact.org/indicator-owl/MathOperator"
+      }
+    ]
+  },
+  {
+    "@id": "http://independentimpact.org/indicator-owl/reportsObservation",
+    "@type": [
+      "http://www.w3.org/2002/07/owl#ObjectProperty"
+    ],
+    "http://www.w3.org/2000/01/rdf-schema#comment": [
+      {
+        "@language": "en",
+        "@value": "Connects a claim/reporting event to the specific observation(s) being asserted."
+      }
+    ],
+    "http://www.w3.org/2000/01/rdf-schema#domain": [
+      {
+        "@id": "http://independentimpact.org/indicator-owl/IndicatorReport"
+      }
+    ],
+    "http://www.w3.org/2000/01/rdf-schema#label": [
+      {
+        "@language": "en",
+        "@value": "reports observation"
+      }
+    ],
+    "http://www.w3.org/2000/01/rdf-schema#range": [
+      {
+        "@id": "http://independentimpact.org/indicator-owl/IndicatorObservation"
+      }
+    ]
+  }
+]
