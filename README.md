@@ -1,14 +1,8 @@
-# Core Ontology Definitions
+# Indicator Ontology 
 
-This directory contains the core ontology definitions for the SDG SKOS vocabulary project.
+This repository contains the core ontology definitions for the indicator ontology project.
 
 ## Files
-
-### sdg-vocab-metadata.ttl
-Core metadata and namespace definitions for the SDG ontology. This file establishes:
-- The base namespace for SDG concepts (`http://independentimpact.org/sdg/`)
-- Core properties and relationships used across all SDG vocabularies
-- Provenance and metadata about the ontology itself
 
 ### indicator.ttl
 OWL ontology for indicator semantics. This file provides:
@@ -28,6 +22,5 @@ These files should be loaded into a triple store or RDF processing system along 
 
 ## Related Documentation
 
-- [Main Ontologies README](../README.md)
 - [Theory of Change Framework](../../docs/theory/TheoryofChange.md)
 - [Impact Pathway Guidance](../../docs/theory/impact-pathway-indicator-guidance.md)
