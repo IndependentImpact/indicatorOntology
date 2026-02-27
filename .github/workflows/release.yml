@@ -22,9 +22,7 @@ jobs:
         run: ./install_requirements.sh
       
       - name: Build ontology files
-        run: |
-          source venv/bin/activate
-          python convert.py indicator.ttl
+        run: ./venv/bin/python convert.py indicator.ttl
       
       - name: Create Release
         uses: softprops/action-gh-release@v1
