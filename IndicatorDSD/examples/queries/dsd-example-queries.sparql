@@ -1,0 +1,332 @@
+#################################################################
+# Example SPARQL Queries for DSD Integration Testing
+#################################################################
+#
+# This file contains example SPARQL queries demonstrating the use
+# of Data Structure Definitions (DSDs) for navigating and validating
+# indicator observations with structured disaggregation.
+#
+# Created as part of Phase 6 of the DSD Implementation Plan
+#################################################################
+
+PREFIX ind: <http://independentimpact.org/indicator-owl/>
+PREFIX skos: <http://www.w3.org/2004/02/skos/core#>
+PREFIX dct: <http://purl.org/dc/terms/>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
+
+#################################################################
+# Query 1: Find all observations for an indicator, grouped by sex
+#################################################################
+#
+# Purpose: Retrieve observations for a specific indicator (e.g., 1.1.1)
+#          and show how they are disaggregated by sex
+#
+# Expected results: A list of observations with their values and
+#                   the sex category for each observation
+#################################################################
+
+SELECT ?obs ?obsLabel ?sex ?value
+WHERE {
+  # Find observations for indicator 1.1.1 (or any indicator)
+  ?obs a ind:IndicatorObservation ;
+       ind:observesIndicator <http://independentimpact.org/indicator-owl/indicator/1.1.1> ;
+       ind:obsValue ?value .
+  
+  # Get optional label
+  OPTIONAL { ?obs rdfs:label ?obsLabel . }
+  
+  # Find subgroup slices that specify sex
+  ?obs ind:hasSubgroupSlice ?slice .
+  ?slice ind:subgroupAxis ind:AxisSex ;
+         ind:subgroupValue ?sexConcept .
+  
+  # Get the human-readable sex label
+  ?sexConcept skos:prefLabel ?sex .
+}
+ORDER BY ?sex ?obs
+
+
+#################################################################
+# Query 2: Find all DSDs that use a specific axis
+#################################################################
+#
+# Purpose: Identify which Data Structure Definitions include a
+#          particular axis (e.g., AxisSex)
+#
+# Expected results: A list of DSDs and their specifications that
+#                   use the given axis
+#################################################################
+
+SELECT ?dsd ?dsdTitle ?spec ?axisLabel ?scheme ?minCard ?maxCard
+WHERE {
+  # Find DSDs with axis specifications
+  ?dsd a ind:DataStructureDefinition ;
+       dct:title ?dsdTitle ;
+       ind:hasAxisSpec ?spec .
+  
+  # Filter for the axis we're interested in (AxisSex in this example)
+  ?spec ind:axis ind:AxisSex .
+  
+  # Get axis details
+  ind:AxisSex rdfs:label ?axisLabel .
+  
+  # Get specification details
+  ?spec ind:valueScheme ?scheme ;
+        ind:minCardinality ?minCard ;
+        ind:maxCardinality ?maxCard .
+}
+ORDER BY ?dsdTitle
+
+
+#################################################################
+# Query 3: Validate cardinality constraints
+#################################################################
+#
+# Purpose: Check if any observations violate the cardinality
+#          constraints defined in their DSD
+#
+# Expected results: Observations that have more slices for an axis
+#                   than allowed by the maxCardinality constraint
+#                   (Empty result = all observations are valid)
+#################################################################
+
+SELECT ?obs ?obsLabel ?dsd ?axis ?axisLabel (COUNT(?slice) AS ?sliceCount) ?maxCard
+WHERE {
+  # Find observations with their DSD
+  ?obs a ind:IndicatorObservation ;
+       ind:usesDSD ?dsd ;
+       ind:hasSubgroupSlice ?slice .
+  
+  # Get optional observation label
+  OPTIONAL { ?obs rdfs:label ?obsLabel . }
+  
+  # Get the axis from the slice
+  ?slice ind:subgroupAxis ?axis .
+  
+  # Get axis label
+  ?axis rdfs:label ?axisLabel .
+  
+  # Find the axis specification in the DSD
+  ?dsd ind:hasAxisSpec ?spec .
+  ?spec ind:axis ?axis ;
+        ind:maxCardinality ?maxCard .
+  
+  # Filter for maxCardinality >= 0 (ignore -1 which means unbounded)
+  FILTER (?maxCard >= 0)
+}
+GROUP BY ?obs ?obsLabel ?dsd ?axis ?axisLabel ?maxCard
+# Only show violations where count exceeds maxCardinality
+HAVING (COUNT(?slice) > ?maxCard)
+ORDER BY ?obs ?axis
+
+
+#################################################################
+# Query 4: Find observations with multi-dimensional disaggregation
+#################################################################
+#
+# Purpose: Identify observations that use multiple axes simultaneously
+#          (e.g., sex AND urban/rural)
+#
+# Expected results: Observations with multiple disaggregation dimensions
+#################################################################
+
+SELECT ?obs ?obsLabel (GROUP_CONCAT(DISTINCT ?axisLabel; separator=", ") AS ?axes) (COUNT(DISTINCT ?axis) AS ?axisCount)
+WHERE {
+  ?obs a ind:IndicatorObservation ;
+       ind:hasSubgroupSlice ?slice .
+  
+  OPTIONAL { ?obs rdfs:label ?obsLabel . }
+  
+  ?slice ind:subgroupAxis ?axis .
+  ?axis rdfs:label ?axisLabel .
+}
+GROUP BY ?obs ?obsLabel
+HAVING (COUNT(DISTINCT ?axis) > 1)
+ORDER BY DESC(?axisCount) ?obs
+
+
+#################################################################
+# Query 5: Validate that subgroup values are in the correct scheme
+#################################################################
+#
+# Purpose: Check if subgroup values belong to the scheme declared
+#          by the DSD's axis specification
+#
+# Expected results: Any observations using values outside their
+#                   declared scheme (Empty result = all valid)
+#################################################################
+
+SELECT ?obs ?obsLabel ?axis ?axisLabel ?value ?valueLabel ?expectedScheme
+WHERE {
+  # Find observations with slices
+  ?obs a ind:IndicatorObservation ;
+       ind:usesDSD ?dsd ;
+       ind:hasSubgroupSlice ?slice .
+  
+  OPTIONAL { ?obs rdfs:label ?obsLabel . }
+  
+  # Get slice details
+  ?slice ind:subgroupAxis ?axis ;
+         ind:subgroupValue ?value .
+  
+  ?axis rdfs:label ?axisLabel .
+  
+  OPTIONAL { ?value skos:prefLabel ?valueLabel . }
+  
+  # Find the expected scheme from the DSD
+  ?dsd ind:hasAxisSpec ?spec .
+  ?spec ind:axis ?axis ;
+        ind:valueScheme ?expectedScheme .
+  
+  # Check if value is NOT in the expected scheme
+  FILTER NOT EXISTS {
+    ?value skos:inScheme ?expectedScheme .
+  }
+}
+ORDER BY ?obs ?axis
+
+
+#################################################################
+# Query 6: List all observations using repeatable axes
+#################################################################
+#
+# Purpose: Find observations that take advantage of repeatable
+#          axes (maxCardinality = -1) by using multiple values
+#          for the same axis
+#
+# Expected results: Observations with multiple slices for the
+#                   same axis (e.g., multiple land use types)
+#################################################################
+
+SELECT ?obs ?obsLabel ?axis ?axisLabel (GROUP_CONCAT(?valueLabel; separator=", ") AS ?values) (COUNT(?slice) AS ?sliceCount)
+WHERE {
+  ?obs a ind:IndicatorObservation ;
+       ind:hasSubgroupSlice ?slice .
+  
+  OPTIONAL { ?obs rdfs:label ?obsLabel . }
+  
+  ?slice ind:subgroupAxis ?axis ;
+         ind:subgroupValue ?value .
+  
+  ?axis rdfs:label ?axisLabel .
+  ?value skos:prefLabel ?valueLabel .
+}
+GROUP BY ?obs ?obsLabel ?axis ?axisLabel
+HAVING (COUNT(?slice) > 1)
+ORDER BY DESC(?sliceCount) ?obs
+
+
+#################################################################
+# Query 7: Summary statistics of DSD usage
+#################################################################
+#
+# Purpose: Provide an overview of how DSDs are being used across
+#          all observations
+#
+# Expected results: Counts of observations per DSD
+#################################################################
+
+SELECT ?dsd ?dsdTitle (COUNT(DISTINCT ?obs) AS ?observationCount)
+WHERE {
+  ?dsd a ind:DataStructureDefinition ;
+       dct:title ?dsdTitle .
+  
+  OPTIONAL {
+    ?obs ind:usesDSD ?dsd .
+  }
+}
+GROUP BY ?dsd ?dsdTitle
+ORDER BY DESC(?observationCount)
+
+
+#################################################################
+# Query 8: Check minimum cardinality constraints
+#################################################################
+#
+# Purpose: Verify that required axes (minCardinality > 0) are
+#          present in all observations
+#
+# Expected results: Observations missing required axis slices
+#                   (Empty result = all observations are valid)
+#################################################################
+
+SELECT ?obs ?obsLabel ?dsd ?axis ?axisLabel ?minCard
+WHERE {
+  # Find observations with their DSD
+  ?obs a ind:IndicatorObservation ;
+       ind:usesDSD ?dsd .
+  
+  OPTIONAL { ?obs rdfs:label ?obsLabel . }
+  
+  # Find required axes in the DSD (minCardinality > 0)
+  ?dsd ind:hasAxisSpec ?spec .
+  ?spec ind:axis ?axis ;
+        ind:minCardinality ?minCard .
+  
+  FILTER (?minCard > 0)
+  
+  ?axis rdfs:label ?axisLabel .
+  
+  # Check if the observation is missing this required axis
+  FILTER NOT EXISTS {
+    ?obs ind:hasSubgroupSlice ?slice .
+    ?slice ind:subgroupAxis ?axis .
+  }
+}
+ORDER BY ?obs ?axis
+
+
+#################################################################
+# Query 9: Compare observations across different schemes
+#################################################################
+#
+# Purpose: Show how different DSDs handle the same axis differently
+#          (e.g., different age categorization schemes)
+#
+# Expected results: Comparison of axis specifications across DSDs
+#################################################################
+
+SELECT ?axis ?axisLabel ?dsd ?dsdTitle ?scheme ?schemeLabel
+WHERE {
+  ?axis a ind:Axis ;
+        rdfs:label ?axisLabel .
+  
+  # Find all DSDs using this axis
+  ?dsd a ind:DataStructureDefinition ;
+       dct:title ?dsdTitle ;
+       ind:hasAxisSpec ?spec .
+  
+  ?spec ind:axis ?axis ;
+        ind:valueScheme ?scheme .
+  
+  OPTIONAL {
+    ?scheme skos:prefLabel ?schemeLabel .
+  }
+}
+ORDER BY ?axisLabel ?dsdTitle
+
+
+#################################################################
+# Query 10: Find indicator definitions with default DSDs
+#################################################################
+#
+# Purpose: Identify which indicators have been assigned default
+#          Data Structure Definitions
+#
+# Expected results: Indicators with their default DSD references
+#################################################################
+
+SELECT ?indicator ?indicatorLabel ?defaultDSD ?dsdTitle
+WHERE {
+  ?indicator a ind:IndicatorDefinition .
+  
+  OPTIONAL { ?indicator rdfs:label ?indicatorLabel . }
+  
+  # Check if indicator has a default DSD
+  OPTIONAL {
+    ?indicator ind:hasDefaultDSD ?defaultDSD .
+    ?defaultDSD dct:title ?dsdTitle .
+  }
+}
+ORDER BY ?indicator

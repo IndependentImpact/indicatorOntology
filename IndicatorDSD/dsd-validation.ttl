@@ -1,0 +1,85 @@
+@prefix sh: <http://www.w3.org/ns/shacl#> .
+@prefix ind: <http://independentimpact.org/indicator-owl/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix dct: <http://purl.org/dc/terms/> .
+
+#################################################################
+# SHACL Validation Shapes for DSD (Data Structure Definitions)
+#################################################################
+#
+# This file defines validation rules to ensure that observations
+# using DSDs conform to the specified structure and constraints.
+#
+# Created as part of Phase 5 of the DSD Implementation Plan
+#################################################################
+
+#################################################################
+# Shape 1: Validate that observations reference a DSD
+#################################################################
+
+ind:ObservationShape a sh:NodeShape ;
+  sh:targetClass ind:IndicatorObservation ;
+  sh:property [
+    sh:path ind:usesDSD ;
+    sh:class ind:DataStructureDefinition ;
+    sh:minCount 1 ;
+    sh:maxCount 1 ;
+    sh:message "Every observation must reference exactly one DSD."@en ;
+  ] .
+
+#################################################################
+# Shape 2: Validate subgroup slice structure
+#################################################################
+
+ind:SubgroupSliceShape a sh:NodeShape ;
+  sh:targetClass ind:SubgroupSlice ;
+  sh:property [
+    sh:path ind:subgroupAxis ;
+    sh:class ind:Axis ;
+    sh:minCount 1 ;
+    sh:maxCount 1 ;
+    sh:message "Each subgroup slice must specify exactly one axis."@en ;
+  ] ;
+  sh:property [
+    sh:path ind:subgroupValue ;
+    sh:nodeKind sh:IRI ;
+    sh:minCount 1 ;
+    sh:maxCount 1 ;
+    sh:message "Each subgroup slice must specify exactly one value (a SKOS Concept)."@en ;
+  ] .
+
+#################################################################
+# Shape 3: Validate that subgroup values are in the correct scheme
+# (This is complex - requires SPARQL-based validation)
+#################################################################
+
+ind:SubgroupValueInSchemeShape a sh:NodeShape ;
+  sh:targetClass ind:SubgroupSlice ;
+  sh:sparql [
+    sh:message "Subgroup value must be in the scheme declared by the axis specification."@en ;
+    sh:select """
+      PREFIX ind: <http://independentimpact.org/indicator-owl/>
+      PREFIX skos: <http://www.w3.org/2004/02/skos/core#>
+      SELECT $this
+      WHERE {
+        $this ind:subgroupAxis ?axis ;
+              ind:subgroupValue ?value .
+        
+        # Find the observation that has this slice
+        ?obs ind:hasSubgroupSlice $this ;
+             ind:usesDSD ?dsd .
+        
+        # Find the axis spec for this axis in this DSD
+        ?dsd ind:hasAxisSpec ?spec .
+        ?spec ind:axis ?axis ;
+              ind:valueScheme ?scheme .
+        
+        # Check if value is in the scheme
+        FILTER NOT EXISTS {
+          ?value skos:inScheme ?scheme .
+        }
+      }
+    """ ;
+  ] .

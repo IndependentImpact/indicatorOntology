@@ -1,0 +1,100 @@
+@prefix ind: <http://independentimpact.org/indicator-owl/> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+
+# Sex Axis
+ind:AxisSex a ind:Axis ;
+  rdfs:label "Sex"@en ;
+  skos:definition "Biological sex or gender identity classification."@en .
+
+# Age Category Axis
+ind:AxisAgeCategory a ind:Axis ;
+  rdfs:label "Age category"@en ;
+  skos:definition "Age groupings used for demographic analysis."@en .
+
+# Geographic Location Axis
+ind:AxisGeographicLocation a ind:Axis ;
+  rdfs:label "Geographic location"@en ;
+  skos:definition "Spatial disaggregation dimension (urban/rural, admin units, etc.)."@en .
+
+# Urban/Rural Axis
+ind:AxisUrbanRural a ind:Axis ;
+  rdfs:label "Urban/Rural"@en ;
+  skos:definition "Classification by urban or rural settlement type."@en .
+
+# Income Quintile Axis
+ind:AxisIncomeQuintile a ind:Axis ;
+  rdfs:label "Income quintile"@en ;
+  skos:definition "Population quintiles by household income."@en .
+
+# Employment Status Axis
+ind:AxisEmploymentStatus a ind:Axis ;
+  rdfs:label "Employment status"@en ;
+  skos:definition "Employment and labor force participation status."@en .
+
+# Disability Status Axis
+ind:AxisDisabilityStatus a ind:Axis ;
+  rdfs:label "Disability status"@en ;
+  skos:definition "Presence or absence of disability."@en .
+
+# Migration Status Axis
+ind:AxisMigrationStatus a ind:Axis ;
+  rdfs:label "Migration status"@en ;
+  skos:definition "Classification by citizenship, refugee, or migrant status."@en .
+
+# Education Level Axis
+ind:AxisEducationLevel a ind:Axis ;
+  rdfs:label "Education level"@en ;
+  skos:definition "Highest level of education attained."@en .
+
+# Land Use Type Axis (as per issue example)
+ind:AxisLandUseType a ind:Axis ;
+  rdfs:label "Land use type"@en ;
+  skos:definition "Classification of land by primary use or cover."@en .
+
+# Economic Age Category Axis (South Africa-specific, as per issue)
+ind:AxisZAEconomicAgeCategory a ind:Axis ;
+  rdfs:label "Economic/legal age category (South Africa)"@en ;
+  skos:definition "Age categories aligned with South African economic and legal definitions."@en .
+
+# Additional axes for comprehensive DSD coverage (Phase 3)
+
+# Economic Sector Axis
+ind:AxisEconomicSector a ind:Axis ;
+  rdfs:label "Economic sector"@en ;
+  skos:definition "Classification by primary economic sector (agriculture, industry, services)."@en .
+
+# Health Condition Axis
+ind:AxisHealthCondition a ind:Axis ;
+  rdfs:label "Health condition"@en ;
+  skos:definition "Classification by disease type, cause of death, or health category."@en .
+
+# Tenure Type Axis
+ind:AxisTenureType a ind:Axis ;
+  rdfs:label "Tenure type"@en ;
+  skos:definition "Classification by type of land or property tenure rights."@en .
+
+# Household Type Axis
+ind:AxisHouseholdType a ind:Axis ;
+  rdfs:label "Household type"@en ;
+  skos:definition "Classification by household characteristics or composition."@en .
+
+# Pregnancy Status Axis
+ind:AxisPregnancyStatus a ind:Axis ;
+  rdfs:label "Pregnancy status"@en ;
+  skos:definition "Classification by pregnancy and maternal health status."@en .
+
+# Vulnerability Category Axis
+ind:AxisVulnerabilityCategory a ind:Axis ;
+  rdfs:label "Vulnerability category"@en ;
+  skos:definition "Classification by vulnerability or poverty status."@en .
+
+# Ethnicity Axis
+ind:AxisEthnicity a ind:Axis ;
+  rdfs:label "Ethnicity"@en ;
+  skos:definition "Classification by ethnic group or indigenous status."@en .
+
+# Marital Status Axis
+ind:AxisMaritalStatus a ind:Axis ;
+  rdfs:label "Marital status"@en ;
+  skos:definition "Classification by marital or partnership status."@en .

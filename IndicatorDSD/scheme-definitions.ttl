@@ -1,0 +1,613 @@
+@prefix ind: <http://independentimpact.org/indicator-owl/> .
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+
+#################################################################
+# Sex Scheme (as per issue example)
+#################################################################
+
+ind:SexScheme_v1 a skos:ConceptScheme ;
+  skos:prefLabel "Sex scheme v1"@en ;
+  ind:definitionVersion "1.0" ;
+  skos:hasTopConcept ind:sex_female , ind:sex_male , 
+                     ind:sex_other , ind:sex_unknown .
+
+ind:sex_female a skos:Concept ;
+  skos:prefLabel "Female"@en ;
+  skos:inScheme ind:SexScheme_v1 ;
+  skos:topConceptOf ind:SexScheme_v1 ;
+  skos:notation "F" .
+
+ind:sex_male a skos:Concept ;
+  skos:prefLabel "Male"@en ;
+  skos:inScheme ind:SexScheme_v1 ;
+  skos:topConceptOf ind:SexScheme_v1 ;
+  skos:notation "M" .
+
+ind:sex_other a skos:Concept ;
+  skos:prefLabel "Other / non-binary"@en ;
+  skos:inScheme ind:SexScheme_v1 ;
+  skos:topConceptOf ind:SexScheme_v1 ;
+  skos:notation "X" .
+
+ind:sex_unknown a skos:Concept ;
+  skos:prefLabel "Unknown / not stated"@en ;
+  skos:inScheme ind:SexScheme_v1 ;
+  skos:topConceptOf ind:SexScheme_v1 ;
+  skos:notation "U" .
+
+#################################################################
+# Urban/Rural Scheme
+#################################################################
+
+ind:UrbanRuralScheme_v1 a skos:ConceptScheme ;
+  skos:prefLabel "Urban/Rural scheme v1"@en ;
+  ind:definitionVersion "1.0" ;
+  skos:hasTopConcept ind:urban , ind:rural .
+
+ind:urban a skos:Concept ;
+  skos:prefLabel "Urban"@en ;
+  skos:inScheme ind:UrbanRuralScheme_v1 ;
+  skos:topConceptOf ind:UrbanRuralScheme_v1 ;
+  skos:notation "URB" .
+
+ind:rural a skos:Concept ;
+  skos:prefLabel "Rural"@en ;
+  skos:inScheme ind:UrbanRuralScheme_v1 ;
+  skos:topConceptOf ind:UrbanRuralScheme_v1 ;
+  skos:notation "RUR" .
+
+#################################################################
+# Income Quintile Scheme
+#################################################################
+
+ind:IncomeQuintileScheme_v1 a skos:ConceptScheme ;
+  skos:prefLabel "Income quintile scheme v1"@en ;
+  ind:definitionVersion "1.0" ;
+  skos:hasTopConcept ind:quintile_1 , ind:quintile_2 , 
+                     ind:quintile_3 , ind:quintile_4 , ind:quintile_5 .
+
+ind:quintile_1 a skos:Concept ;
+  skos:prefLabel "Quintile 1 (poorest 20%)"@en ;
+  skos:inScheme ind:IncomeQuintileScheme_v1 ;
+  skos:topConceptOf ind:IncomeQuintileScheme_v1 ;
+  skos:notation "Q1" .
+
+ind:quintile_2 a skos:Concept ;
+  skos:prefLabel "Quintile 2"@en ;
+  skos:inScheme ind:IncomeQuintileScheme_v1 ;
+  skos:topConceptOf ind:IncomeQuintileScheme_v1 ;
+  skos:notation "Q2" .
+
+ind:quintile_3 a skos:Concept ;
+  skos:prefLabel "Quintile 3"@en ;
+  skos:inScheme ind:IncomeQuintileScheme_v1 ;
+  skos:topConceptOf ind:IncomeQuintileScheme_v1 ;
+  skos:notation "Q3" .
+
+ind:quintile_4 a skos:Concept ;
+  skos:prefLabel "Quintile 4"@en ;
+  skos:inScheme ind:IncomeQuintileScheme_v1 ;
+  skos:topConceptOf ind:IncomeQuintileScheme_v1 ;
+  skos:notation "Q4" .
+
+ind:quintile_5 a skos:Concept ;
+  skos:prefLabel "Quintile 5 (richest 20%)"@en ;
+  skos:inScheme ind:IncomeQuintileScheme_v1 ;
+  skos:topConceptOf ind:IncomeQuintileScheme_v1 ;
+  skos:notation "Q5" .
+
+#################################################################
+# Land Use Type Scheme (as per issue example)
+#################################################################
+
+ind:LandUseTypeScheme_v1 a skos:ConceptScheme ;
+  skos:prefLabel "Land use type scheme v1"@en ;
+  ind:definitionVersion "1.0" ;
+  skos:hasTopConcept ind:lu_residential_builtup , ind:lu_cropland ,
+                     ind:lu_rangeland , ind:lu_forest_woodland ,
+                     ind:lu_wetland , ind:lu_open_water , ind:lu_mining_quarrying .
+
+ind:lu_residential_builtup a skos:Concept ;
+  skos:prefLabel "Residential / built-up"@en ;
+  skos:inScheme ind:LandUseTypeScheme_v1 ;
+  skos:topConceptOf ind:LandUseTypeScheme_v1 ;
+  skos:notation "RES" .
+
+ind:lu_cropland a skos:Concept ;
+  skos:prefLabel "Cropland"@en ;
+  skos:inScheme ind:LandUseTypeScheme_v1 ;
+  skos:topConceptOf ind:LandUseTypeScheme_v1 ;
+  skos:notation "CROP" .
+
+ind:lu_rangeland a skos:Concept ;
+  skos:prefLabel "Rangeland / grazing"@en ;
+  skos:inScheme ind:LandUseTypeScheme_v1 ;
+  skos:topConceptOf ind:LandUseTypeScheme_v1 ;
+  skos:notation "RANGE" .
+
+ind:lu_forest_woodland a skos:Concept ;
+  skos:prefLabel "Forest / woodland"@en ;
+  skos:inScheme ind:LandUseTypeScheme_v1 ;
+  skos:topConceptOf ind:LandUseTypeScheme_v1 ;
+  skos:notation "FOR" .
+
+ind:lu_wetland a skos:Concept ;
+  skos:prefLabel "Wetland"@en ;
+  skos:inScheme ind:LandUseTypeScheme_v1 ;
+  skos:topConceptOf ind:LandUseTypeScheme_v1 ;
+  skos:notation "WET" .
+
+ind:lu_open_water a skos:Concept ;
+  skos:prefLabel "Open water"@en ;
+  skos:inScheme ind:LandUseTypeScheme_v1 ;
+  skos:topConceptOf ind:LandUseTypeScheme_v1 ;
+  skos:notation "WATER" .
+
+ind:lu_mining_quarrying a skos:Concept ;
+  skos:prefLabel "Mining / quarrying"@en ;
+  skos:inScheme ind:LandUseTypeScheme_v1 ;
+  skos:topConceptOf ind:LandUseTypeScheme_v1 ;
+  skos:notation "MIN" .
+
+#################################################################
+# South African Economic Age Category Scheme (as per issue example)
+#################################################################
+
+ind:ZAEconomicAgeCategoryScheme_v1 a skos:ConceptScheme ;
+  skos:prefLabel "South Africa: economic/legal age categories v1"@en ;
+  ind:definitionVersion "1.0" ;
+  skos:note "This is a platform scheme for local indicator reporting. If you require strict legal alignment for sex-dependent thresholds, enforce it in validation rules or publish a v2 scheme with sex-specific concepts."@en ;
+  skos:hasTopConcept ind:za_age_child_u18 , ind:za_age_working_15_64 , ind:za_age_older_60plus .
+
+ind:za_age_child_u18 a skos:Concept ;
+  skos:prefLabel "Child (<18)"@en ;
+  skos:inScheme ind:ZAEconomicAgeCategoryScheme_v1 ;
+  skos:topConceptOf ind:ZAEconomicAgeCategoryScheme_v1 ;
+  skos:notation "CHILD_U18" .
+
+ind:za_age_working_15_64 a skos:Concept ;
+  skos:prefLabel "Working-age (15–64)"@en ;
+  skos:inScheme ind:ZAEconomicAgeCategoryScheme_v1 ;
+  skos:topConceptOf ind:ZAEconomicAgeCategoryScheme_v1 ;
+  skos:notation "WORK_15_64" .
+
+ind:za_age_older_60plus a skos:Concept ;
+  skos:prefLabel "Older (60+)"@en ;
+  skos:inScheme ind:ZAEconomicAgeCategoryScheme_v1 ;
+  skos:topConceptOf ind:ZAEconomicAgeCategoryScheme_v1 ;
+  skos:notation "OLDER_60P" .
+
+#################################################################
+# Global Age Scheme (for international SDG indicators)
+#################################################################
+
+ind:GlobalAgeScheme_v1 a skos:ConceptScheme ;
+  skos:prefLabel "Global age categories v1"@en ;
+  ind:definitionVersion "1.0" ;
+  skos:note "Standard age groupings for international comparison, commonly used in SDG indicators."@en ;
+  skos:hasTopConcept ind:age_0_4 , ind:age_5_9 , ind:age_10_14 , 
+                     ind:age_15_19 , ind:age_20_24 , ind:age_25_29 ,
+                     ind:age_30_34 , ind:age_35_39 , ind:age_40_44 ,
+                     ind:age_45_49 , ind:age_50_54 , ind:age_55_59 ,
+                     ind:age_60_64 , ind:age_65_plus .
+
+ind:age_0_4 a skos:Concept ;
+  skos:prefLabel "0-4 years"@en ;
+  skos:inScheme ind:GlobalAgeScheme_v1 ;
+  skos:topConceptOf ind:GlobalAgeScheme_v1 ;
+  skos:notation "AGE_0_4" .
+
+ind:age_5_9 a skos:Concept ;
+  skos:prefLabel "5-9 years"@en ;
+  skos:inScheme ind:GlobalAgeScheme_v1 ;
+  skos:topConceptOf ind:GlobalAgeScheme_v1 ;
+  skos:notation "AGE_5_9" .
+
+ind:age_10_14 a skos:Concept ;
+  skos:prefLabel "10-14 years"@en ;
+  skos:inScheme ind:GlobalAgeScheme_v1 ;
+  skos:topConceptOf ind:GlobalAgeScheme_v1 ;
+  skos:notation "AGE_10_14" .
+
+ind:age_15_19 a skos:Concept ;
+  skos:prefLabel "15-19 years"@en ;
+  skos:inScheme ind:GlobalAgeScheme_v1 ;
+  skos:topConceptOf ind:GlobalAgeScheme_v1 ;
+  skos:notation "AGE_15_19" .
+
+ind:age_20_24 a skos:Concept ;
+  skos:prefLabel "20-24 years"@en ;
+  skos:inScheme ind:GlobalAgeScheme_v1 ;
+  skos:topConceptOf ind:GlobalAgeScheme_v1 ;
+  skos:notation "AGE_20_24" .
+
+ind:age_25_29 a skos:Concept ;
+  skos:prefLabel "25-29 years"@en ;
+  skos:inScheme ind:GlobalAgeScheme_v1 ;
+  skos:topConceptOf ind:GlobalAgeScheme_v1 ;
+  skos:notation "AGE_25_29" .
+
+ind:age_30_34 a skos:Concept ;
+  skos:prefLabel "30-34 years"@en ;
+  skos:inScheme ind:GlobalAgeScheme_v1 ;
+  skos:topConceptOf ind:GlobalAgeScheme_v1 ;
+  skos:notation "AGE_30_34" .
+
+ind:age_35_39 a skos:Concept ;
+  skos:prefLabel "35-39 years"@en ;
+  skos:inScheme ind:GlobalAgeScheme_v1 ;
+  skos:topConceptOf ind:GlobalAgeScheme_v1 ;
+  skos:notation "AGE_35_39" .
+
+ind:age_40_44 a skos:Concept ;
+  skos:prefLabel "40-44 years"@en ;
+  skos:inScheme ind:GlobalAgeScheme_v1 ;
+  skos:topConceptOf ind:GlobalAgeScheme_v1 ;
+  skos:notation "AGE_40_44" .
+
+ind:age_45_49 a skos:Concept ;
+  skos:prefLabel "45-49 years"@en ;
+  skos:inScheme ind:GlobalAgeScheme_v1 ;
+  skos:topConceptOf ind:GlobalAgeScheme_v1 ;
+  skos:notation "AGE_45_49" .
+
+ind:age_50_54 a skos:Concept ;
+  skos:prefLabel "50-54 years"@en ;
+  skos:inScheme ind:GlobalAgeScheme_v1 ;
+  skos:topConceptOf ind:GlobalAgeScheme_v1 ;
+  skos:notation "AGE_50_54" .
+
+ind:age_55_59 a skos:Concept ;
+  skos:prefLabel "55-59 years"@en ;
+  skos:inScheme ind:GlobalAgeScheme_v1 ;
+  skos:topConceptOf ind:GlobalAgeScheme_v1 ;
+  skos:notation "AGE_55_59" .
+
+ind:age_60_64 a skos:Concept ;
+  skos:prefLabel "60-64 years"@en ;
+  skos:inScheme ind:GlobalAgeScheme_v1 ;
+  skos:topConceptOf ind:GlobalAgeScheme_v1 ;
+  skos:notation "AGE_60_64" .
+
+ind:age_65_plus a skos:Concept ;
+  skos:prefLabel "65+ years"@en ;
+  skos:inScheme ind:GlobalAgeScheme_v1 ;
+  skos:topConceptOf ind:GlobalAgeScheme_v1 ;
+  skos:notation "AGE_65_PLUS" .
+
+#################################################################
+# Administrative Unit Scheme (placeholder for geographic disaggregation)
+#################################################################
+
+ind:AdminUnitScheme_v1 a skos:ConceptScheme ;
+  skos:prefLabel "Administrative unit scheme v1"@en ;
+  ind:definitionVersion "1.0" ;
+  skos:note "Placeholder scheme for administrative geographic units. In practice, this would reference a specific geographic classification system (e.g., ISO 3166, national admin boundaries)."@en ;
+  skos:hasTopConcept ind:admin_national , ind:admin_regional , ind:admin_local .
+
+ind:admin_national a skos:Concept ;
+  skos:prefLabel "National level"@en ;
+  skos:inScheme ind:AdminUnitScheme_v1 ;
+  skos:topConceptOf ind:AdminUnitScheme_v1 ;
+  skos:notation "NATIONAL" ;
+  skos:definition "Data aggregated at the national/country level."@en .
+
+ind:admin_regional a skos:Concept ;
+  skos:prefLabel "Regional level"@en ;
+  skos:inScheme ind:AdminUnitScheme_v1 ;
+  skos:topConceptOf ind:AdminUnitScheme_v1 ;
+  skos:notation "REGIONAL" ;
+  skos:definition "Data aggregated at the regional/provincial/state level."@en .
+
+ind:admin_local a skos:Concept ;
+  skos:prefLabel "Local level"@en ;
+  skos:inScheme ind:AdminUnitScheme_v1 ;
+  skos:topConceptOf ind:AdminUnitScheme_v1 ;
+  skos:notation "LOCAL" ;
+  skos:definition "Data aggregated at the local/municipal/district level."@en .
+
+#################################################################
+# Economic Sector Scheme
+#################################################################
+
+ind:EconomicSectorScheme_v1 a skos:ConceptScheme ;
+  skos:prefLabel "Economic sector scheme v1"@en ;
+  ind:definitionVersion "1.0" ;
+  skos:hasTopConcept ind:sector_agriculture , ind:sector_industry , 
+                     ind:sector_services .
+
+ind:sector_agriculture a skos:Concept ;
+  skos:prefLabel "Agriculture"@en ;
+  skos:inScheme ind:EconomicSectorScheme_v1 ;
+  skos:topConceptOf ind:EconomicSectorScheme_v1 ;
+  skos:notation "AGR" .
+
+ind:sector_industry a skos:Concept ;
+  skos:prefLabel "Industry"@en ;
+  skos:inScheme ind:EconomicSectorScheme_v1 ;
+  skos:topConceptOf ind:EconomicSectorScheme_v1 ;
+  skos:notation "IND" .
+
+ind:sector_services a skos:Concept ;
+  skos:prefLabel "Services"@en ;
+  skos:inScheme ind:EconomicSectorScheme_v1 ;
+  skos:topConceptOf ind:EconomicSectorScheme_v1 ;
+  skos:notation "SRV" .
+
+#################################################################
+# Employment Status Scheme
+#################################################################
+
+ind:EmploymentStatusScheme_v1 a skos:ConceptScheme ;
+  skos:prefLabel "Employment status scheme v1"@en ;
+  ind:definitionVersion "1.0" ;
+  skos:hasTopConcept ind:employment_employed , ind:employment_unemployed ,
+                     ind:employment_not_in_labor_force .
+
+ind:employment_employed a skos:Concept ;
+  skos:prefLabel "Employed"@en ;
+  skos:inScheme ind:EmploymentStatusScheme_v1 ;
+  skos:topConceptOf ind:EmploymentStatusScheme_v1 ;
+  skos:notation "EMP" .
+
+ind:employment_unemployed a skos:Concept ;
+  skos:prefLabel "Unemployed"@en ;
+  skos:inScheme ind:EmploymentStatusScheme_v1 ;
+  skos:topConceptOf ind:EmploymentStatusScheme_v1 ;
+  skos:notation "UNE" .
+
+ind:employment_not_in_labor_force a skos:Concept ;
+  skos:prefLabel "Not in labor force"@en ;
+  skos:inScheme ind:EmploymentStatusScheme_v1 ;
+  skos:topConceptOf ind:EmploymentStatusScheme_v1 ;
+  skos:notation "NLF" .
+
+#################################################################
+# Disability Status Scheme
+#################################################################
+
+ind:DisabilityStatusScheme_v1 a skos:ConceptScheme ;
+  skos:prefLabel "Disability status scheme v1"@en ;
+  ind:definitionVersion "1.0" ;
+  skos:hasTopConcept ind:disability_with_disability , 
+                     ind:disability_without_disability .
+
+ind:disability_with_disability a skos:Concept ;
+  skos:prefLabel "Persons with disabilities"@en ;
+  skos:inScheme ind:DisabilityStatusScheme_v1 ;
+  skos:topConceptOf ind:DisabilityStatusScheme_v1 ;
+  skos:notation "PWD" .
+
+ind:disability_without_disability a skos:Concept ;
+  skos:prefLabel "Persons without disabilities"@en ;
+  skos:inScheme ind:DisabilityStatusScheme_v1 ;
+  skos:topConceptOf ind:DisabilityStatusScheme_v1 ;
+  skos:notation "WOD" .
+
+#################################################################
+# Migration Status Scheme
+#################################################################
+
+ind:MigrationStatusScheme_v1 a skos:ConceptScheme ;
+  skos:prefLabel "Migration status scheme v1"@en ;
+  ind:definitionVersion "1.0" ;
+  skos:hasTopConcept ind:migration_citizen , ind:migration_migrant ,
+                     ind:migration_refugee .
+
+ind:migration_citizen a skos:Concept ;
+  skos:prefLabel "Citizen"@en ;
+  skos:inScheme ind:MigrationStatusScheme_v1 ;
+  skos:topConceptOf ind:MigrationStatusScheme_v1 ;
+  skos:notation "CTZ" .
+
+ind:migration_migrant a skos:Concept ;
+  skos:prefLabel "Migrant"@en ;
+  skos:inScheme ind:MigrationStatusScheme_v1 ;
+  skos:topConceptOf ind:MigrationStatusScheme_v1 ;
+  skos:notation "MIG" .
+
+ind:migration_refugee a skos:Concept ;
+  skos:prefLabel "Refugee"@en ;
+  skos:inScheme ind:MigrationStatusScheme_v1 ;
+  skos:topConceptOf ind:MigrationStatusScheme_v1 ;
+  skos:notation "REF" .
+
+#################################################################
+# Education Level Scheme
+#################################################################
+
+ind:EducationLevelScheme_v1 a skos:ConceptScheme ;
+  skos:prefLabel "Education level scheme v1"@en ;
+  ind:definitionVersion "1.0" ;
+  skos:hasTopConcept ind:education_no_education , ind:education_primary ,
+                     ind:education_secondary , ind:education_tertiary .
+
+ind:education_no_education a skos:Concept ;
+  skos:prefLabel "No formal education"@en ;
+  skos:inScheme ind:EducationLevelScheme_v1 ;
+  skos:topConceptOf ind:EducationLevelScheme_v1 ;
+  skos:notation "EDU0" .
+
+ind:education_primary a skos:Concept ;
+  skos:prefLabel "Primary education"@en ;
+  skos:inScheme ind:EducationLevelScheme_v1 ;
+  skos:topConceptOf ind:EducationLevelScheme_v1 ;
+  skos:notation "EDU1" .
+
+ind:education_secondary a skos:Concept ;
+  skos:prefLabel "Secondary education"@en ;
+  skos:inScheme ind:EducationLevelScheme_v1 ;
+  skos:topConceptOf ind:EducationLevelScheme_v1 ;
+  skos:notation "EDU2" .
+
+ind:education_tertiary a skos:Concept ;
+  skos:prefLabel "Tertiary education"@en ;
+  skos:inScheme ind:EducationLevelScheme_v1 ;
+  skos:topConceptOf ind:EducationLevelScheme_v1 ;
+  skos:notation "EDU3" .
+
+#################################################################
+# Health Condition Scheme (Generic)
+#################################################################
+
+ind:HealthConditionScheme_v1 a skos:ConceptScheme ;
+  skos:prefLabel "Health condition scheme v1"@en ;
+  ind:definitionVersion "1.0" ;
+  skos:definition "Generic health condition categories for SDG indicators."@en ;
+  skos:hasTopConcept ind:health_communicable , ind:health_noncommunicable ,
+                     ind:health_maternal , ind:health_child ,
+                     ind:health_injury .
+
+ind:health_communicable a skos:Concept ;
+  skos:prefLabel "Communicable diseases"@en ;
+  skos:inScheme ind:HealthConditionScheme_v1 ;
+  skos:topConceptOf ind:HealthConditionScheme_v1 ;
+  skos:notation "COM" .
+
+ind:health_noncommunicable a skos:Concept ;
+  skos:prefLabel "Non-communicable diseases"@en ;
+  skos:inScheme ind:HealthConditionScheme_v1 ;
+  skos:topConceptOf ind:HealthConditionScheme_v1 ;
+  skos:notation "NCD" .
+
+ind:health_maternal a skos:Concept ;
+  skos:prefLabel "Maternal health"@en ;
+  skos:inScheme ind:HealthConditionScheme_v1 ;
+  skos:topConceptOf ind:HealthConditionScheme_v1 ;
+  skos:notation "MAT" .
+
+ind:health_child a skos:Concept ;
+  skos:prefLabel "Child health"@en ;
+  skos:inScheme ind:HealthConditionScheme_v1 ;
+  skos:topConceptOf ind:HealthConditionScheme_v1 ;
+  skos:notation "CHD" .
+
+ind:health_injury a skos:Concept ;
+  skos:prefLabel "Injuries"@en ;
+  skos:inScheme ind:HealthConditionScheme_v1 ;
+  skos:topConceptOf ind:HealthConditionScheme_v1 ;
+  skos:notation "INJ" .
+
+#################################################################
+# Tenure Type Scheme
+#################################################################
+
+ind:TenureTypeScheme_v1 a skos:ConceptScheme ;
+  skos:prefLabel "Tenure type scheme v1"@en ;
+  ind:definitionVersion "1.0" ;
+  skos:hasTopConcept ind:tenure_owned , ind:tenure_rented ,
+                     ind:tenure_customary , ind:tenure_informal .
+
+ind:tenure_owned a skos:Concept ;
+  skos:prefLabel "Owned with title"@en ;
+  skos:inScheme ind:TenureTypeScheme_v1 ;
+  skos:topConceptOf ind:TenureTypeScheme_v1 ;
+  skos:notation "OWN" .
+
+ind:tenure_rented a skos:Concept ;
+  skos:prefLabel "Rented"@en ;
+  skos:inScheme ind:TenureTypeScheme_v1 ;
+  skos:topConceptOf ind:TenureTypeScheme_v1 ;
+  skos:notation "RNT" .
+
+ind:tenure_customary a skos:Concept ;
+  skos:prefLabel "Customary rights"@en ;
+  skos:inScheme ind:TenureTypeScheme_v1 ;
+  skos:topConceptOf ind:TenureTypeScheme_v1 ;
+  skos:notation "CST" .
+
+ind:tenure_informal a skos:Concept ;
+  skos:prefLabel "Informal/no documentation"@en ;
+  skos:inScheme ind:TenureTypeScheme_v1 ;
+  skos:topConceptOf ind:TenureTypeScheme_v1 ;
+  skos:notation "INF" .
+
+#################################################################
+# Household Type Scheme
+#################################################################
+
+ind:HouseholdTypeScheme_v1 a skos:ConceptScheme ;
+  skos:prefLabel "Household type scheme v1"@en ;
+  ind:definitionVersion "1.0" ;
+  skos:hasTopConcept ind:household_single , ind:household_couple ,
+                     ind:household_nuclear , ind:household_extended .
+
+ind:household_single a skos:Concept ;
+  skos:prefLabel "Single person"@en ;
+  skos:inScheme ind:HouseholdTypeScheme_v1 ;
+  skos:topConceptOf ind:HouseholdTypeScheme_v1 ;
+  skos:notation "SIN" .
+
+ind:household_couple a skos:Concept ;
+  skos:prefLabel "Couple without children"@en ;
+  skos:inScheme ind:HouseholdTypeScheme_v1 ;
+  skos:topConceptOf ind:HouseholdTypeScheme_v1 ;
+  skos:notation "CPL" .
+
+ind:household_nuclear a skos:Concept ;
+  skos:prefLabel "Nuclear family"@en ;
+  skos:inScheme ind:HouseholdTypeScheme_v1 ;
+  skos:topConceptOf ind:HouseholdTypeScheme_v1 ;
+  skos:notation "NUC" .
+
+ind:household_extended a skos:Concept ;
+  skos:prefLabel "Extended family"@en ;
+  skos:inScheme ind:HouseholdTypeScheme_v1 ;
+  skos:topConceptOf ind:HouseholdTypeScheme_v1 ;
+  skos:notation "EXT" .
+
+#################################################################
+# Pregnancy Status Scheme
+#################################################################
+
+ind:PregnancyStatusScheme_v1 a skos:ConceptScheme ;
+  skos:prefLabel "Pregnancy status scheme v1"@en ;
+  ind:definitionVersion "1.0" ;
+  skos:hasTopConcept ind:pregnancy_pregnant , ind:pregnancy_not_pregnant ,
+                     ind:pregnancy_postpartum .
+
+ind:pregnancy_pregnant a skos:Concept ;
+  skos:prefLabel "Pregnant"@en ;
+  skos:inScheme ind:PregnancyStatusScheme_v1 ;
+  skos:topConceptOf ind:PregnancyStatusScheme_v1 ;
+  skos:notation "PRG" .
+
+ind:pregnancy_not_pregnant a skos:Concept ;
+  skos:prefLabel "Not pregnant"@en ;
+  skos:inScheme ind:PregnancyStatusScheme_v1 ;
+  skos:topConceptOf ind:PregnancyStatusScheme_v1 ;
+  skos:notation "NPR" .
+
+ind:pregnancy_postpartum a skos:Concept ;
+  skos:prefLabel "Postpartum"@en ;
+  skos:inScheme ind:PregnancyStatusScheme_v1 ;
+  skos:topConceptOf ind:PregnancyStatusScheme_v1 ;
+  skos:notation "PPT" .
+
+#################################################################
+# Vulnerability Category Scheme
+#################################################################
+
+ind:VulnerabilityCategoryScheme_v1 a skos:ConceptScheme ;
+  skos:prefLabel "Vulnerability category scheme v1"@en ;
+  ind:definitionVersion "1.0" ;
+  skos:hasTopConcept ind:vulnerability_poor , ind:vulnerability_vulnerable ,
+                     ind:vulnerability_not_vulnerable .
+
+ind:vulnerability_poor a skos:Concept ;
+  skos:prefLabel "Poor"@en ;
+  skos:inScheme ind:VulnerabilityCategoryScheme_v1 ;
+  skos:topConceptOf ind:VulnerabilityCategoryScheme_v1 ;
+  skos:notation "POOR" .
+
+ind:vulnerability_vulnerable a skos:Concept ;
+  skos:prefLabel "Vulnerable"@en ;
+  skos:inScheme ind:VulnerabilityCategoryScheme_v1 ;
+  skos:topConceptOf ind:VulnerabilityCategoryScheme_v1 ;
+  skos:notation "VUL" .
+
+ind:vulnerability_not_vulnerable a skos:Concept ;
+  skos:prefLabel "Not vulnerable"@en ;
+  skos:inScheme ind:VulnerabilityCategoryScheme_v1 ;
+  skos:topConceptOf ind:VulnerabilityCategoryScheme_v1 ;
+  skos:notation "NVUL" .
