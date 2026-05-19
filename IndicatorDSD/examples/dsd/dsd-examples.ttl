@@ -1,0 +1,120 @@
+@prefix ind: <http://independentimpact.org/indicator-owl/> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+
+#################################################################
+# DSD Example 1: Basic Social Indicator (Poverty, Health, Education)
+#################################################################
+
+ind:DSD_BasicSocial_v1 a ind:DataStructureDefinition ;
+  dct:title "Basic social indicator DSD v1"@en ;
+  dct:description "Applicable to most social indicators requiring sex, age, and location disaggregation."@en ;
+  ind:hasAxisSpec ind:Spec_BasicSocial_Sex , 
+                    ind:Spec_BasicSocial_Age , 
+                    ind:Spec_BasicSocial_UrbanRural .
+
+ind:Spec_BasicSocial_Sex a ind:AxisSpecification ;
+  ind:axis ind:AxisSex ;
+  ind:axisRole ind:DimensionRole ;
+  ind:valueScheme ind:SexScheme_v1 ;
+  ind:minCardinality 0 ;
+  ind:maxCardinality 1 .
+
+ind:Spec_BasicSocial_Age a ind:AxisSpecification ;
+  ind:axis ind:AxisAgeCategory ;
+  ind:axisRole ind:DimensionRole ;
+  ind:valueScheme ind:GlobalAgeScheme_v1 ;
+  ind:minCardinality 0 ;
+  ind:maxCardinality 1 .
+
+ind:Spec_BasicSocial_UrbanRural a ind:AxisSpecification ;
+  ind:axis ind:AxisUrbanRural ;
+  ind:axisRole ind:DimensionRole ;
+  ind:valueScheme ind:UrbanRuralScheme_v1 ;
+  ind:minCardinality 0 ;
+  ind:maxCardinality 1 .
+
+#################################################################
+# DSD Example 2: Economic Inequality Indicator
+#################################################################
+
+ind:DSD_EconomicInequality_v1 a ind:DataStructureDefinition ;
+  dct:title "Economic inequality indicator DSD v1"@en ;
+  dct:description "For indicators tracking income distribution and economic disparities."@en ;
+  ind:hasAxisSpec ind:Spec_EconIneq_IncomeQuintile , 
+                    ind:Spec_EconIneq_Sex , 
+                    ind:Spec_EconIneq_UrbanRural .
+
+ind:Spec_EconIneq_IncomeQuintile a ind:AxisSpecification ;
+  ind:axis ind:AxisIncomeQuintile ;
+  ind:axisRole ind:DimensionRole ;
+  ind:valueScheme ind:IncomeQuintileScheme_v1 ;
+  ind:minCardinality 0 ;
+  ind:maxCardinality 1 .
+
+ind:Spec_EconIneq_Sex a ind:AxisSpecification ;
+  ind:axis ind:AxisSex ;
+  ind:axisRole ind:DimensionRole ;
+  ind:valueScheme ind:SexScheme_v1 ;
+  ind:minCardinality 0 ;
+  ind:maxCardinality 1 .
+
+ind:Spec_EconIneq_UrbanRural a ind:AxisSpecification ;
+  ind:axis ind:AxisUrbanRural ;
+  ind:axisRole ind:DimensionRole ;
+  ind:valueScheme ind:UrbanRuralScheme_v1 ;
+  ind:minCardinality 0 ;
+  ind:maxCardinality 1 .
+
+#################################################################
+# DSD Example 3: Local Health Indicator (as per issue example)
+#################################################################
+
+ind:DSD_LocalHealth_v1 a ind:DataStructureDefinition ;
+  dct:title "Local health indicator DSD v1"@en ;
+  dct:description "For health indicators in specific regional contexts (e.g., South Africa)."@en ;
+  ind:hasAxisSpec ind:Spec_Sex , ind:Spec_ZAEconAge , ind:Spec_LandUse .
+
+ind:Spec_Sex a ind:AxisSpecification ;
+  ind:axis ind:AxisSex ;
+  ind:axisRole ind:DimensionRole ;
+  ind:valueScheme ind:SexScheme_v1 ;
+  ind:minCardinality 0 ;
+  ind:maxCardinality 1 .
+
+ind:Spec_ZAEconAge a ind:AxisSpecification ;
+  ind:axis ind:AxisZAEconomicAgeCategory ;
+  ind:axisRole ind:DimensionRole ;
+  ind:valueScheme ind:ZAEconomicAgeCategoryScheme_v1 ;
+  ind:minCardinality 0 ;
+  ind:maxCardinality 1 .
+
+ind:Spec_LandUse a ind:AxisSpecification ;
+  ind:axis ind:AxisLandUseType ;
+  ind:axisRole ind:DimensionRole ;
+  ind:valueScheme ind:LandUseTypeScheme_v1 ;
+  ind:minCardinality 0 ;
+  ind:maxCardinality 1 .
+
+#################################################################
+# DSD Example 4: Environmental Indicator with Repeatable Axes
+#################################################################
+
+ind:DSD_Environmental_v1 a ind:DataStructureDefinition ;
+  dct:title "Environmental indicator DSD v1"@en ;
+  dct:description "For environmental indicators tracking multiple land use types or ecosystem services."@en ;
+  ind:hasAxisSpec ind:Spec_Env_LandUse , ind:Spec_Env_Location .
+
+ind:Spec_Env_LandUse a ind:AxisSpecification ;
+  ind:axis ind:AxisLandUseType ;
+  ind:axisRole ind:DimensionRole ;
+  ind:valueScheme ind:LandUseTypeScheme_v1 ;
+  ind:minCardinality 0 ;
+  ind:maxCardinality -1 .  # Repeatable - can track multiple land use types
+
+ind:Spec_Env_Location a ind:AxisSpecification ;
+  ind:axis ind:AxisGeographicLocation ;
+  ind:axisRole ind:DimensionRole ;
+  ind:valueScheme ind:AdminUnitScheme_v1 ;
+  ind:minCardinality 1 ;  # Required
+  ind:maxCardinality 1 .

@@ -22,3 +22,4 @@ Thumbs.db
 # *.owl
 # *.jsonld
 # docs/*.html
+.Rproj.user

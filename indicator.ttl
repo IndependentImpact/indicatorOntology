@@ -11,6 +11,7 @@
 @prefix qudt:      <http://qudt.org/schema/qudt/> .
 @prefix unit:      <http://qudt.org/vocab/unit/> .
 @prefix prov:      <http://www.w3.org/ns/prov#> .
+@prefix time:      <http://www.w3.org/2006/time#> .
 @prefix xsd:       <http://www.w3.org/2001/XMLSchema#> .
 
 ind: a owl:Ontology ;
@@ -80,28 +81,19 @@ ind:IndicatorRationale a owl:Class ;
   rdfs:label "Indicator rationale"@en ;
   skos:definition "Narrative justification for why the indicator is relevant to the objective or state being monitored."@en .
 
-ind:IndicatorReport a owl:Class ;
-  rdfs:subClassOf claimont:Report , infocomm:Information ;
-  rdfs:label "Indicator report"@en ;
-  skos:definition "A claim that reports a concrete indicator value in a communication context."@en .
+ind:MeasuredIndicatorValue a owl:Class ;
+  rdfs:subClassOf impact:IndicatorValue ;
+  rdfs:label "Measured indicator value"@en ;
+  skos:definition "An indicator value obtained directly from observation, monitoring, sampling, or metering."@en .
 
-ind:IndicatorPredicate a owl:Class ;
-  rdfs:subClassOf claimont:Predicate ;
-  rdfs:label "Indicator predicate"@en ;
-  skos:definition "Predicate that links a subject state to an indicator value in a report."@en .
+ind:DerivedIndicatorValue a owl:Class ;
+  rdfs:subClassOf impact:IndicatorValue ;
+  rdfs:label "Derived indicator value"@en ;
+  skos:definition "An indicator value computed or inferred from other indicator values, variables, or constants."@en .
 
-ind:IndicatorObject a owl:Class ;
-  rdfs:subClassOf claimont:Object ;
-  rdfs:label "Indicator object"@en ;
-  skos:definition "The reported value for an indicator, paired with a stated unit of measure."@en .
+ind:MeasuredIndicatorValue owl:disjointWith ind:DerivedIndicatorValue .
 
 # -- Object properties --
-ind:aboutState a owl:ObjectProperty ;
-  rdfs:domain impact:Indicator ;
-  rdfs:range impact:State ;
-  rdfs:label "about state"@en ;
-  rdfs:comment "Relates an indicator definition to the state it qualifies (reuse impact:State directly rather than minting a parallel MeasuredState class)."@en .
-
 ind:hasFormula a owl:ObjectProperty ;
   rdfs:domain impact:Indicator ;
   rdfs:range ind:IndicatorFormula ;
@@ -134,10 +126,10 @@ ind:hasIndicatorStage a owl:ObjectProperty ;
   rdfs:comment "Categorises an indicator according to the stage it occupies within an impact pathway (activity, output, outcome, or impact); usable on indicator definitions and the SKOS indicator catalogue entries that reference them."@en .
 
 ind:hasUnit a owl:ObjectProperty ;
-  rdfs:domain [ a owl:Class ; owl:unionOf ( impact:Indicator ind:Symbol ) ] ;
+  rdfs:domain [ a owl:Class ; owl:unionOf ( impact:Indicator impact:IndicatorValue ) ] ;
   rdfs:range qudt:Unit ;
   rdfs:label "has unit of measure"@en ;
-  rdfs:comment "Connects an indicator (or its symbols) to the QUDT unit that governs the reported value; keep the UCUM code on the unit individual for machine-to-machine exchange."@en .
+  rdfs:comment "Connects indicators and indicator values to the QUDT unit that governs their interpretation; keep the UCUM code on the unit individual for machine-to-machine exchange."@en .
 
 ind:hasRationale a owl:ObjectProperty ;
   rdfs:domain impact:Indicator ;
@@ -152,13 +144,13 @@ ind:hasDefaultDSD a owl:ObjectProperty ;
   rdfs:comment "Links an indicator definition to its recommended data structure definition. Organizations may define additional DSDs for context-specific reporting."@en .
 
 ind:reportsIndicator a owl:ObjectProperty ;
-  rdfs:domain ind:IndicatorReport ;
+  rdfs:domain claimont:Report ;
   rdfs:range impact:Indicator ;
   rdfs:label "reports indicator"@en ;
-  rdfs:comment "Links an IndicatorReport claim to the indicator definition it reports on."@en .
+  rdfs:comment "Links a claim report to the indicator definition it reports on."@en .
 
 ind:communicatedBy a owl:ObjectProperty ;
-  rdfs:domain ind:IndicatorReport ;
+  rdfs:domain claimont:Report ;
   rdfs:range infocomm:CommunicationEvent ;
   rdfs:label "communicated by"@en ;
   rdfs:comment "Associates an indicator report with the communication event that transmits it."@en .
@@ -241,66 +233,39 @@ ind:maxCardinality a owl:DatatypeProperty ;
   rdfs:label "max cardinality"@en ;
   rdfs:comment "Use -1 to mean unbounded / repeatable."@en .
 
-ind:definitionVersion a owl:DatatypeProperty ;
-  rdfs:domain skos:ConceptScheme ;
-  rdfs:range  xsd:string ;
-  rdfs:label "definition version"@en ;
-  rdfs:comment "Version tag for a scheme so compatibility/comparability can be assessed over time."@en .
 
 #################################################################
-#  B) Observation layer for reporting indicator values
+#  B) Indicator value reporting context
 #################################################################
-
-ind:IndicatorObservation a owl:Class ;
-  rdfs:subClassOf infocomm:Information ;
-  rdfs:label "Indicator observation"@en ;
-  skos:definition "A data point reporting a value for an indicator (or series) at a time and place, optionally disaggregated by one or more subgroup slices."@en .
-
-# Connect observations to indicator definitions and DSDs
-ind:observesIndicator a owl:ObjectProperty ;
-  rdfs:domain ind:IndicatorObservation ;
-  rdfs:range  impact:Indicator ;
-  rdfs:label "observes indicator"@en ;
-  rdfs:comment "Links an observation to the indicator definition being measured (ind:IndicatorDefinition is a subclass of impact:Indicator)."@en .
 
 ind:usesDSD a owl:ObjectProperty ;
-  rdfs:domain ind:IndicatorObservation ;
+  rdfs:domain impact:IndicatorValue ;
   rdfs:range  ind:DataStructureDefinition ;
   rdfs:label "uses DSD"@en .
 
-# Minimal place/time/value semantics
 ind:refArea a owl:ObjectProperty ;
-  rdfs:domain ind:IndicatorObservation ;
+  rdfs:domain impact:IndicatorValue ;
   rdfs:range  prov:Location ;
   rdfs:label "reference area"@en ;
   rdfs:comment "Town, group of towns, biome, catchment, admin unit, etc."@en .
 
-ind:timePeriod a owl:DatatypeProperty ;
-  rdfs:domain ind:IndicatorObservation ;
-  rdfs:range  xsd:gYear ;
-  rdfs:label "time period"@en ;
-  rdfs:comment "Use xsd:dateTime or TIME ontology if you need finer granularity."@en .
+ind:reportingPeriod a owl:ObjectProperty ;
+  rdfs:domain impact:IndicatorValue ;
+  rdfs:range  time:Interval ;
+  rdfs:label "reporting period"@en ;
+  rdfs:comment "Reporting period for the indicator value; modeled as a time:Interval."@en .
 
-ind:obsValue a owl:DatatypeProperty ;
-  rdfs:domain ind:IndicatorObservation ;
-  rdfs:range  xsd:decimal ;
-  rdfs:label "observation value"@en .
-
-# Reuse your existing unit predicate where possible:
-# ind:hasUnit already exists for indicators & symbols; we extend it to observations.
-ind:hasUnit rdfs:domain [ a owl:Class ; owl:unionOf ( impact:Indicator ind:Symbol ind:IndicatorObservation ) ] .
-
-# Optional: provenance / status hooks (kept lightweight)
-ind:obsStatus a owl:DatatypeProperty ;
-  rdfs:domain ind:IndicatorObservation ;
-  rdfs:range  xsd:string ;
+ind:obsStatus a owl:ObjectProperty ;
+  rdfs:domain impact:IndicatorValue ;
+  rdfs:range  skos:Concept ;
   rdfs:label "observation status"@en ;
-  rdfs:comment "e.g., REPORTED, ESTIMATED, IMPUTED, PROVISIONAL."@en .
+  rdfs:comment "Status concept for the indicator value (e.g., REPORTED, ESTIMATED, IMPUTED, PROVISIONAL)."@en .
 
 ind:methodReference a owl:DatatypeProperty ;
-  rdfs:domain ind:IndicatorObservation ;
+  rdfs:domain impact:IndicatorValue ;
   rdfs:range  xsd:anyURI ;
   rdfs:label "method reference"@en .
+
 
 #################################################################
 #  C) Repeatable subgroup disaggregation (Axis–Scheme architecture)
@@ -309,10 +274,10 @@ ind:methodReference a owl:DatatypeProperty ;
 ind:SubgroupSlice a owl:Class ;
   rdfs:subClassOf infocomm:Information ;
   rdfs:label "Subgroup slice"@en ;
-  skos:definition "A repeatable (axis, value) pair that attaches one disaggregation category (e.g., sex=female) to an observation."@en .
+  skos:definition "A repeatable (axis, value) pair that attaches one disaggregation category (e.g., sex=female) to an indicator value instance."@en .
 
 ind:hasSubgroupSlice a owl:ObjectProperty ;
-  rdfs:domain ind:IndicatorObservation ;
+  rdfs:domain impact:IndicatorValue ;
   rdfs:range  ind:SubgroupSlice ;
   rdfs:label "has subgroup slice"@en .
 
@@ -327,19 +292,13 @@ ind:subgroupValue a owl:ObjectProperty ;
   rdfs:label "subgroup value"@en ;
   rdfs:comment "Must be a concept in the axis' declared skos:ConceptScheme (via ind:valueScheme on the AxisSpecification)."@en .
 
-#################################################################
-#  D) Link observations and reports/claims (ClaimOnt alignment)
-#################################################################
 
-ind:reportsObservation a owl:ObjectProperty ;
-  rdfs:domain ind:IndicatorReport ;
-  rdfs:range  ind:IndicatorObservation ;
-  rdfs:label "reports observation"@en ;
-  rdfs:comment "Connects a claim/reporting event to the specific observation(s) being asserted."@en .
 
-ind:supportingClaim a owl:ObjectProperty ;
-  rdfs:domain ind:IndicatorObservation ;
-  rdfs:range  claimont:Claim ;
-  rdfs:label "supporting claim"@en ;
-  rdfs:comment "Optional: link an observation to a ClaimOnt claim with its evidence chain."@en .
+
+
+
+
+
+
+
 
