@@ -56,13 +56,15 @@ TEST_QUERIES = [
         "name": "Query 1: Find observations by sex",
         "query": """
             PREFIX ind: <http://independentimpact.org/indicator-owl/>
+            PREFIX impact: <http://w3id.org/impactont#>
+            PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
             PREFIX skos: <http://www.w3.org/2004/02/skos/core#>
             PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
             
             SELECT ?obs ?sex ?value
             WHERE {
-              ?obs a ind:IndicatorObservation ;
-                   ind:obsValue ?value .
+              ?obs a impact:IndicatorValue ;
+                   rdf:value ?value .
               
               ?obs ind:hasSubgroupSlice ?slice .
               ?slice ind:subgroupAxis ind:AxisSex ;
@@ -79,6 +81,8 @@ TEST_QUERIES = [
         "name": "Query 2: Find DSDs using AxisSex",
         "query": """
             PREFIX ind: <http://independentimpact.org/indicator-owl/>
+            PREFIX impact: <http://w3id.org/impactont#>
+            PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
             PREFIX dct: <http://purl.org/dc/terms/>
             PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
             
@@ -97,10 +101,11 @@ TEST_QUERIES = [
         "name": "Query 3: Validate cardinality constraints",
         "query": """
             PREFIX ind: <http://independentimpact.org/indicator-owl/>
+            PREFIX impact: <http://w3id.org/impactont#>
+            PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
             
             SELECT ?obs ?axis (COUNT(?slice) AS ?count) ?maxCard
             WHERE {
-              ?obs ind:observesIndicator ?indicator ;
                    ind:usesDSD ?dsd ;
                    ind:hasSubgroupSlice ?slice .
               
@@ -317,6 +322,8 @@ def verify_dsd_structure(graph: Graph) -> List[TestResult]:
     # Check 1: Verify DSDs exist
     query = """
         PREFIX ind: <http://independentimpact.org/indicator-owl/>
+            PREFIX impact: <http://w3id.org/impactont#>
+            PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
         SELECT (COUNT(?dsd) AS ?count)
         WHERE { ?dsd a ind:DataStructureDefinition . }
     """
@@ -339,6 +346,8 @@ def verify_dsd_structure(graph: Graph) -> List[TestResult]:
     # Check 2: Verify Axes exist
     query = """
         PREFIX ind: <http://independentimpact.org/indicator-owl/>
+            PREFIX impact: <http://w3id.org/impactont#>
+            PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
         SELECT (COUNT(?axis) AS ?count)
         WHERE { ?axis a ind:Axis . }
     """
@@ -383,9 +392,11 @@ def verify_dsd_structure(graph: Graph) -> List[TestResult]:
     # Check 4: Verify observations with DSDs
     query = """
         PREFIX ind: <http://independentimpact.org/indicator-owl/>
+            PREFIX impact: <http://w3id.org/impactont#>
+            PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
         SELECT (COUNT(?obs) AS ?count)
         WHERE { 
-            ?obs a ind:IndicatorObservation ;
+            ?obs a impact:IndicatorValue ;
                  ind:usesDSD ?dsd .
         }
     """
@@ -408,6 +419,8 @@ def verify_dsd_structure(graph: Graph) -> List[TestResult]:
     # Check 5: Verify axis specifications
     query = """
         PREFIX ind: <http://independentimpact.org/indicator-owl/>
+            PREFIX impact: <http://w3id.org/impactont#>
+            PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
         SELECT (COUNT(?spec) AS ?count)
         WHERE { 
             ?dsd ind:hasAxisSpec ?spec .
@@ -525,5 +538,8 @@ def main():
 
 if __name__ == "__main__":
     main()
+
+
+
 
 

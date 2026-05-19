@@ -10,6 +10,8 @@
 #################################################################
 
 PREFIX ind: <http://independentimpact.org/indicator-owl/>
+PREFIX impact: <http://w3id.org/impactont#>
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
 PREFIX skos: <http://www.w3.org/2004/02/skos/core#>
 PREFIX dct: <http://purl.org/dc/terms/>
 PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
@@ -29,9 +31,8 @@ PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
 SELECT ?obs ?obsLabel ?sex ?value
 WHERE {
   # Find observations for indicator 1.1.1 (or any indicator)
-  ?obs a ind:IndicatorObservation ;
-       ind:observesIndicator <http://independentimpact.org/indicator-owl/indicator/1.1.1> ;
-       ind:obsValue ?value .
+  ?obs a impact:IndicatorValue ;
+       rdf:value ?value .
   
   # Get optional label
   OPTIONAL { ?obs rdfs:label ?obsLabel . }
@@ -94,7 +95,7 @@ ORDER BY ?dsdTitle
 SELECT ?obs ?obsLabel ?dsd ?axis ?axisLabel (COUNT(?slice) AS ?sliceCount) ?maxCard
 WHERE {
   # Find observations with their DSD
-  ?obs a ind:IndicatorObservation ;
+  ?obs a impact:IndicatorValue ;
        ind:usesDSD ?dsd ;
        ind:hasSubgroupSlice ?slice .
   
@@ -133,7 +134,7 @@ ORDER BY ?obs ?axis
 
 SELECT ?obs ?obsLabel (GROUP_CONCAT(DISTINCT ?axisLabel; separator=", ") AS ?axes) (COUNT(DISTINCT ?axis) AS ?axisCount)
 WHERE {
-  ?obs a ind:IndicatorObservation ;
+  ?obs a impact:IndicatorValue ;
        ind:hasSubgroupSlice ?slice .
   
   OPTIONAL { ?obs rdfs:label ?obsLabel . }
@@ -160,7 +161,7 @@ ORDER BY DESC(?axisCount) ?obs
 SELECT ?obs ?obsLabel ?axis ?axisLabel ?value ?valueLabel ?expectedScheme
 WHERE {
   # Find observations with slices
-  ?obs a ind:IndicatorObservation ;
+  ?obs a impact:IndicatorValue ;
        ind:usesDSD ?dsd ;
        ind:hasSubgroupSlice ?slice .
   
@@ -201,7 +202,7 @@ ORDER BY ?obs ?axis
 
 SELECT ?obs ?obsLabel ?axis ?axisLabel (GROUP_CONCAT(?valueLabel; separator=", ") AS ?values) (COUNT(?slice) AS ?sliceCount)
 WHERE {
-  ?obs a ind:IndicatorObservation ;
+  ?obs a impact:IndicatorValue ;
        ind:hasSubgroupSlice ?slice .
   
   OPTIONAL { ?obs rdfs:label ?obsLabel . }
@@ -254,7 +255,7 @@ ORDER BY DESC(?observationCount)
 SELECT ?obs ?obsLabel ?dsd ?axis ?axisLabel ?minCard
 WHERE {
   # Find observations with their DSD
-  ?obs a ind:IndicatorObservation ;
+  ?obs a impact:IndicatorValue ;
        ind:usesDSD ?dsd .
   
   OPTIONAL { ?obs rdfs:label ?obsLabel . }
@@ -330,3 +331,6 @@ WHERE {
   }
 }
 ORDER BY ?indicator
+
+
+

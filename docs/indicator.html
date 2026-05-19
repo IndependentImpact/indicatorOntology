@@ -224,6 +224,10 @@
                     <td><code>http://www.w3.org/2004/02/skos/core#</code></td>
                 </tr>
                 <tr>
+                    <td><code>time</code></td>
+                    <td><code>http://www.w3.org/2006/time#</code></td>
+                </tr>
+                <tr>
                     <td><code>xsd</code></td>
                     <td><code>http://www.w3.org/2001/XMLSchema#</code></td>
                 </tr>
@@ -233,9 +237,9 @@
 
     <section class="section">
         <h2>Classes</h2>
-        <div class="entity" id="#cls-<n0958dd81ca7c40dca8ee5f5430acffc5b10>">
-            <h3><n0958dd81ca7c40dca8ee5f5430acffc5b10></h3>
-            <p><strong>IRI:</strong> <span class="iri">n0958dd81ca7c40dca8ee5f5430acffc5b10</span></p>
+        <div class="entity" id="#cls-<n734c2afe93f14699a9d7c4f44bc4d341b1>">
+            <h3><n734c2afe93f14699a9d7c4f44bc4d341b1></h3>
+            <p><strong>IRI:</strong> <span class="iri">n734c2afe93f14699a9d7c4f44bc4d341b1</span></p>
             
             
             
@@ -244,20 +248,9 @@
             
             
         </div>
-        <div class="entity" id="#cls-<n0958dd81ca7c40dca8ee5f5430acffc5b1>">
-            <h3><n0958dd81ca7c40dca8ee5f5430acffc5b1></h3>
-            <p><strong>IRI:</strong> <span class="iri">n0958dd81ca7c40dca8ee5f5430acffc5b1</span></p>
-            
-            
-            
-            
-            
-            
-            
-        </div>
-        <div class="entity" id="#cls-<n0958dd81ca7c40dca8ee5f5430acffc5b4>">
-            <h3><n0958dd81ca7c40dca8ee5f5430acffc5b4></h3>
-            <p><strong>IRI:</strong> <span class="iri">n0958dd81ca7c40dca8ee5f5430acffc5b4</span></p>
+        <div class="entity" id="#cls-<n734c2afe93f14699a9d7c4f44bc4d341b4>">
+            <h3><n734c2afe93f14699a9d7c4f44bc4d341b4></h3>
+            <p><strong>IRI:</strong> <span class="iri">n734c2afe93f14699a9d7c4f44bc4d341b4</span></p>
             
             
             
@@ -375,6 +368,26 @@
                     <a href="#prop--hasDefaultDSD">:hasDefaultDSD</a>,                     <a href="#prop--usesDSD">:usesDSD</a>                </dd>
             </div>
         </div>
+        <div class="entity" id="#cls--DerivedIndicatorValue">
+            <h3>Derived indicator value</h3>
+            <p><strong>IRI:</strong> <span class="iri">http://independentimpact.org/indicator-owl/DerivedIndicatorValue</span></p>
+            
+            <div class="metadata">
+                <dt>SKOS Definition</dt>
+                <dd class="definition">An indicator value computed or inferred from other indicator values, variables, or constants.</dd>
+            </div>
+            
+            
+            
+            <div class="metadata">
+                <dt>SubClass Of</dt>
+                <dd>
+                    <a href="http://w3id.org/impactont#IndicatorValue">impact:IndicatorValue</a>                </dd>
+            </div>
+            
+            
+            
+        </div>
         <div class="entity" id="#cls--IndicatorDefinition">
             <h3>Indicator definition</h3>
             <p><strong>IRI:</strong> <span class="iri">http://independentimpact.org/indicator-owl/IndicatorDefinition</span></p>
@@ -434,76 +447,6 @@
                     <a href="#prop--hasFormula">:hasFormula</a>,                     <a href="#prop--hasExpression">:hasExpression</a>                </dd>
             </div>
         </div>
-        <div class="entity" id="#cls--IndicatorObject">
-            <h3>Indicator object</h3>
-            <p><strong>IRI:</strong> <span class="iri">http://independentimpact.org/indicator-owl/IndicatorObject</span></p>
-            
-            <div class="metadata">
-                <dt>SKOS Definition</dt>
-                <dd class="definition">The reported value for an indicator, paired with a stated unit of measure.</dd>
-            </div>
-            
-            
-            
-            <div class="metadata">
-                <dt>SubClass Of</dt>
-                <dd>
-                    <a href="http://w3id.org/claimont#Object">claimont:Object</a>                </dd>
-            </div>
-            
-            
-            
-        </div>
-        <div class="entity" id="#cls--IndicatorObservation">
-            <h3>Indicator observation</h3>
-            <p><strong>IRI:</strong> <span class="iri">http://independentimpact.org/indicator-owl/IndicatorObservation</span></p>
-            
-            <div class="metadata">
-                <dt>SKOS Definition</dt>
-                <dd class="definition">A data point reporting a value for an indicator (or series) at a time and place, optionally disaggregated by one or more subgroup slices.</dd>
-            </div>
-            
-            
-            
-            <div class="metadata">
-                <dt>SubClass Of</dt>
-                <dd>
-                    <a href="http://w3id.org/infocomm#Information">infocomm:Information</a>                </dd>
-            </div>
-            
-            
-            <div class="metadata">
-                <dt>In Domain Of</dt>
-                <dd>
-                    <a href="#prop--observesIndicator">:observesIndicator</a>,                     <a href="#prop--usesDSD">:usesDSD</a>,                     <a href="#prop--refArea">:refArea</a>,                     <a href="#prop--timePeriod">:timePeriod</a>,                     <a href="#prop--obsValue">:obsValue</a>,                     <a href="#prop--obsStatus">:obsStatus</a>,                     <a href="#prop--methodReference">:methodReference</a>,                     <a href="#prop--hasSubgroupSlice">:hasSubgroupSlice</a>,                     <a href="#prop--supportingClaim">:supportingClaim</a>                </dd>
-            </div>
-            
-            <div class="metadata">
-                <dt>In Range Of</dt>
-                <dd>
-                    <a href="#prop--reportsObservation">:reportsObservation</a>                </dd>
-            </div>
-        </div>
-        <div class="entity" id="#cls--IndicatorPredicate">
-            <h3>Indicator predicate</h3>
-            <p><strong>IRI:</strong> <span class="iri">http://independentimpact.org/indicator-owl/IndicatorPredicate</span></p>
-            
-            <div class="metadata">
-                <dt>SKOS Definition</dt>
-                <dd class="definition">Predicate that links a subject state to an indicator value in a report.</dd>
-            </div>
-            
-            
-            
-            <div class="metadata">
-                <dt>SubClass Of</dt>
-                <dd>
-                    <a href="http://w3id.org/claimont#Predicate">claimont:Predicate</a>                </dd>
-            </div>
-            
-            
-            
-        </div>
         <div class="entity" id="#cls--IndicatorRationale">
             <h3>Indicator rationale</h3>
             <p><strong>IRI:</strong> <span class="iri">http://independentimpact.org/indicator-owl/IndicatorRationale</span></p>
@@ -528,31 +471,6 @@
                 <dd>
                     <a href="#prop--hasRationale">:hasRationale</a>                </dd>
             </div>
-        </div>
-        <div class="entity" id="#cls--IndicatorReport">
-            <h3>Indicator report</h3>
-            <p><strong>IRI:</strong> <span class="iri">http://independentimpact.org/indicator-owl/IndicatorReport</span></p>
-            
-            <div class="metadata">
-                <dt>SKOS Definition</dt>
-                <dd class="definition">A claim that reports a concrete indicator value in a communication context.</dd>
-            </div>
-            
-            
-            
-            <div class="metadata">
-                <dt>SubClass Of</dt>
-                <dd>
-                    <a href="http://w3id.org/claimont#Report">claimont:Report</a>,                     <a href="http://w3id.org/infocomm#Information">infocomm:Information</a>                </dd>
-            </div>
-            
-            
-            <div class="metadata">
-                <dt>In Domain Of</dt>
-                <dd>
-                    <a href="#prop--reportsIndicator">:reportsIndicator</a>,                     <a href="#prop--communicatedBy">:communicatedBy</a>,                     <a href="#prop--reportsObservation">:reportsObservation</a>                </dd>
-            </div>
-            
         </div>
         <div class="entity" id="#cls--MathOperator">
             <h3>Mathematical operator</h3>
@@ -583,13 +501,33 @@
                     <a href="#prop--usesOperator">:usesOperator</a>                </dd>
             </div>
         </div>
+        <div class="entity" id="#cls--MeasuredIndicatorValue">
+            <h3>Measured indicator value</h3>
+            <p><strong>IRI:</strong> <span class="iri">http://independentimpact.org/indicator-owl/MeasuredIndicatorValue</span></p>
+            
+            <div class="metadata">
+                <dt>SKOS Definition</dt>
+                <dd class="definition">An indicator value obtained directly from observation, monitoring, sampling, or metering.</dd>
+            </div>
+            
+            
+            
+            <div class="metadata">
+                <dt>SubClass Of</dt>
+                <dd>
+                    <a href="http://w3id.org/impactont#IndicatorValue">impact:IndicatorValue</a>                </dd>
+            </div>
+            
+            
+            
+        </div>
         <div class="entity" id="#cls--SubgroupSlice">
             <h3>Subgroup slice</h3>
             <p><strong>IRI:</strong> <span class="iri">http://independentimpact.org/indicator-owl/SubgroupSlice</span></p>
             
             <div class="metadata">
                 <dt>SKOS Definition</dt>
-                <dd class="definition">A repeatable (axis, value) pair that attaches one disaggregation category (e.g., sex=female) to an observation.</dd>
+                <dd class="definition">A repeatable (axis, value) pair that attaches one disaggregation category (e.g., sex=female) to an indicator value instance.</dd>
             </div>
             
             
@@ -646,31 +584,6 @@
 
     <section class="section">
         <h2>Properties</h2>
-        <div class="entity" id="#prop--aboutState">
-            <h3>about state</h3>
-            <p><strong>IRI:</strong> <span class="iri">http://independentimpact.org/indicator-owl/aboutState</span></p>
-            
-            
-            <div class="metadata">
-                <dt>Comments</dt>
-                <dd class="comment">Relates an indicator definition to the state it qualifies (reuse impact:State directly rather than minting a parallel MeasuredState class).</dd>
-            </div>
-            
-            
-            <div class="metadata">
-                <dt>Domain</dt>
-                <dd>
-                    <a href="#cls-impact-Indicator">impact:Indicator</a>                </dd>
-            </div>
-            
-            <div class="metadata">
-                <dt>Range</dt>
-                <dd>
-                    <a href="#cls-impact-State">impact:State</a>                </dd>
-            </div>
-            
-            
-        </div>
         <div class="entity" id="#prop--axis">
             <h3>axis</h3>
             <p><strong>IRI:</strong> <span class="iri">http://independentimpact.org/indicator-owl/axis</span></p>
@@ -727,38 +640,13 @@
             <div class="metadata">
                 <dt>Domain</dt>
                 <dd>
-                    <a href="#cls--IndicatorReport">:IndicatorReport</a>                </dd>
+                    <a href="#cls-claimont-Report">claimont:Report</a>                </dd>
             </div>
             
             <div class="metadata">
                 <dt>Range</dt>
                 <dd>
                     <a href="#cls-infocomm-CommunicationEvent">infocomm:CommunicationEvent</a>                </dd>
-            </div>
-            
-            
-        </div>
-        <div class="entity" id="#prop--definitionVersion">
-            <h3>definition version</h3>
-            <p><strong>IRI:</strong> <span class="iri">http://independentimpact.org/indicator-owl/definitionVersion</span></p>
-            
-            
-            <div class="metadata">
-                <dt>Comments</dt>
-                <dd class="comment">Version tag for a scheme so compatibility/comparability can be assessed over time.</dd>
-            </div>
-            
-            
-            <div class="metadata">
-                <dt>Domain</dt>
-                <dd>
-                    <a href="#cls-skos-ConceptScheme">skos:ConceptScheme</a>                </dd>
-            </div>
-            
-            <div class="metadata">
-                <dt>Range</dt>
-                <dd>
-                    <a href="#cls-xsd-string">xsd:string</a>                </dd>
             </div>
             
             
@@ -944,7 +832,7 @@
             <div class="metadata">
                 <dt>Domain</dt>
                 <dd>
-                    <a href="#cls--IndicatorObservation">:IndicatorObservation</a>                </dd>
+                    <a href="#cls-impact-IndicatorValue">impact:IndicatorValue</a>                </dd>
             </div>
             
             <div class="metadata">
@@ -962,7 +850,7 @@
             
             <div class="metadata">
                 <dt>Comments</dt>
-                <dd class="comment">Connects an indicator (or its symbols) to the QUDT unit that governs the reported value; keep the UCUM code on the unit individual for machine-to-machine exchange.</dd>
+                <dd class="comment">Connects indicators and indicator values to the QUDT unit that governs their interpretation; keep the UCUM code on the unit individual for machine-to-machine exchange.</dd>
             </div>
             
             
@@ -1035,7 +923,7 @@
             <div class="metadata">
                 <dt>Domain</dt>
                 <dd>
-                    <a href="#cls--IndicatorObservation">:IndicatorObservation</a>                </dd>
+                    <a href="#cls-impact-IndicatorValue">impact:IndicatorValue</a>                </dd>
             </div>
             
             <div class="metadata">
@@ -1074,66 +962,20 @@
             
             <div class="metadata">
                 <dt>Comments</dt>
-                <dd class="comment">e.g., REPORTED, ESTIMATED, IMPUTED, PROVISIONAL.</dd>
+                <dd class="comment">Status concept for the indicator value (e.g., REPORTED, ESTIMATED, IMPUTED, PROVISIONAL).</dd>
             </div>
             
             
             <div class="metadata">
                 <dt>Domain</dt>
                 <dd>
-                    <a href="#cls--IndicatorObservation">:IndicatorObservation</a>                </dd>
+                    <a href="#cls-impact-IndicatorValue">impact:IndicatorValue</a>                </dd>
             </div>
             
             <div class="metadata">
                 <dt>Range</dt>
                 <dd>
-                    <a href="#cls-xsd-string">xsd:string</a>                </dd>
-            </div>
-            
-            
-        </div>
-        <div class="entity" id="#prop--obsValue">
-            <h3>observation value</h3>
-            <p><strong>IRI:</strong> <span class="iri">http://independentimpact.org/indicator-owl/obsValue</span></p>
-            
-            
-            
-            
-            <div class="metadata">
-                <dt>Domain</dt>
-                <dd>
-                    <a href="#cls--IndicatorObservation">:IndicatorObservation</a>                </dd>
-            </div>
-            
-            <div class="metadata">
-                <dt>Range</dt>
-                <dd>
-                    <a href="#cls-xsd-decimal">xsd:decimal</a>                </dd>
-            </div>
-            
-            
-        </div>
-        <div class="entity" id="#prop--observesIndicator">
-            <h3>observes indicator</h3>
-            <p><strong>IRI:</strong> <span class="iri">http://independentimpact.org/indicator-owl/observesIndicator</span></p>
-            
-            
-            <div class="metadata">
-                <dt>Comments</dt>
-                <dd class="comment">Links an observation to the indicator definition being measured (ind:IndicatorDefinition is a subclass of impact:Indicator).</dd>
-            </div>
-            
-            
-            <div class="metadata">
-                <dt>Domain</dt>
-                <dd>
-                    <a href="#cls--IndicatorObservation">:IndicatorObservation</a>                </dd>
-            </div>
-            
-            <div class="metadata">
-                <dt>Range</dt>
-                <dd>
-                    <a href="#cls-impact-Indicator">impact:Indicator</a>                </dd>
+                    <a href="#cls-skos-Concept">skos:Concept</a>                </dd>
             </div>
             
             
@@ -1152,13 +994,38 @@
             <div class="metadata">
                 <dt>Domain</dt>
                 <dd>
-                    <a href="#cls--IndicatorObservation">:IndicatorObservation</a>                </dd>
+                    <a href="#cls-impact-IndicatorValue">impact:IndicatorValue</a>                </dd>
             </div>
             
             <div class="metadata">
                 <dt>Range</dt>
                 <dd>
                     <a href="#cls-prov-Location">prov:Location</a>                </dd>
+            </div>
+            
+            
+        </div>
+        <div class="entity" id="#prop--reportingPeriod">
+            <h3>reporting period</h3>
+            <p><strong>IRI:</strong> <span class="iri">http://independentimpact.org/indicator-owl/reportingPeriod</span></p>
+            
+            
+            <div class="metadata">
+                <dt>Comments</dt>
+                <dd class="comment">Reporting period for the indicator value; modeled as a time:Interval.</dd>
+            </div>
+            
+            
+            <div class="metadata">
+                <dt>Domain</dt>
+                <dd>
+                    <a href="#cls-impact-IndicatorValue">impact:IndicatorValue</a>                </dd>
+            </div>
+            
+            <div class="metadata">
+                <dt>Range</dt>
+                <dd>
+                    <a href="#cls-time-Interval">time:Interval</a>                </dd>
             </div>
             
             
@@ -1170,45 +1037,20 @@
             
             <div class="metadata">
                 <dt>Comments</dt>
-                <dd class="comment">Links an IndicatorReport claim to the indicator definition it reports on.</dd>
+                <dd class="comment">Links a claim report to the indicator definition it reports on.</dd>
             </div>
             
             
             <div class="metadata">
                 <dt>Domain</dt>
                 <dd>
-                    <a href="#cls--IndicatorReport">:IndicatorReport</a>                </dd>
+                    <a href="#cls-claimont-Report">claimont:Report</a>                </dd>
             </div>
             
             <div class="metadata">
                 <dt>Range</dt>
                 <dd>
                     <a href="#cls-impact-Indicator">impact:Indicator</a>                </dd>
-            </div>
-            
-            
-        </div>
-        <div class="entity" id="#prop--reportsObservation">
-            <h3>reports observation</h3>
-            <p><strong>IRI:</strong> <span class="iri">http://independentimpact.org/indicator-owl/reportsObservation</span></p>
-            
-            
-            <div class="metadata">
-                <dt>Comments</dt>
-                <dd class="comment">Connects a claim/reporting event to the specific observation(s) being asserted.</dd>
-            </div>
-            
-            
-            <div class="metadata">
-                <dt>Domain</dt>
-                <dd>
-                    <a href="#cls--IndicatorReport">:IndicatorReport</a>                </dd>
-            </div>
-            
-            <div class="metadata">
-                <dt>Range</dt>
-                <dd>
-                    <a href="#cls--IndicatorObservation">:IndicatorObservation</a>                </dd>
             </div>
             
             
@@ -1259,56 +1101,6 @@
             
             
         </div>
-        <div class="entity" id="#prop--supportingClaim">
-            <h3>supporting claim</h3>
-            <p><strong>IRI:</strong> <span class="iri">http://independentimpact.org/indicator-owl/supportingClaim</span></p>
-            
-            
-            <div class="metadata">
-                <dt>Comments</dt>
-                <dd class="comment">Optional: link an observation to a ClaimOnt claim with its evidence chain.</dd>
-            </div>
-            
-            
-            <div class="metadata">
-                <dt>Domain</dt>
-                <dd>
-                    <a href="#cls--IndicatorObservation">:IndicatorObservation</a>                </dd>
-            </div>
-            
-            <div class="metadata">
-                <dt>Range</dt>
-                <dd>
-                    <a href="#cls-claimont-Claim">claimont:Claim</a>                </dd>
-            </div>
-            
-            
-        </div>
-        <div class="entity" id="#prop--timePeriod">
-            <h3>time period</h3>
-            <p><strong>IRI:</strong> <span class="iri">http://independentimpact.org/indicator-owl/timePeriod</span></p>
-            
-            
-            <div class="metadata">
-                <dt>Comments</dt>
-                <dd class="comment">Use xsd:dateTime or TIME ontology if you need finer granularity.</dd>
-            </div>
-            
-            
-            <div class="metadata">
-                <dt>Domain</dt>
-                <dd>
-                    <a href="#cls--IndicatorObservation">:IndicatorObservation</a>                </dd>
-            </div>
-            
-            <div class="metadata">
-                <dt>Range</dt>
-                <dd>
-                    <a href="#cls-xsd-gYear">xsd:gYear</a>                </dd>
-            </div>
-            
-            
-        </div>
         <div class="entity" id="#prop--usesDSD">
             <h3>uses DSD</h3>
             <p><strong>IRI:</strong> <span class="iri">http://independentimpact.org/indicator-owl/usesDSD</span></p>
@@ -1319,7 +1111,7 @@
             <div class="metadata">
                 <dt>Domain</dt>
                 <dd>
-                    <a href="#cls--IndicatorObservation">:IndicatorObservation</a>                </dd>
+                    <a href="#cls-impact-IndicatorValue">impact:IndicatorValue</a>                </dd>
             </div>
             
             <div class="metadata">

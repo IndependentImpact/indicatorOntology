@@ -4,7 +4,7 @@ This directory contains Data Structure Definition files that define how SDG indi
 
 ## Understanding DSDs, Axes, Schemes, and Concepts
 
-The DSD infrastructure consists of four interconnected layers that work together to structure and validate SDG indicator observations:
+The DSD infrastructure consists of four interconnected layers that work together to structure and validate SDG indicator values:
 
 ### Architectural Overview
 
@@ -38,7 +38,7 @@ Concepts (e.g., sex_male, sex_female)
    - Example: `DSD_Social_Sex_v1` uses `AxisSex` with values from `SexScheme_v1`
 
 4. **Concepts** (within `scheme-definitions.ttl`) - Individual values
-   - Concepts are the actual values used in observations
+   - Concepts are the actual values used in indicator values
    - Each concept belongs to a scheme and has labels, notations, and definitions
    - Example: `sex_male`, `sex_female` are concepts in `SexScheme_v1`
 
@@ -105,21 +105,21 @@ ind:Spec_DSD_Social_SexAge_v1_Age a ind:AxisSpecification ;
 
 **4. Observations use the concepts** (example from observation data):
 ```turtle
-ind:obs_123 a qb:Observation ;
-  ind:sex ind:sex_female ;        # Concept from SexScheme_v1
-  ind:ageCategory ind:age_15_19 ; # Concept from GlobalAgeScheme_v1
-  qb:dataSet ind:dataset_poverty ;
-  qb:structure ind:DSD_Social_SexAge_v1 ;
-  sdmx-measure:obsValue 23.4 .
+ind:obs_123 a impact:IndicatorValue ;
+  ind:hasSubgroupSlice [ a ind:SubgroupSlice ; ind:subgroupAxis ind:AxisSex ; ind:subgroupValue ind:sex_female ] ;
+    ind:hasSubgroupSlice [ a ind:SubgroupSlice ; ind:subgroupAxis ind:AxisAge ; ind:subgroupValue ind:age_15_19 ] ;
+  
+    ind:usesDSD ind:DSD_Social_SexAge_v1 ;
+  rdf:value 23.4 .
 ```
 
 ### Why This Architecture Matters
 
-**Data Quality Control:** Schemes enable SHACL validation to ensure observations use correct values. Invalid values are rejected before they enter the system.
+**Data Quality Control:** Schemes enable SHACL validation to ensure indicator values use correct values. Invalid values are rejected before they enter the system.
 
 **Semantic Interoperability:** Standardized schemes allow data aggregation across sources, enable SPARQL queries across datasets, and support linked data integration.
 
-**Version Management:** Schemes are versioned (e.g., `_v1`, `_v2`), allowing controlled evolution while maintaining backward compatibility for existing observations.
+**Version Management:** Schemes are versioned (e.g., `_v1`, `_v2`), allowing controlled evolution while maintaining backward compatibility for existing indicator values.
 
 **Reusability:** A single axis and scheme (e.g., `AxisSex` with `SexScheme_v1`) can be used by multiple DSDs, ensuring consistency across indicators.
 
@@ -137,11 +137,11 @@ The four DSD files work as an integrated system:
 **Dependency Chain:**
 ```
 axis-definitions.ttl ────┐
-                         ├──> dsd-complete.ttl ──> observations
+                         ├──> dsd-complete.ttl ──> indicator values
 scheme-definitions.ttl ──┘
 ```
 
-All observations must reference a DSD, which in turn references axes and schemes to ensure data conforms to the expected structure.
+All indicator values must reference a DSD, which in turn references axes and schemes to ensure data conforms to the expected structure.
 
 ## Files
 
@@ -218,8 +218,8 @@ Example Data Structure Definitions demonstrating best practices. This file shows
 - How to combine multiple axes
 - Practical patterns for real-world usage
 
-### dsd-complete.ttl
-Comprehensive collection of 23 production-ready Data Structure Definitions. This file includes:
+### SDG-side DSD bundle (external)
+Comprehensive collection of production-ready Data Structure Definitions is maintained in `../../skos_SDG/ontologies/dsd/dsd-complete.ttl`. It includes:
 - Complete DSD specifications for SDG indicators
 - AxisSpecifications that link axes to their value schemes
 - Cardinality constraints for each dimension
@@ -328,7 +328,7 @@ ind:Spec_DSD_Example_NewDim a ind:AxisSpecification ;
 
 **Important:** Keep all schemes at their current version unless breaking changes are required.
 - 251 indicators depend on current scheme versions
-- Breaking changes require updating all observations
+- Breaking changes require updating all indicator values
 - Version stability enables production deployment
 
 **For changes:**
@@ -336,6 +336,9 @@ ind:Spec_DSD_Example_NewDim a ind:AxisSpecification ;
 2. Keep v1 for backward compatibility
 3. Provide migration guidance
 4. Update DSDs to reference new version as appropriate
+
+
+
 
 
 

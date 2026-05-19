@@ -1,5 +1,6 @@
 @prefix sh: <http://www.w3.org/ns/shacl#> .
 @prefix ind: <http://independentimpact.org/indicator-owl/> .
+@prefix impact: <http://w3id.org/impactont#> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 @prefix skos: <http://www.w3.org/2004/02/skos/core#> .
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
@@ -20,7 +21,7 @@
 #################################################################
 
 ind:ObservationShape a sh:NodeShape ;
-  sh:targetClass ind:IndicatorObservation ;
+  sh:targetClass impact:IndicatorValue ;
   sh:property [
     sh:path ind:usesDSD ;
     sh:class ind:DataStructureDefinition ;
@@ -83,3 +84,5 @@ ind:SubgroupValueInSchemeShape a sh:NodeShape ;
       }
     """ ;
   ] .
+
+

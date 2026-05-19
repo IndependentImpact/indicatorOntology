@@ -1,4 +1,8 @@
 @prefix ind: <http://independentimpact.org/indicator-owl/> .
+@prefix impact: <http://w3id.org/impactont#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix time: <http://www.w3.org/2006/time#> .
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
 @prefix dct: <http://purl.org/dc/terms/> .
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
@@ -23,15 +27,14 @@
 # Example 1: Basic disaggregation (health indicator with sex + age)
 #################################################################
 
-ind:obs_0001 a ind:IndicatorObservation ;
+ind:obs_0001 a impact:IndicatorValue ;
   rdfs:label "TB incidence for working-age females in Town A, 2021"@en ;
-  ind:observesIndicator <http://independentimpact.org/indicator-owl/indicator/3.3.1> ;
   ind:usesDSD ind:DSD_LocalHealth_v1 ;
   ind:refArea <http://independentimpact.org/place/TownA> ;
-  ind:timePeriod "2021"^^xsd:gYear ;
-  ind:obsValue "134.2"^^xsd:decimal ;
+  ind:reportingPeriod [ a time:Interval ; rdfs:label "2021" ] ;
+  rdf:value "134.2"^^xsd:decimal ;
   ind:hasUnit unit:PER_1000 ;
-  ind:obsStatus "ESTIMATED" ;
+  ind:obsStatus ind:statusEstimated ;
   ind:hasSubgroupSlice ind:slice_0001_1 , ind:slice_0001_2 .
 
 ind:slice_0001_1 a ind:SubgroupSlice ;
@@ -48,26 +51,24 @@ ind:slice_0001_2 a ind:SubgroupSlice ;
 #################################################################
 
 # Total population poverty rate
-ind:obs_poverty_total a ind:IndicatorObservation ;
+ind:obs_poverty_total a impact:IndicatorValue ;
   rdfs:label "Total poverty rate in Country X, 2023"@en ;
-  ind:observesIndicator <http://independentimpact.org/indicator-owl/indicator/1.1.1> ;
   ind:usesDSD ind:DSD_BasicSocial_v1 ;
   ind:refArea <http://independentimpact.org/place/CountryX> ;
-  ind:timePeriod "2023"^^xsd:gYear ;
-  ind:obsValue "8.5"^^xsd:decimal ;
+  ind:reportingPeriod [ a time:Interval ; rdfs:label "2023" ] ;
+  rdf:value "8.5"^^xsd:decimal ;
   ind:hasUnit <http://independentimpact.org/indicator-owl/unit/percentageOfPopulation> ;
   ind:obsStatus "REPORTED" .
 
 # Poverty rate for females
-ind:obs_poverty_female a ind:IndicatorObservation ;
+ind:obs_poverty_female a impact:IndicatorValue ;
   rdfs:label "Poverty rate for females in Country X, 2023"@en ;
-  ind:observesIndicator <http://independentimpact.org/indicator-owl/indicator/1.1.1> ;
   ind:usesDSD ind:DSD_BasicSocial_v1 ;
   ind:refArea <http://independentimpact.org/place/CountryX> ;
-  ind:timePeriod "2023"^^xsd:gYear ;
-  ind:obsValue "9.2"^^xsd:decimal ;
+  ind:reportingPeriod [ a time:Interval ; rdfs:label "2023" ] ;
+  rdf:value "9.2"^^xsd:decimal ;
   ind:hasUnit <http://independentimpact.org/indicator-owl/unit/percentageOfPopulation> ;
-  ind:obsStatus "REPORTED" ;
+  ind:obsStatus ind:statusReported ;
   ind:hasSubgroupSlice [
     a ind:SubgroupSlice ;
     ind:subgroupAxis ind:AxisSex ;
@@ -75,15 +76,14 @@ ind:obs_poverty_female a ind:IndicatorObservation ;
   ] .
 
 # Poverty rate for males
-ind:obs_poverty_male a ind:IndicatorObservation ;
+ind:obs_poverty_male a impact:IndicatorValue ;
   rdfs:label "Poverty rate for males in Country X, 2023"@en ;
-  ind:observesIndicator <http://independentimpact.org/indicator-owl/indicator/1.1.1> ;
   ind:usesDSD ind:DSD_BasicSocial_v1 ;
   ind:refArea <http://independentimpact.org/place/CountryX> ;
-  ind:timePeriod "2023"^^xsd:gYear ;
-  ind:obsValue "7.8"^^xsd:decimal ;
+  ind:reportingPeriod [ a time:Interval ; rdfs:label "2023" ] ;
+  rdf:value "7.8"^^xsd:decimal ;
   ind:hasUnit <http://independentimpact.org/indicator-owl/unit/percentageOfPopulation> ;
-  ind:obsStatus "REPORTED" ;
+  ind:obsStatus ind:statusReported ;
   ind:hasSubgroupSlice [
     a ind:SubgroupSlice ;
     ind:subgroupAxis ind:AxisSex ;
@@ -91,15 +91,14 @@ ind:obs_poverty_male a ind:IndicatorObservation ;
   ] .
 
 # Poverty rate for urban females (multi-dimensional)
-ind:obs_poverty_urban_female a ind:IndicatorObservation ;
+ind:obs_poverty_urban_female a impact:IndicatorValue ;
   rdfs:label "Poverty rate for urban females in Country X, 2023"@en ;
-  ind:observesIndicator <http://independentimpact.org/indicator-owl/indicator/1.1.1> ;
   ind:usesDSD ind:DSD_BasicSocial_v1 ;
   ind:refArea <http://independentimpact.org/place/CountryX> ;
-  ind:timePeriod "2023"^^xsd:gYear ;
-  ind:obsValue "6.1"^^xsd:decimal ;
+  ind:reportingPeriod [ a time:Interval ; rdfs:label "2023" ] ;
+  rdf:value "6.1"^^xsd:decimal ;
   ind:hasUnit <http://independentimpact.org/indicator-owl/unit/percentageOfPopulation> ;
-  ind:obsStatus "REPORTED" ;
+  ind:obsStatus ind:statusReported ;
   ind:hasSubgroupSlice 
     [ a ind:SubgroupSlice ;
       ind:subgroupAxis ind:AxisSex ;
@@ -109,15 +108,14 @@ ind:obs_poverty_urban_female a ind:IndicatorObservation ;
       ind:subgroupValue ind:urban ] .
 
 # Poverty rate for rural females (multi-dimensional)
-ind:obs_poverty_rural_female a ind:IndicatorObservation ;
+ind:obs_poverty_rural_female a impact:IndicatorValue ;
   rdfs:label "Poverty rate for rural females in Country X, 2023"@en ;
-  ind:observesIndicator <http://independentimpact.org/indicator-owl/indicator/1.1.1> ;
   ind:usesDSD ind:DSD_BasicSocial_v1 ;
   ind:refArea <http://independentimpact.org/place/CountryX> ;
-  ind:timePeriod "2023"^^xsd:gYear ;
-  ind:obsValue "12.5"^^xsd:decimal ;
+  ind:reportingPeriod [ a time:Interval ; rdfs:label "2023" ] ;
+  rdf:value "12.5"^^xsd:decimal ;
   ind:hasUnit <http://independentimpact.org/indicator-owl/unit/percentageOfPopulation> ;
-  ind:obsStatus "REPORTED" ;
+  ind:obsStatus ind:statusReported ;
   ind:hasSubgroupSlice 
     [ a ind:SubgroupSlice ;
       ind:subgroupAxis ind:AxisSex ;
@@ -130,15 +128,14 @@ ind:obs_poverty_rural_female a ind:IndicatorObservation ;
 # Example 3: Repeatable axis (environmental indicator with multiple land use types)
 #################################################################
 
-ind:obs_land_degradation_001 a ind:IndicatorObservation ;
+ind:obs_land_degradation_001 a impact:IndicatorValue ;
   rdfs:label "Land degradation in cropland and rangeland, Region Y, 2022"@en ;
-  ind:observesIndicator <http://independentimpact.org/indicator-owl/indicator/15.3.1> ;
   ind:usesDSD ind:DSD_Environmental_v1 ;
   ind:refArea <http://independentimpact.org/place/RegionY> ;
-  ind:timePeriod "2022"^^xsd:gYear ;
-  ind:obsValue "2450"^^xsd:decimal ;
+  ind:reportingPeriod [ a time:Interval ; rdfs:label "2022" ] ;
+  rdf:value "2450"^^xsd:decimal ;
   ind:hasUnit unit:HA ;
-  ind:obsStatus "REPORTED" ;
+  ind:obsStatus ind:statusReported ;
   ind:hasSubgroupSlice 
     [ a ind:SubgroupSlice ;
       ind:subgroupAxis ind:AxisGeographicLocation ;
@@ -154,30 +151,28 @@ ind:obs_land_degradation_001 a ind:IndicatorObservation ;
 # Example 4: Economic inequality indicator by income quintile
 #################################################################
 
-ind:obs_income_quintile_1 a ind:IndicatorObservation ;
+ind:obs_income_quintile_1 a impact:IndicatorValue ;
   rdfs:label "Income share for quintile 1 (poorest 20%), Country Z, 2023"@en ;
-  ind:observesIndicator <http://independentimpact.org/indicator-owl/indicator/10.1.1> ;
   ind:usesDSD ind:DSD_EconomicInequality_v1 ;
   ind:refArea <http://independentimpact.org/place/CountryZ> ;
-  ind:timePeriod "2023"^^xsd:gYear ;
-  ind:obsValue "6.2"^^xsd:decimal ;
+  ind:reportingPeriod [ a time:Interval ; rdfs:label "2023" ] ;
+  rdf:value "6.2"^^xsd:decimal ;
   ind:hasUnit <http://independentimpact.org/indicator-owl/unit/percentage> ;
-  ind:obsStatus "REPORTED" ;
+  ind:obsStatus ind:statusReported ;
   ind:hasSubgroupSlice [
     a ind:SubgroupSlice ;
     ind:subgroupAxis ind:AxisIncomeQuintile ;
     ind:subgroupValue ind:quintile_1
   ] .
 
-ind:obs_income_quintile_5 a ind:IndicatorObservation ;
+ind:obs_income_quintile_5 a impact:IndicatorValue ;
   rdfs:label "Income share for quintile 5 (richest 20%), Country Z, 2023"@en ;
-  ind:observesIndicator <http://independentimpact.org/indicator-owl/indicator/10.1.1> ;
   ind:usesDSD ind:DSD_EconomicInequality_v1 ;
   ind:refArea <http://independentimpact.org/place/CountryZ> ;
-  ind:timePeriod "2023"^^xsd:gYear ;
-  ind:obsValue "42.8"^^xsd:decimal ;
+  ind:reportingPeriod [ a time:Interval ; rdfs:label "2023" ] ;
+  rdf:value "42.8"^^xsd:decimal ;
   ind:hasUnit <http://independentimpact.org/indicator-owl/unit/percentage> ;
-  ind:obsStatus "REPORTED" ;
+  ind:obsStatus ind:statusReported ;
   ind:hasSubgroupSlice [
     a ind:SubgroupSlice ;
     ind:subgroupAxis ind:AxisIncomeQuintile ;
@@ -188,15 +183,14 @@ ind:obs_income_quintile_5 a ind:IndicatorObservation ;
 # Example 5: Health indicator with multiple age groups
 #################################################################
 
-ind:obs_education_youth a ind:IndicatorObservation ;
+ind:obs_education_youth a impact:IndicatorValue ;
   rdfs:label "School enrollment rate for youth (15-19), Country X, 2023"@en ;
-  ind:observesIndicator <http://independentimpact.org/indicator-owl/indicator/4.1.1> ;
   ind:usesDSD ind:DSD_BasicSocial_v1 ;
   ind:refArea <http://independentimpact.org/place/CountryX> ;
-  ind:timePeriod "2023"^^xsd:gYear ;
-  ind:obsValue "87.3"^^xsd:decimal ;
+  ind:reportingPeriod [ a time:Interval ; rdfs:label "2023" ] ;
+  rdf:value "87.3"^^xsd:decimal ;
   ind:hasUnit <http://independentimpact.org/indicator-owl/unit/percentage> ;
-  ind:obsStatus "REPORTED" ;
+  ind:obsStatus ind:statusReported ;
   ind:hasSubgroupSlice [
     a ind:SubgroupSlice ;
     ind:subgroupAxis ind:AxisAgeCategory ;
@@ -207,30 +201,28 @@ ind:obs_education_youth a ind:IndicatorObservation ;
 # Example 6: Urban/rural disaggregation only
 #################################################################
 
-ind:obs_water_access_urban a ind:IndicatorObservation ;
+ind:obs_water_access_urban a impact:IndicatorValue ;
   rdfs:label "Population with access to safe water in urban areas, Country X, 2023"@en ;
-  ind:observesIndicator <http://independentimpact.org/indicator-owl/indicator/6.1.1> ;
   ind:usesDSD ind:DSD_BasicSocial_v1 ;
   ind:refArea <http://independentimpact.org/place/CountryX> ;
-  ind:timePeriod "2023"^^xsd:gYear ;
-  ind:obsValue "94.7"^^xsd:decimal ;
+  ind:reportingPeriod [ a time:Interval ; rdfs:label "2023" ] ;
+  rdf:value "94.7"^^xsd:decimal ;
   ind:hasUnit <http://independentimpact.org/indicator-owl/unit/percentage> ;
-  ind:obsStatus "REPORTED" ;
+  ind:obsStatus ind:statusReported ;
   ind:hasSubgroupSlice [
     a ind:SubgroupSlice ;
     ind:subgroupAxis ind:AxisUrbanRural ;
     ind:subgroupValue ind:urban
   ] .
 
-ind:obs_water_access_rural a ind:IndicatorObservation ;
+ind:obs_water_access_rural a impact:IndicatorValue ;
   rdfs:label "Population with access to safe water in rural areas, Country X, 2023"@en ;
-  ind:observesIndicator <http://independentimpact.org/indicator-owl/indicator/6.1.1> ;
   ind:usesDSD ind:DSD_BasicSocial_v1 ;
   ind:refArea <http://independentimpact.org/place/CountryX> ;
-  ind:timePeriod "2023"^^xsd:gYear ;
-  ind:obsValue "68.4"^^xsd:decimal ;
+  ind:reportingPeriod [ a time:Interval ; rdfs:label "2023" ] ;
+  rdf:value "68.4"^^xsd:decimal ;
   ind:hasUnit <http://independentimpact.org/indicator-owl/unit/percentage> ;
-  ind:obsStatus "REPORTED" ;
+  ind:obsStatus ind:statusReported ;
   ind:hasSubgroupSlice [
     a ind:SubgroupSlice ;
     ind:subgroupAxis ind:AxisUrbanRural ;
@@ -241,15 +233,14 @@ ind:obs_water_access_rural a ind:IndicatorObservation ;
 # Example 7: Multi-dimensional with urban/rural and sex
 #################################################################
 
-ind:obs_unemployment_urban_male a ind:IndicatorObservation ;
+ind:obs_unemployment_urban_male a impact:IndicatorValue ;
   rdfs:label "Unemployment rate for urban males, Country X, 2023"@en ;
-  ind:observesIndicator <http://independentimpact.org/indicator-owl/indicator/8.5.2> ;
   ind:usesDSD ind:DSD_BasicSocial_v1 ;
   ind:refArea <http://independentimpact.org/place/CountryX> ;
-  ind:timePeriod "2023"^^xsd:gYear ;
-  ind:obsValue "7.2"^^xsd:decimal ;
+  ind:reportingPeriod [ a time:Interval ; rdfs:label "2023" ] ;
+  rdf:value "7.2"^^xsd:decimal ;
   ind:hasUnit <http://independentimpact.org/indicator-owl/unit/percentage> ;
-  ind:obsStatus "REPORTED" ;
+  ind:obsStatus ind:statusReported ;
   ind:hasSubgroupSlice 
     [ a ind:SubgroupSlice ;
       ind:subgroupAxis ind:AxisUrbanRural ;
@@ -262,15 +253,14 @@ ind:obs_unemployment_urban_male a ind:IndicatorObservation ;
 # Example 8: Environmental indicator with single land use type
 #################################################################
 
-ind:obs_forest_area a ind:IndicatorObservation ;
+ind:obs_forest_area a impact:IndicatorValue ;
   rdfs:label "Forest area change in Region Y, 2022"@en ;
-  ind:observesIndicator <http://independentimpact.org/indicator-owl/indicator/15.1.1> ;
   ind:usesDSD ind:DSD_Environmental_v1 ;
   ind:refArea <http://independentimpact.org/place/RegionY> ;
-  ind:timePeriod "2022"^^xsd:gYear ;
-  ind:obsValue "1250.5"^^xsd:decimal ;
+  ind:reportingPeriod [ a time:Interval ; rdfs:label "2022" ] ;
+  rdf:value "1250.5"^^xsd:decimal ;
   ind:hasUnit unit:HA ;
-  ind:obsStatus "REPORTED" ;
+  ind:obsStatus ind:statusReported ;
   ind:hasSubgroupSlice 
     [ a ind:SubgroupSlice ;
       ind:subgroupAxis ind:AxisGeographicLocation ;
@@ -283,15 +273,14 @@ ind:obs_forest_area a ind:IndicatorObservation ;
 # Example 9: Three-dimensional disaggregation (sex, age, urban/rural)
 #################################################################
 
-ind:obs_maternal_mortality_rural_youth a ind:IndicatorObservation ;
+ind:obs_maternal_mortality_rural_youth a impact:IndicatorValue ;
   rdfs:label "Maternal mortality for rural females aged 20-24, Country X, 2022"@en ;
-  ind:observesIndicator <http://independentimpact.org/indicator-owl/indicator/3.1.1> ;
   ind:usesDSD ind:DSD_BasicSocial_v1 ;
   ind:refArea <http://independentimpact.org/place/CountryX> ;
-  ind:timePeriod "2022"^^xsd:gYear ;
-  ind:obsValue "178"^^xsd:decimal ;
+  ind:reportingPeriod [ a time:Interval ; rdfs:label "2022" ] ;
+  rdf:value "178"^^xsd:decimal ;
   ind:hasUnit unit:PER_100000 ;
-  ind:obsStatus "ESTIMATED" ;
+  ind:obsStatus ind:statusEstimated ;
   ind:hasSubgroupSlice 
     [ a ind:SubgroupSlice ;
       ind:subgroupAxis ind:AxisSex ;
@@ -307,15 +296,14 @@ ind:obs_maternal_mortality_rural_youth a ind:IndicatorObservation ;
 # Example 10: Economic inequality with urban/rural and sex
 #################################################################
 
-ind:obs_inequality_urban_female a ind:IndicatorObservation ;
+ind:obs_inequality_urban_female a impact:IndicatorValue ;
   rdfs:label "Income inequality for urban females in Q1, Country Z, 2023"@en ;
-  ind:observesIndicator <http://independentimpact.org/indicator-owl/indicator/10.1.1> ;
   ind:usesDSD ind:DSD_EconomicInequality_v1 ;
   ind:refArea <http://independentimpact.org/place/CountryZ> ;
-  ind:timePeriod "2023"^^xsd:gYear ;
-  ind:obsValue "5.8"^^xsd:decimal ;
+  ind:reportingPeriod [ a time:Interval ; rdfs:label "2023" ] ;
+  rdf:value "5.8"^^xsd:decimal ;
   ind:hasUnit <http://independentimpact.org/indicator-owl/unit/percentage> ;
-  ind:obsStatus "REPORTED" ;
+  ind:obsStatus ind:statusReported ;
   ind:hasSubgroupSlice 
     [ a ind:SubgroupSlice ;
       ind:subgroupAxis ind:AxisIncomeQuintile ;
@@ -331,13 +319,12 @@ ind:obs_inequality_urban_female a ind:IndicatorObservation ;
 # Example 11: No disaggregation (aggregate observation)
 #################################################################
 
-ind:obs_gdp_total a ind:IndicatorObservation ;
+ind:obs_gdp_total a impact:IndicatorValue ;
   rdfs:label "Total GDP per capita, Country X, 2023"@en ;
-  ind:observesIndicator <http://independentimpact.org/indicator-owl/indicator/8.1.1> ;
   ind:usesDSD ind:DSD_BasicSocial_v1 ;
   ind:refArea <http://independentimpact.org/place/CountryX> ;
-  ind:timePeriod "2023"^^xsd:gYear ;
-  ind:obsValue "45320"^^xsd:decimal ;
+  ind:reportingPeriod [ a time:Interval ; rdfs:label "2023" ] ;
+  rdf:value "45320"^^xsd:decimal ;
   ind:hasUnit unit:USD ;
   ind:obsStatus "REPORTED" .
 
@@ -345,15 +332,14 @@ ind:obs_gdp_total a ind:IndicatorObservation ;
 # Example 12: Multiple land use types (demonstrating repeatable axis)
 #################################################################
 
-ind:obs_protected_areas a ind:IndicatorObservation ;
+ind:obs_protected_areas a impact:IndicatorValue ;
   rdfs:label "Protected area coverage across forest, wetland, and water, Region Y, 2022"@en ;
-  ind:observesIndicator <http://independentimpact.org/indicator-owl/indicator/15.1.2> ;
   ind:usesDSD ind:DSD_Environmental_v1 ;
   ind:refArea <http://independentimpact.org/place/RegionY> ;
-  ind:timePeriod "2022"^^xsd:gYear ;
-  ind:obsValue "8750"^^xsd:decimal ;
+  ind:reportingPeriod [ a time:Interval ; rdfs:label "2022" ] ;
+  rdf:value "8750"^^xsd:decimal ;
   ind:hasUnit unit:HA ;
-  ind:obsStatus "REPORTED" ;
+  ind:obsStatus ind:statusReported ;
   ind:hasSubgroupSlice 
     [ a ind:SubgroupSlice ;
       ind:subgroupAxis ind:AxisGeographicLocation ;
@@ -367,3 +353,10 @@ ind:obs_protected_areas a ind:IndicatorObservation ;
     [ a ind:SubgroupSlice ;
       ind:subgroupAxis ind:AxisLandUseType ;
       ind:subgroupValue ind:lu_open_water ] .
+
+
+
+ind:statusReported a skos:Concept ; skos:prefLabel "REPORTED"@en .
+ind:statusEstimated a skos:Concept ; skos:prefLabel "ESTIMATED"@en .
+ind:statusImputed a skos:Concept ; skos:prefLabel "IMPUTED"@en .
+ind:statusProvisional a skos:Concept ; skos:prefLabel "PROVISIONAL"@en .
