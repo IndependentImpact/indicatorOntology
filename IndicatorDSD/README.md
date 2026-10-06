@@ -52,7 +52,7 @@ ind:AxisSex a ind:Axis ;
   rdfs:label "Sex"@en ;
   skos:definition "Disaggregation by biological sex or gender"@en .
 
-ind:AxisAge a ind:Axis ;
+ind:AxisAgeCategory a ind:Axis ;
   rdfs:label "Age Category"@en ;
   skos:definition "Disaggregation by age groups"@en .
 ```
@@ -88,7 +88,7 @@ ind:DSD_Social_SexAge_v1 a ind:DataStructureDefinition ;
   skos:prefLabel "Social indicators with Sex and Age disaggregation v1"@en ;
   ind:definitionVersion "1.0" ;
   ind:hasAxisSpec ind:Spec_DSD_Social_SexAge_v1_Sex ,
-                    ind:Spec_DSD_Social_SexAge_v1_Age .
+                    ind:Spec_DSD_Social_SexAge_v1_AgeCategory .
 
 ind:Spec_DSD_Social_SexAge_v1_Sex a ind:AxisSpecification ;
   ind:axis ind:AxisSex ;
@@ -96,8 +96,8 @@ ind:Spec_DSD_Social_SexAge_v1_Sex a ind:AxisSpecification ;
   ind:minCardinality 0 ;
   ind:maxCardinality 1 .
 
-ind:Spec_DSD_Social_SexAge_v1_Age a ind:AxisSpecification ;
-  ind:axis ind:AxisAge ;
+ind:Spec_DSD_Social_SexAge_v1_AgeCategory a ind:AxisSpecification ;
+  ind:axis ind:AxisAgeCategory ;
   ind:valueScheme ind:GlobalAgeScheme_v1 ;
   ind:minCardinality 0 ;
   ind:maxCardinality 1 .
@@ -107,7 +107,7 @@ ind:Spec_DSD_Social_SexAge_v1_Age a ind:AxisSpecification ;
 ```turtle
 ind:obs_123 a impact:IndicatorValue ;
   ind:hasSubgroupSlice [ a ind:SubgroupSlice ; ind:subgroupAxis ind:AxisSex ; ind:subgroupValue ind:sex_female ] ;
-    ind:hasSubgroupSlice [ a ind:SubgroupSlice ; ind:subgroupAxis ind:AxisAge ; ind:subgroupValue ind:age_15_19 ] ;
+    ind:hasSubgroupSlice [ a ind:SubgroupSlice ; ind:subgroupAxis ind:AxisAgeCategory ; ind:subgroupValue ind:age_15_19 ] ;
   
     ind:usesDSD ind:DSD_Social_SexAge_v1 ;
   rdf:value 23.4 .
@@ -155,7 +155,7 @@ Definitions of disaggregation axes (dimensions) for indicator data. Axes are abs
 
 **Common Axes Include:**
 - `AxisSex` - Sex/Gender disaggregation
-- `AxisAge` - Age category disaggregation  
+- `AxisAgeCategory` - Age category disaggregation  
 - `AxisGeographicLocation` - Geographic/spatial disaggregation
 - `AxisUrbanRural` - Urban/Rural classification
 - `AxisIncomeQuintile` - Income level disaggregation
@@ -235,7 +235,7 @@ Each DSD specifies:
 **Example DSDs:**
 - `DSD_Social_Sex_v1` - Single dimension: Sex
 - `DSD_Social_SexAge_v1` - Two dimensions: Sex and Age
-- `DSD_Geographic_Admin_v1` - Geographic disaggregation
+- `DSD_Social_SexLocation_v1` - Two dimensions: Sex and Geographic Location
 - Plus 20 additional DSDs for various indicator types
 
 ## Purpose
